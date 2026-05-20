@@ -4,98 +4,235 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fort Reilly Foundation | Never Fight Alone</title>
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
     :root {
       --gold: #b79a5b;
-      --gold-light: #e5cf92;
+      --gold-light: #e4cf91;
       --black: #070707;
-      --panel: #101010;
+      --panel: #111111;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       background: var(--black);
-      color: white;
-      font-family: Inter, sans-serif;
-      overflow-x: hidden;
+      color: #fff;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .military {
-      font-family: Oswald, sans-serif;
-      letter-spacing: .055em;
+      font-family: Oswald, Arial, sans-serif;
       text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .top-brand {
+      background: #050505;
+      padding: 22px 20px 16px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .top-brand img {
+      max-width: 620px;
+      width: 90%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: rgba(5,5,5,.96);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-logo img {
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 38px;
+      align-items: center;
+      font-size: 15px;
+      color: rgba(255,255,255,.82);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #8b743f, #d7bd78, #8b743f);
+      color: #090909;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 14px 28px;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 0 28px rgba(183,154,91,.22);
+    }
+
+    .btn-dark {
+      background: rgba(0,0,0,.45);
+      color: white;
+      border: 1px solid rgba(183,154,91,.7);
+      padding: 14px 28px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 620px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.92), rgba(0,0,0,.68), rgba(0,0,0,.2)),
+        linear-gradient(0deg, rgba(0,0,0,.95), rgba(0,0,0,0) 45%),
+        url("assets/tj-reilly.jpeg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 90px 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: .95;
+      margin: 0;
+      text-shadow: 0 4px 24px rgba(0,0,0,.85);
+    }
+
+    .hero p {
+      color: var(--gold);
+      font-size: clamp(24px, 4vw, 40px);
+      margin: 24px 0 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    section {
+      padding: 80px 28px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 2fr 2fr 2fr 2fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .mission-text h2,
+    .section-title {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+      margin: 0 0 22px;
+    }
+
+    .mission-text p,
+    .card p {
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+      border: 1px solid rgba(255,255,255,.09);
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 25px 60px rgba(0,0,0,.3);
+    }
+
+    .pillar {
+      text-align: center;
+      border-left: 1px solid rgba(255,255,255,.1);
+    }
+
+    .pillar-icon {
+      color: var(--gold);
+      font-size: 42px;
+      margin-bottom: 16px;
     }
 
     .gold {
       color: var(--gold);
     }
 
-    .btn-gold {
-      background: linear-gradient(135deg, #8a7442, #d8bd78, #8a7442);
-      color: #090909;
-      font-weight: 800;
-      border: 1px solid rgba(255,255,255,.15);
-      box-shadow: 0 0 30px rgba(183,154,91,.18);
-      transition: .25s ease;
+    .events {
+      background: #0d0d0d;
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(183,154,91,.35);
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 36px;
     }
 
-    .btn-outline {
-      border: 1px solid rgba(183,154,91,.65);
-      color: var(--gold-light);
-      transition: .25s ease;
+    .event-card {
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .btn-outline:hover {
-      background: rgba(183,154,91,.12);
-      transform: translateY(-2px);
+    footer {
+      background: #030303;
+      padding: 42px 28px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      text-align: center;
+      color: rgba(255,255,255,.55);
     }
 
-    .hero {
-      min-height: 88vh;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.75) 36%, rgba(0,0,0,.35) 72%, rgba(0,0,0,.8) 100%),
-        linear-gradient(0deg, rgba(0,0,0,.9) 0%, transparent 45%),
-        url("assets/tj-reilly.jpeg");
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 70% 45%, rgba(183,154,91,.22), transparent 35%),
-        linear-gradient(180deg, transparent, #070707 98%);
-      pointer-events: none;
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
-      border: 1px solid rgba(255,255,255,.09);
-      box-shadow: 0 25px 60px rgba(0,0,0,.35);
-    }
-
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(183,154,91,.6), transparent);
-    }
-
-    .logo-img {
-      object-fit: contain;
-      display: block;
+    footer img {
+      max-width: 300px;
+      width: 80%;
+      margin-bottom: 18px;
     }
 
     .floating-donate {
@@ -106,272 +243,246 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 10px 18px 10px 10px;
+      background: linear-gradient(135deg, #080808, #1d1a13);
+      border: 1px solid rgba(183,154,91,.75);
       border-radius: 999px;
-      background: linear-gradient(135deg, #090909, #1c1a14);
-      border: 1px solid rgba(183,154,91,.7);
       color: white;
-      box-shadow: 0 0 35px rgba(183,154,91,.28);
+      padding: 10px 18px 10px 10px;
+      box-shadow: 0 0 38px rgba(183,154,91,.35);
       cursor: pointer;
-      transition: .25s ease;
-    }
-
-    .floating-donate:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 50px rgba(183,154,91,.42);
     }
 
     .floating-donate img {
       width: 48px;
       height: 48px;
+      object-fit: cover;
+      object-position: top center;
       border-radius: 50%;
-      object-fit: contain;
-      background: black;
-      border: 1px solid rgba(183,154,91,.5);
+      border: 1px solid rgba(183,154,91,.55);
     }
 
     .modal {
+      display: none;
       position: fixed;
       inset: 0;
       z-index: 200;
-      display: none;
+      background: rgba(0,0,0,.84);
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,.82);
-      backdrop-filter: blur(10px);
-      padding: 18px;
+      padding: 20px;
     }
 
-    .modal.open { display: flex; }
+    .modal.open {
+      display: flex;
+    }
 
-    input, textarea, select {
-      background: #080808;
-      border: 1px solid rgba(255,255,255,.14);
-      color: white;
-      border-radius: 14px;
-      padding: 13px 14px;
+    .modal-box {
+      max-width: 440px;
       width: 100%;
-      outline: none;
+      background: #101010;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 32px;
     }
 
-    input:focus, textarea:focus, select:focus {
-      border-color: var(--gold);
+    .close {
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+      color: rgba(255,255,255,.6);
+    }
+
+    input {
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: #060606;
+      color: white;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mission-grid,
+      .event-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pillar {
+        border-left: none;
+      }
+
+      .hero {
+        min-height: 560px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-5 h-24 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-4">
-        <img src="assets/logo.jpeg" alt="Fort Reilly Foundation logo" class="logo-img h-16 w-auto" />
+
+  <div class="top-brand">
+    <img src="assets/logo.jpeg" alt="Fort Reilly Foundation logo">
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">
+        <img src="assets/logo.jpeg" alt="Fort Reilly shield logo">
       </a>
 
-      <div class="hidden md:flex items-center gap-9 military text-sm text-white/80">
-        <a href="#mission" class="hover:text-[#e5cf92]">Mission</a>
-        <a href="#legacy" class="hover:text-[#e5cf92]">Legacy</a>
-        <a href="#programs" class="hover:text-[#e5cf92]">Programs</a>
-        <a href="#events" class="hover:text-[#e5cf92]">Events</a>
-        <a href="#involved" class="hover:text-[#e5cf92]">Get Involved</a>
+      <div class="nav-links military">
+        <a href="#">Home</a>
+        <a href="#mission">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#events">Events / Signups</a>
+        <a href="#involved">Get Involved</a>
       </div>
 
-      <button onclick="openDonate()" class="btn-gold military px-7 py-3 rounded">Donate</button>
+      <button class="btn-gold military" onclick="openDonate()">Donate</button>
     </div>
   </nav>
 
-  <header class="hero flex items-center pt-28">
-    <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
-      <div class="max-w-3xl">
-        <p class="military gold text-sm mb-5">Fort Reilly Foundation</p>
-        <h1 class="military text-6xl md:text-8xl leading-[.92] font-black drop-shadow-2xl">
-          Never Fight<br />Alone.
-        </h1>
-        <p class="military text-2xl md:text-4xl mt-6 text-white/90">
-          Support. Brotherhood. Purpose.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 mt-10">
-          <a href="#mission" class="btn-outline military px-8 py-4 rounded text-center">Our Mission</a>
-          <button onclick="openDonate()" class="btn-gold military px-8 py-4 rounded">Donate Now</button>
-        </div>
+  <header class="hero">
+    <div class="hero-content">
+      <h1 class="military">Never Fight Alone.</h1>
+      <p class="military">Support. Brotherhood. Purpose.</p>
+
+      <div class="hero-actions">
+        <a href="#mission" class="btn-gold military">Our Mission</a>
+        <button class="btn-dark military" onclick="openDonate()">Donate Now</button>
       </div>
     </div>
   </header>
 
-  <main>
-    <section id="mission" class="max-w-7xl mx-auto px-6 py-20">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <p class="military gold text-sm mb-4">Our Purpose</p>
-          <h2 class="military text-5xl md:text-6xl leading-tight">We're here for<br />those who served.</h2>
-          <p class="text-white/75 text-lg leading-8 mt-6">
-            Fort Reilly Foundation exists to support veterans, service members, and their families through every mission of life.
-            Built from the legacy of LCPL TJ Reilly, this foundation carries forward a simple promise: no one fights alone.
-          </p>
-        </div>
-
-        <div class="card rounded-3xl p-8">
-          <img src="assets/tj-reilly.jpeg" alt="LCPL TJ Reilly" class="rounded-2xl w-full object-cover max-h-[420px]" />
-          <p class="text-white/70 mt-5 leading-7">
-            This site should honor TJ with strength, restraint, and purpose — carrying his legacy forward through action,
-            brotherhood, and support for those who served.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section id="legacy" class="max-w-7xl mx-auto px-6 py-20">
-      <div class="card rounded-3xl p-8 md:p-12">
-        <p class="military gold text-sm mb-4">Legacy</p>
-        <h2 class="military text-4xl md:text-6xl leading-tight">A living mission born from sacrifice.</h2>
-        <p class="text-white/75 text-lg leading-8 mt-6 max-w-4xl">
-          The Fort Reilly Foundation is not just a memorial. It is a continuation of duty, loyalty, and brotherhood.
-          Every program, every event, every donation, and every act of service exists to keep the mission moving forward.
+  <section id="mission">
+    <div class="container mission-grid">
+      <div class="mission-text">
+        <h2 class="military">We're here for those who served.</h2>
+        <p>
+          Fort Reilly Foundation exists to support veterans, service members,
+          and their families through every mission of life.
         </p>
       </div>
-    </section>
 
-    <section id="programs" class="bg-[#0d0d0d] border-y border-white/10 py-20">
-      <div class="max-w-7xl mx-auto px-6">
-        <p class="military gold text-sm mb-4 text-center">Four Pillars of Support</p>
-        <h2 class="military text-5xl md:text-6xl text-center mb-12">Built for the fight after the fight.</h2>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="card rounded-3xl p-7">
-            <h3 class="military text-2xl gold">Mental Wellness</h3>
-            <p class="text-white/70 mt-4 leading-7">Peer support, counseling resources, crisis connection, and strength through community.</p>
-          </div>
-          <div class="card rounded-3xl p-7">
-            <h3 class="military text-2xl gold">Brotherhood</h3>
-            <p class="text-white/70 mt-4 leading-7">Gatherings, retreats, mentorship, and connection for veterans who understand the mission.</p>
-          </div>
-          <div class="card rounded-3xl p-7">
-            <h3 class="military text-2xl gold">Transition Support</h3>
-            <p class="text-white/70 mt-4 leading-7">Career support, resources, life navigation, and purpose after service.</p>
-          </div>
-          <div class="card rounded-3xl p-7">
-            <h3 class="military text-2xl gold">Family Support</h3>
-            <p class="text-white/70 mt-4 leading-7">Support for spouses, children, caregivers, and the families standing behind the uniform.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="events" class="max-w-7xl mx-auto px-6 py-20">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-        <div>
-          <p class="military gold text-sm mb-4">Events / Signups</p>
-          <h2 class="military text-5xl md:text-6xl">Upcoming Missions</h2>
-          <p class="text-white/70 mt-4 max-w-2xl">
-            Add, remove, and update these event cards as needed. Connect each signup button to Stripe, PayPal, Zeffy,
-            Givebutter, Eventbrite, or your preferred payment/signup platform.
-          </p>
-        </div>
+      <div class="card pillar">
+        <div class="pillar-icon">✚</div>
+        <h3 class="military gold">Mental Wellness</h3>
+        <p>Support for the mind through peer connection and resources.</p>
       </div>
 
-      <div class="grid lg:grid-cols-3 gap-6">
-        <article class="card rounded-3xl p-7">
-          <p class="military gold text-xs">Event Placeholder</p>
-          <h3 class="military text-3xl mt-3">Memorial Fundraiser</h3>
-          <p class="text-white/65 mt-4 leading-7">Date, location, details, registration limits, and payment link go here.</p>
-          <a href="#" class="btn-gold military inline-block px-6 py-3 rounded mt-6">Sign Up</a>
-        </article>
-
-        <article class="card rounded-3xl p-7">
-          <p class="military gold text-xs">Event Placeholder</p>
-          <h3 class="military text-3xl mt-3">Brotherhood Retreat</h3>
-          <p class="text-white/65 mt-4 leading-7">Use this card for veteran retreats, meetups, outdoor events, or private gatherings.</p>
-          <a href="#" class="btn-gold military inline-block px-6 py-3 rounded mt-6">Register</a>
-        </article>
-
-        <article class="card rounded-3xl p-7">
-          <p class="military gold text-xs">Event Placeholder</p>
-          <h3 class="military text-3xl mt-3">Community Mission</h3>
-          <p class="text-white/65 mt-4 leading-7">Use this card for volunteer days, sponsor events, or community support operations.</p>
-          <a href="#" class="btn-gold military inline-block px-6 py-3 rounded mt-6">Join Mission</a>
-        </article>
+      <div class="card pillar">
+        <div class="pillar-icon">●●●</div>
+        <h3 class="military gold">Brotherhood</h3>
+        <p>Building bonds that last beyond the uniform.</p>
       </div>
-    </section>
 
-    <section id="involved" class="bg-[#0d0d0d] border-y border-white/10 py-20">
-      <div class="max-w-6xl mx-auto px-6 text-center">
-        <p class="military gold text-sm mb-4">Get Involved</p>
-        <h2 class="military text-5xl md:text-6xl">Stand with the mission.</h2>
-        <p class="text-white/70 max-w-3xl mx-auto mt-5 leading-8">
-          Whether you donate, volunteer, sponsor an event, or help connect veterans to support,
-          you become part of the mission TJ inspired.
-        </p>
-
-        <div class="grid md:grid-cols-3 gap-6 mt-12 text-left">
-          <div class="card rounded-3xl p-7">
-            <h3 class="military text-2xl gold">Volunteer</h3>
-            <p class="text-white/70 mt-3">Help with events, outreach, operations, and community missions.</p>
-          </div>
-          <div class="card rounded-3xl p-7">
-            <h3 class="military text-2xl gold">Sponsor</h3>
-            <p class="text-white/70 mt-3">Support programs, events, families, and long-term foundation impact.</p>
-          </div>
-          <div class="card rounded-3xl p-7">
-            <h3 class="military text-2xl gold">Donate</h3>
-            <p class="text-white/70 mt-3">Fuel the mission and help carry the legacy forward.</p>
-          </div>
-        </div>
+      <div class="card pillar">
+        <div class="pillar-icon">★</div>
+        <h3 class="military gold">Transition Support</h3>
+        <p>Helping veterans transition with purpose.</p>
       </div>
-    </section>
 
-    <section class="max-w-5xl mx-auto px-6 py-24 text-center">
-      <img src="assets/logo.jpeg" alt="Fort Reilly Foundation logo" class="logo-img mx-auto h-28 mb-8" />
-      <h2 class="military text-5xl md:text-7xl">Never Fight Alone.</h2>
-      <p class="text-white/70 mt-5 text-lg">Support. Brotherhood. Purpose.</p>
-      <button onclick="openDonate()" class="btn-gold military px-10 py-4 rounded mt-9">Donate Today</button>
-    </section>
-  </main>
-
-  <footer class="bg-black border-t border-white/10 py-10">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-6 justify-between items-center">
-      <img src="assets/logo.jpeg" alt="Fort Reilly Foundation logo" class="logo-img h-16" />
-      <p class="text-white/45 text-sm text-center md:text-right">
-        © 2026 Fort Reilly Foundation. Never Fight Alone.
-      </p>
+      <div class="card pillar">
+        <div class="pillar-icon">●●</div>
+        <h3 class="military gold">Family Support</h3>
+        <p>Standing with the families behind our heroes.</p>
+      </div>
     </div>
+  </section>
+
+  <section id="programs">
+    <div class="container">
+      <h2 class="section-title military">A living mission born from sacrifice.</h2>
+      <div class="card">
+        <p>
+          Built from the legacy of LCPL TJ Reilly, this foundation carries forward
+          duty, loyalty, brotherhood, and service. Every program, event, donation,
+          and act of support exists to keep the mission moving forward.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="events">
+    <div class="container">
+      <h2 class="section-title military">Upcoming Missions</h2>
+      <p style="color:rgba(255,255,255,.7); max-width:760px;">
+        Use this section for fundraisers, retreats, memorial events, volunteer missions,
+        golf tournaments, registrations, and paid signups.
+      </p>
+
+      <div class="event-grid">
+        <div class="card event-card">
+          <div>
+            <p class="military gold">Event Placeholder</p>
+            <h3 class="military">Memorial Fundraiser</h3>
+            <p>Date, location, signup details, and payment link go here.</p>
+          </div>
+          <a class="btn-gold military" href="#">Sign Up</a>
+        </div>
+
+        <div class="card event-card">
+          <div>
+            <p class="military gold">Event Placeholder</p>
+            <h3 class="military">Brotherhood Retreat</h3>
+            <p>Use this for retreats, veteran gatherings, or private events.</p>
+          </div>
+          <a class="btn-gold military" href="#">Register</a>
+        </div>
+
+        <div class="card event-card">
+          <div>
+            <p class="military gold">Event Placeholder</p>
+            <h3 class="military">Community Mission</h3>
+            <p>Use this for volunteer days, outreach, or sponsor events.</p>
+          </div>
+          <a class="btn-gold military" href="#">Join Mission</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="involved">
+    <div class="container">
+      <h2 class="section-title military">Stand with the mission.</h2>
+      <div class="card">
+        <p>
+          Whether you donate, volunteer, sponsor an event, or help connect veterans
+          to support, you become part of the mission TJ inspired.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="assets/logo.jpeg" alt="Fort Reilly Foundation logo">
+    <p>© 2026 Fort Reilly Foundation. Never Fight Alone.</p>
   </footer>
 
-  <button class="floating-donate" onclick="openDonate()" aria-label="Donate">
-    <img src="assets/logo.jpeg" alt="Fort Reilly Foundation shield" />
-    <span class="military">Donate</span>
+  <button class="floating-donate military" onclick="openDonate()">
+    <img src="assets/logo.jpeg" alt="FR shield">
+    Donate
   </button>
 
   <div id="donateModal" class="modal" onclick="closeDonate(event)">
-    <div class="card rounded-3xl p-8 max-w-md w-full">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <p class="military gold text-xs mb-2">Support the Mission</p>
-          <h3 class="military text-3xl">Donate</h3>
-        </div>
-        <button onclick="forceCloseDonate()" class="text-white/60 text-2xl">&times;</button>
-      </div>
-
-      <p class="text-white/70 mt-4 leading-7">
-        Replace this demo button with your real donation/payment link.
+    <div class="modal-box">
+      <span class="close" onclick="forceCloseDonate()">&times;</span>
+      <h2 class="military">Support the Mission</h2>
+      <p style="color:rgba(255,255,255,.7); line-height:1.7;">
+        Replace this demo button with your real donation processor link.
       </p>
 
-      <div class="grid grid-cols-2 gap-3 mt-6">
-        <button class="btn-outline rounded py-3 military">$25</button>
-        <button class="btn-outline rounded py-3 military">$50</button>
-        <button class="btn-outline rounded py-3 military">$100</button>
-        <button class="btn-outline rounded py-3 military">$250</button>
-      </div>
+      <input type="number" placeholder="Custom donation amount">
 
-      <input class="mt-4" placeholder="Custom amount" type="number" />
-
-      <a href="#" class="btn-gold military block text-center rounded py-4 mt-5">
+      <br><br>
+      <a href="#" class="btn-gold military" style="display:block; text-align:center;">
         Complete Donation
       </a>
-
-      <p class="text-white/40 text-xs mt-4 text-center">
-        Connect this to Stripe, PayPal, Zeffy, Givebutter, or another donation processor.
-      </p>
     </div>
   </div>
 
@@ -389,10 +500,7 @@
         forceCloseDonate();
       }
     }
-
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") forceCloseDonate();
-    });
   </script>
+
 </body>
 </html>
