@@ -6,692 +6,504 @@
   <title>Fort Reilly Foundation</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
-    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html{
-      scroll-behavior:smooth;
+    html {
+      scroll-behavior: smooth;
     }
 
-    body{
-      background:#050505;
-      color:white;
-      font-family:'Inter',sans-serif;
-      overflow-x:hidden;
+    body {
+      background: #050505;
+      color: white;
+      font-family: Inter, sans-serif;
+      overflow-x: hidden;
     }
 
-    a{
-      text-decoration:none;
+    a {
+      text-decoration: none;
     }
 
-    img{
-      max-width:100%;
-      display:block;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    :root{
-      --gold:#b79a5b;
-      --gold-light:#d9bf78;
-      --black:#050505;
-      --soft:#cfcfcf;
+    :root {
+      --gold: #b79a5b;
+      --gold-light: #d8bd72;
+      --black: #050505;
+      --panel: #111111;
+      --soft: #cfcfcf;
     }
 
-    /* TOP LOGO */
-
-    .top-logo{
-      width:100%;
-      background:#050505;
-      padding:20px 10px;
-      border-bottom:1px solid rgba(183,154,91,.25);
-      text-align:center;
+    .top-logo {
+      background: #050505;
+      padding: 24px 6%;
+      border-bottom: 1px solid rgba(183,154,91,.25);
+      text-align: center;
     }
 
-    .top-logo img{
-      width:min(700px,95%);
-      margin:auto;
+    .top-logo img {
+      width: min(760px, 96%);
+      margin: auto;
     }
 
-    /* NAV */
-
-    .nav-bar{
-      position:sticky;
-      top:0;
-      z-index:999;
-      width:100%;
-      background:rgba(5,5,5,.92);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(183,154,91,.15);
-
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-
-      padding:16px 5%;
+    .floating-nav {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: rgba(8,8,8,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(183,154,91,.3);
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    .nav-left img{
-      width:52px;
+    .nav-logo img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
     }
 
-    .nav-links{
-      display:flex;
-      gap:34px;
-      align-items:center;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
     }
 
-    .nav-links a{
-      color:white;
-      font-family:'Oswald',sans-serif;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      font-size:.9rem;
-      opacity:.9;
+    .nav-links a {
+      color: white;
+      font-family: Oswald, sans-serif;
+      font-size: .92rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      opacity: .88;
     }
 
-    .nav-links a:hover{
-      color:var(--gold-light);
+    .nav-links a:hover {
+      color: var(--gold-light);
     }
 
-    .nav-donate{
-      background:linear-gradient(135deg,var(--gold-light),var(--gold));
-      color:#050505;
-      padding:14px 30px;
-      border-radius:4px;
-      font-family:'Oswald',sans-serif;
-      text-transform:uppercase;
-      font-weight:700;
-      letter-spacing:1.5px;
+    .nav-donate {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #050505;
+      padding: 14px 30px;
+      border-radius: 4px;
+      font-family: Oswald, sans-serif;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    /* HERO */
-
-    .hero{
-      position:relative;
-      width:100%;
-      min-height:82vh;
-      display:flex;
-      align-items:center;
-      overflow:hidden;
+    .hero {
+      position: relative;
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #000;
     }
 
-    .hero-bg{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .hero-overlay{
-      position:absolute;
-      inset:0;
-
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
       background:
-      linear-gradient(to right,
-      rgba(0,0,0,.88),
-      rgba(0,0,0,.45),
-      rgba(0,0,0,.2));
-
+        linear-gradient(to right, rgba(0,0,0,.9), rgba(0,0,0,.56), rgba(0,0,0,.22)),
+        linear-gradient(to top, rgba(0,0,0,.88), transparent 55%);
     }
 
-    .hero-content{
-      position:relative;
-      z-index:2;
-      padding:90px 6%;
-      max-width:750px;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 90px 6%;
+      max-width: 760px;
     }
 
-    .hero-content h1{
-      font-family:'Oswald',sans-serif;
-      font-size:clamp(3.5rem,8vw,6.5rem);
-      line-height:.92;
-      text-transform:uppercase;
-      margin-bottom:25px;
-      letter-spacing:2px;
+    .hero h1 {
+      font-family: Oswald, sans-serif;
+      font-size: clamp(3.4rem, 8vw, 6.5rem);
+      line-height: .94;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
     }
 
-    .hero-sub{
-      color:var(--gold-light);
-      font-family:'Oswald',sans-serif;
-      text-transform:uppercase;
-      font-size:clamp(1.2rem,3vw,2rem);
-      letter-spacing:2px;
-      margin-bottom:40px;
+    .hero-sub {
+      color: var(--gold-light);
+      font-family: Oswald, sans-serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 38px;
     }
 
-    .hero-buttons{
-      display:flex;
-      flex-wrap:wrap;
-      gap:18px;
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-
-      min-width:190px;
-
-      padding:18px 28px;
-
-      border-radius:4px;
-
-      font-family:'Oswald',sans-serif;
-      text-transform:uppercase;
-      letter-spacing:1.5px;
-      font-weight:700;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 190px;
+      padding: 18px 28px;
+      border-radius: 4px;
+      font-family: Oswald, sans-serif;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
     }
 
-    .btn-gold{
-      background:linear-gradient(135deg,var(--gold-light),var(--gold));
-      color:#050505;
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #050505;
     }
 
-    .btn-outline{
-      border:1px solid var(--gold);
-      color:white;
-      background:rgba(0,0,0,.25);
+    .btn-outline {
+      border: 1px solid var(--gold);
+      color: white;
+      background: rgba(0,0,0,.25);
     }
 
-    /* FLOATING DONATE */
-
-    .floating-donate{
-      position:fixed;
-      top:16px;
-      right:16px;
-      z-index:9999;
-
-      display:flex;
-      align-items:center;
-      gap:12px;
-
-      background:rgba(0,0,0,.88);
-
-      border:1px solid var(--gold);
-
-      border-radius:999px;
-
-      padding:8px 18px 8px 8px;
-
-      backdrop-filter:blur(10px);
-
-      box-shadow:0 0 25px rgba(183,154,91,.25);
+    section {
+      padding: 85px 6%;
     }
 
-    .floating-donate img{
-      width:46px;
-      height:46px;
-      object-fit:contain;
+    .mission-section {
+      background: linear-gradient(180deg, #151515, #080808);
+      display: grid;
+      grid-template-columns: 1.2fr repeat(4, 1fr);
+      gap: 28px;
+      border-top: 1px solid rgba(183,154,91,.18);
+      border-bottom: 1px solid rgba(183,154,91,.18);
     }
 
-    .floating-donate span{
-      color:white;
-      font-family:'Oswald',sans-serif;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      font-weight:700;
+    .section-title {
+      font-family: Oswald, sans-serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
     }
 
-    /* MISSION SECTION */
-
-    .mission-section{
-      background:#0b0b0b;
-      padding:80px 6%;
-
-      display:grid;
-      grid-template-columns:1.2fr 1fr 1fr 1fr 1fr;
-      gap:30px;
+    .gold-line {
+      width: 58px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 22px;
     }
 
-    .mission-intro h2{
-      font-family:'Oswald',sans-serif;
-      font-size:clamp(2rem,5vw,3.3rem);
-      line-height:1;
-      text-transform:uppercase;
-      margin-bottom:20px;
+    .mission-intro p,
+    .mission-card p,
+    .story-box p,
+    .event-card p {
+      color: var(--soft);
+      line-height: 1.7;
     }
 
-    .gold-line{
-      width:60px;
-      height:3px;
-      background:var(--gold);
-      margin-bottom:22px;
+    .mission-card {
+      text-align: center;
+      padding: 22px;
+      border-left: 1px solid rgba(255,255,255,.12);
     }
 
-    .mission-intro p{
-      color:var(--soft);
-      line-height:1.8;
-      font-size:1rem;
+    .mission-icon {
+      color: var(--gold-light);
+      font-size: 3rem;
+      margin-bottom: 18px;
     }
 
-    .mission-card{
-      text-align:center;
-      border-left:1px solid rgba(255,255,255,.1);
-      padding:20px;
+    .mission-card h3 {
+      font-family: Oswald, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-size: 1.35rem;
+      margin-bottom: 12px;
     }
 
-    .mission-icon{
-      color:var(--gold-light);
-      font-size:3rem;
-      margin-bottom:20px;
+    .story-section {
+      background: #050505;
     }
 
-    .mission-card h3{
-      font-family:'Oswald',sans-serif;
-      text-transform:uppercase;
-      font-size:1.4rem;
-      letter-spacing:1px;
-      margin-bottom:14px;
+    .story-box {
+      max-width: 900px;
+      background: linear-gradient(180deg, #141414, #080808);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      padding: 42px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.45);
     }
 
-    .mission-card p{
-      color:var(--soft);
-      line-height:1.7;
+    .events-section {
+      background: #090909;
     }
 
-    /* STORY SECTION */
-
-    .story-section{
-      padding:90px 6%;
-      background:#050505;
+    .events-grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
-    .story-title{
-      font-family:'Oswald',sans-serif;
-      text-transform:uppercase;
-      font-size:clamp(2.2rem,6vw,4rem);
-      line-height:1;
-      margin-bottom:40px;
+    .event-card {
+      min-height: 210px;
+      padding: 28px;
+      border: 1px solid rgba(183,154,91,.25);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
     }
 
-    .story-box{
-      max-width:900px;
-
-      background:linear-gradient(180deg,#141414,#080808);
-
-      border:1px solid rgba(255,255,255,.1);
-
-      border-radius:22px;
-
-      padding:45px;
-
-      box-shadow:0 25px 80px rgba(0,0,0,.5);
+    .event-date {
+      color: var(--gold-light);
+      font-family: Oswald, sans-serif;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
     }
 
-    .story-box p{
-      color:var(--soft);
-      line-height:1.9;
-      font-size:1.1rem;
+    .event-card h3 {
+      font-family: Oswald, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-size: 1.7rem;
+      margin-bottom: 12px;
     }
 
-    /* EVENTS */
-
-    .events-section{
-      background:#090909;
-      padding:90px 6%;
+    footer {
+      padding: 48px 6%;
+      text-align: center;
+      border-top: 1px solid rgba(183,154,91,.2);
+      color: #aaa;
     }
 
-    .events-title{
-      font-family:'Oswald',sans-serif;
-      text-transform:uppercase;
-      font-size:clamp(2rem,5vw,3.5rem);
-      margin-bottom:20px;
+    footer h3 {
+      color: white;
+      font-family: Oswald, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
     }
 
-    .events-grid{
-      margin-top:35px;
-
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:24px;
-    }
-
-    .event-card{
-      border:1px solid rgba(183,154,91,.2);
-
-      border-radius:12px;
-
-      padding:30px;
-
-      background:linear-gradient(180deg,
-      rgba(255,255,255,.05),
-      rgba(255,255,255,.01));
-    }
-
-    .event-date{
-      color:var(--gold-light);
-      font-family:'Oswald',sans-serif;
-      margin-bottom:18px;
-      letter-spacing:1px;
-    }
-
-    .event-card h3{
-      font-family:'Oswald',sans-serif;
-      text-transform:uppercase;
-      font-size:1.7rem;
-      margin-bottom:14px;
-    }
-
-    .event-card p{
-      color:var(--soft);
-      line-height:1.7;
-    }
-
-    /* FOOTER */
-
-    footer{
-      padding:50px 6%;
-      text-align:center;
-      border-top:1px solid rgba(183,154,91,.15);
-    }
-
-    footer h3{
-      font-family:'Oswald',sans-serif;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      margin-bottom:12px;
-    }
-
-    footer p{
-      color:#aaa;
-    }
-
-    /* MOBILE */
-
-    @media(max-width:900px){
-
-      .nav-links{
-        display:none;
+    @media (max-width: 900px) {
+      .top-logo {
+        padding: 18px 4%;
       }
 
-      .hero{
-        min-height:78vh;
-        align-items:flex-end;
+      .floating-nav {
+        padding: 12px 5%;
       }
 
-      .hero-content{
-        padding:100px 6% 70px;
+      .nav-logo img {
+        width: 52px;
+        height: 52px;
       }
 
-      .mission-section{
-        grid-template-columns:1fr;
+      .nav-links {
+        display: none;
       }
 
-      .mission-card{
-        border-left:none;
-        border-top:1px solid rgba(255,255,255,.1);
+      .nav-donate {
+        padding: 14px 32px;
+        font-size: 1rem;
       }
 
-      .events-grid{
-        grid-template-columns:1fr;
+      .hero {
+        min-height: 78vh;
+        align-items: flex-end;
       }
 
-      .floating-donate{
-        top:14px;
-        right:14px;
+      .hero-content {
+        padding: 100px 6% 70px;
       }
 
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .mission-section {
+        grid-template-columns: 1fr;
+      }
+
+      .mission-card {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,.12);
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
     }
-
   </style>
 </head>
 
 <body>
 
-  <!-- FLOATING DONATE -->
-
-  <a href="#donate" class="floating-donate">
-    <img src="assets/.gitkeep/fr-shield.PNG" alt="FR Shield">
-    <span>Donate</span>
-  </a>
-
-  <!-- TOP LOGO -->
-
   <header class="top-logo">
-    <img src="assets/.gitkeep/logo-banner.PNG" alt="Fort Reilly Foundation">
+    <img src="assets.gitkeep/logo-banner.PNG" alt="Fort Reilly Foundation">
   </header>
 
-  <!-- NAVIGATION -->
-
-  <nav class="nav-bar">
-
-    <div class="nav-left">
-      <img src="assets/.gitkeep/fr-shield.PNG" alt="FR Shield">
-    </div>
+  <nav class="floating-nav">
+    <a href="#" class="nav-logo">
+      <img src="assets.gitkeep/fr-shield.PNG" alt="FR Shield">
+    </a>
 
     <div class="nav-links">
       <a href="#">Home</a>
-      <a href="#mission">About</a>
+      <a href="#about">About</a>
       <a href="#programs">Programs</a>
-      <a href="#events">Events</a>
-      <a href="#donate">Get Involved</a>
+      <a href="#gear">Gear/Shop</a>
       <a href="#contact">Contact</a>
     </div>
 
-    <a href="#donate" class="nav-donate">
-      Donate
-    </a>
-
+    <a href="#donate" class="nav-donate">Donate</a>
   </nav>
 
-  <!-- HERO -->
+  <main>
 
-  <section class="hero">
+    <section class="hero">
+      <img src="assets.gitkeep/tj-hero.PNG" alt="TJ Reilly" class="hero-bg">
+      <div class="hero-overlay"></div>
 
-    <img src="assets/.gitkeep/tj-hero.PNG" alt="TJ Reilly" class="hero-bg">
+      <div class="hero-content">
+        <h1>Still In The Fight.</h1>
+        <div class="hero-sub">Support. Brotherhood. Purpose.</div>
 
-    <div class="hero-overlay"></div>
+        <div class="hero-buttons">
+          <a href="#about" class="btn btn-gold">Our Mission</a>
+          <a href="#donate" class="btn btn-outline">Donate Now</a>
+        </div>
+      </div>
+    </section>
 
-    <div class="hero-content">
-
-      <h1>Still In The Fight.</h1>
-
-      <div class="hero-sub">
-        Support. Brotherhood. Purpose.
+    <section class="mission-section" id="about">
+      <div class="mission-intro">
+        <h2 class="section-title">We’re Here For Those Who Served.</h2>
+        <div class="gold-line"></div>
+        <p>
+          Fort Reilly Foundation exists to support veterans, service members,
+          and their families through every mission of life.
+        </p>
       </div>
 
-      <div class="hero-buttons">
-
-        <a href="#mission" class="btn btn-gold">
-          Our Mission
-        </a>
-
-        <a href="#donate" class="btn btn-outline">
-          Donate Now
-        </a>
-
+      <div class="mission-card" id="programs">
+        <div class="mission-icon">✚</div>
+        <h3>Mental Wellness</h3>
+        <p>Support for the mind through peer connection and resources.</p>
       </div>
 
-    </div>
+      <div class="mission-card">
+        <div class="mission-icon">●●●</div>
+        <h3>Brotherhood</h3>
+        <p>Building bonds that last beyond the uniform.</p>
+      </div>
 
-  </section>
+      <div class="mission-card">
+        <div class="mission-icon">★</div>
+        <h3>Transition Support</h3>
+        <p>Helping veterans transition with purpose.</p>
+      </div>
 
-  <!-- MISSION -->
+      <div class="mission-card">
+        <div class="mission-icon">●●</div>
+        <h3>Family Support</h3>
+        <p>Standing with the families behind our heroes.</p>
+      </div>
+    </section>
 
-  <section class="mission-section" id="mission">
+    <section class="story-section">
+      <h2 class="section-title">A Living Mission Born From Sacrifice.</h2>
 
-    <div class="mission-intro">
+      <div class="story-box">
+        <p>
+          Built from the legacy of LCPL TJ Reilly, this foundation carries forward
+          duty, loyalty, brotherhood, and service. Every program, event, donation,
+          and act of support exists to keep the mission moving forward.
+        </p>
+      </div>
+    </section>
 
-      <h2>
-        We’re Here For Those Who Served.
-      </h2>
-
+    <section class="events-section" id="gear">
+      <h2 class="section-title">Gear / Shop</h2>
       <div class="gold-line"></div>
 
-      <p>
-        Fort Reilly Foundation exists to support veterans,
-        service members, and their families through every mission of life.
-      </p>
-
-    </div>
-
-    <div class="mission-card" id="programs">
-
-      <div class="mission-icon">✚</div>
-
-      <h3>Mental Wellness</h3>
-
-      <p>
-        Support for the mind through peer connection and resources.
-      </p>
-
-    </div>
-
-    <div class="mission-card">
-
-      <div class="mission-icon">●●●</div>
-
-      <h3>Brotherhood</h3>
-
-      <p>
-        Building bonds that last beyond the uniform.
-      </p>
-
-    </div>
-
-    <div class="mission-card">
-
-      <div class="mission-icon">★</div>
-
-      <h3>Transition Support</h3>
-
-      <p>
-        Helping veterans transition with purpose.
-      </p>
-
-    </div>
-
-    <div class="mission-card">
-
-      <div class="mission-icon">●●</div>
-
-      <h3>Family Support</h3>
-
-      <p>
-        Standing with the families behind our heroes.
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- STORY -->
-
-  <section class="story-section">
-
-    <h2 class="story-title">
-      A Living Mission Born From Sacrifice.
-    </h2>
-
-    <div class="story-box">
-
-      <p>
-        Built from the legacy of LCPL TJ Reilly,
-        this foundation carries forward duty, loyalty,
-        brotherhood, and service. Every program, event,
-        donation, and act of support exists to keep the mission moving forward.
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- EVENTS -->
-
-  <section class="events-section" id="events">
-
-    <h2 class="events-title">
-      Upcoming Missions
-    </h2>
-
-    <div class="gold-line"></div>
-
-    <div class="events-grid">
-
-      <div class="event-card">
-
-        <div class="event-date">JUN 14</div>
-
-        <h3>Memorial Golf Tournament</h3>
-
+      <div class="story-box">
         <p>
-          Riverside Country Club
+          Fort Reilly Foundation gear will be available soon. Every purchase helps
+          support the mission and keep the legacy moving forward.
+        </p>
+      </div>
+    </section>
+
+    <section class="events-section">
+      <h2 class="section-title">Upcoming Missions</h2>
+      <div class="gold-line"></div>
+
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-date">JUN 14</div>
+          <h3>Memorial Golf Tournament</h3>
+          <p>Riverside Country Club</p>
+        </div>
+
+        <div class="event-card">
+          <div class="event-date">JUN 28</div>
+          <h3>Brotherhood Retreat</h3>
+          <p>Blue Ridge Mountains</p>
+        </div>
+
+        <div class="event-card">
+          <div class="event-date">JUL 12</div>
+          <h3>Community Mission Day</h3>
+          <p>Veterans Outreach Event</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section" id="donate">
+      <h2 class="section-title">Help Keep The Mission Moving.</h2>
+
+      <div class="story-box">
+        <p>
+          Your support helps Fort Reilly Foundation serve veterans, families,
+          and communities through outreach, events, connection, and mission-driven support.
         </p>
 
+        <br><br>
+
+        <a href="#" class="btn btn-gold">Donate</a>
       </div>
+    </section>
 
-      <div class="event-card">
-
-        <div class="event-date">JUN 28</div>
-
-        <h3>Brotherhood Retreat</h3>
-
-        <p>
-          Blue Ridge Mountains
-        </p>
-
-      </div>
-
-      <div class="event-card">
-
-        <div class="event-date">JUL 12</div>
-
-        <h3>Community Mission Day</h3>
-
-        <p>
-          Veterans Outreach Event
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- DONATE -->
-
-  <section class="story-section" id="donate">
-
-    <h2 class="story-title">
-      Help Keep The Mission Moving.
-    </h2>
-
-    <div class="story-box">
-
-      <p>
-        Your support helps Fort Reilly Foundation serve veterans,
-        families, and communities through outreach,
-        events, connection, and mission-driven support.
-      </p>
-
-      <br><br>
-
-      <a href="#" class="btn btn-gold">
-        Donate
-      </a>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
+  </main>
 
   <footer id="contact">
-
-    <h3>
-      Fort Reilly Foundation
-    </h3>
-
-    <p>
-      fortreillyfoundation.org
-    </p>
-
+    <h3>Fort Reilly Foundation</h3>
+    <p>fortreillyfoundation.org</p>
   </footer>
 
 </body>
