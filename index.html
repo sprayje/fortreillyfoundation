@@ -37,52 +37,47 @@
     :root {
       --gold: #b79a5b;
       --gold-light: #d8bd72;
+      --black: #050505;
+      --panel: #111111;
       --soft: #cfcfcf;
     }
 
     .top-logo {
-      height: 150px;
       background: #050505;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 10px 6%;
       border-bottom: 1px solid rgba(183,154,91,.25);
-      overflow: hidden;
+      text-align: center;
     }
 
     .top-logo img {
-      max-height: 125px;
-      width: auto;
-      max-width: 92%;
-      object-fit: contain;
+      width: min(760px, 96%);
+      margin: auto;
     }
 
     .floating-nav {
       position: sticky;
       top: 0;
       z-index: 9999;
-      background: rgba(8,8,8,.96);
+      background: rgba(8,8,8,.94);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(183,154,91,.35);
+      border-bottom: 1px solid rgba(183,154,91,.3);
       padding: 14px 6%;
       display: flex;
       align-items: center;
-      gap: 28px;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .nav-logo img {
-      width: 56px;
-      height: 56px;
+      width: 70px;
+      height: 70px;
       object-fit: contain;
-      flex-shrink: 0;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 34px;
-      flex: 1;
     }
 
     .nav-links a {
@@ -92,7 +87,6 @@
       letter-spacing: 1.4px;
       text-transform: uppercase;
       opacity: .88;
-      white-space: nowrap;
     }
 
     .nav-links a:hover {
@@ -113,7 +107,7 @@
 
     .hero {
       position: relative;
-      min-height: 520px;
+      min-height: 82vh;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -126,27 +120,26 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 78% center;
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(0,0,0,.92) 0%, rgba(0,0,0,.72) 34%, rgba(0,0,0,.18) 72%),
-        linear-gradient(to top, rgba(0,0,0,.85), transparent 55%);
+        linear-gradient(to right, rgba(0,0,0,.9), rgba(0,0,0,.56), rgba(0,0,0,.22)),
+        linear-gradient(to top, rgba(0,0,0,.88), transparent 55%);
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      padding: 85px 6%;
-      max-width: 650px;
+      padding: 90px 6%;
+      max-width: 760px;
     }
 
     .hero h1 {
       font-family: Oswald, sans-serif;
-      font-size: clamp(3.4rem, 7vw, 6.2rem);
+      font-size: clamp(3.4rem, 8vw, 6.5rem);
       line-height: .94;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -156,7 +149,7 @@
     .hero-sub {
       color: var(--gold-light);
       font-family: Oswald, sans-serif;
-      font-size: clamp(1.2rem, 2.6vw, 1.9rem);
+      font-size: clamp(1.2rem, 3vw, 2rem);
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 38px;
@@ -313,70 +306,34 @@
 
     @media (max-width: 900px) {
       .top-logo {
-        height: 170px;
-      }
-
-      .top-logo img {
-        max-height: 115px;
+        padding: 18px 4%;
       }
 
       .floating-nav {
         padding: 12px 5%;
-        gap: 14px;
-        overflow-x: auto;
-      }
-
-      .floating-nav::-webkit-scrollbar {
-        display: none;
       }
 
       .nav-logo img {
-        width: 48px;
-        height: 48px;
+        width: 62px;
+        height: 62px;
       }
 
       .nav-links {
-        display: flex;
-        gap: 22px;
-        justify-content: flex-start;
-        overflow-x: auto;
-      }
-
-      .nav-links::-webkit-scrollbar {
         display: none;
       }
 
-      .nav-links a {
-        font-size: .82rem;
-      }
-
       .nav-donate {
-        padding: 13px 24px;
-        font-size: .92rem;
+        padding: 14px 32px;
+        font-size: 1rem;
       }
 
       .hero {
-        min-height: 575px;
-        align-items: center;
-      }
-
-      .hero-bg {
-        object-position: 72% center;
-      }
-
-      .hero-overlay {
-        background:
-          linear-gradient(to right, rgba(0,0,0,.92) 0%, rgba(0,0,0,.68) 42%, rgba(0,0,0,.15) 78%),
-          linear-gradient(to top, rgba(0,0,0,.88), transparent 58%);
+        min-height: 78vh;
+        align-items: flex-end;
       }
 
       .hero-content {
-        padding: 90px 6%;
-        max-width: 72%;
-      }
-
-      .hero h1 {
-        font-size: 3.35rem;
+        padding: 100px 6% 70px;
       }
 
       .hero-buttons {
@@ -445,7 +402,7 @@
 
     <section class="mission-section" id="about">
       <div class="mission-intro">
-        <h2 class="section-title">We’re Here For Those Who Served.</h2>
+        <h2 class="section-title">We're Here For Those Who Served.</h2>
         <div class="gold-line"></div>
         <p>
           Fort Reilly Foundation exists to support veterans, service members,
@@ -548,6 +505,132 @@
     <h3>Fort Reilly Foundation</h3>
     <p>fortreillyfoundation.org</p>
   </footer>
+
+  <!-- ======= FORT REILLY CHAT WIDGET ======= -->
+  <script>
+    // 👇 REPLACE THIS WITH YOUR ACTUAL WORKER URL
+    const WORKER_URL = "https://fort-reilly-chat.YOUR-SUBDOMAIN.workers.dev";
+
+    const styles = `
+      #chat-btn {
+        position: fixed; bottom: 24px; right: 24px; z-index: 99999;
+        background: linear-gradient(135deg, #d8bd72, #b79a5b);
+        color: #050505; border: none; border-radius: 50px;
+        padding: 14px 22px; font-size: 15px; font-weight: bold;
+        cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+        font-family: Oswald, sans-serif; letter-spacing: 1.2px;
+        text-transform: uppercase;
+      }
+      #chat-box {
+        display: none; position: fixed; bottom: 85px; right: 24px; z-index: 99999;
+        width: 340px; height: 480px; background: #111; border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.6); flex-direction: column;
+        font-family: Inter, sans-serif; overflow: hidden;
+        border: 1px solid rgba(183,154,91,.35);
+      }
+      #chat-header {
+        background: linear-gradient(135deg, #b79a5b, #8a7240);
+        color: #050505; padding: 14px 16px;
+        font-weight: bold; font-size: 15px;
+        font-family: Oswald, sans-serif; letter-spacing: 1.2px;
+        text-transform: uppercase;
+      }
+      #chat-header span {
+        font-size: 11px; font-weight: normal;
+        display: block; opacity: .8;
+        letter-spacing: .5px; text-transform: none;
+        font-family: Inter, sans-serif; margin-top: 2px;
+      }
+      #chat-messages {
+        flex: 1; overflow-y: auto; padding: 14px;
+        display: flex; flex-direction: column; gap: 10px;
+        background: #0d0d0d;
+      }
+      .msg { max-width: 85%; padding: 10px 13px; border-radius: 10px; font-size: 14px; line-height: 1.5; }
+      .msg.user { background: linear-gradient(135deg, #d8bd72, #b79a5b); color: #050505; align-self: flex-end; border-bottom-right-radius: 3px; }
+      .msg.bot { background: #1e1e1e; color: #cfcfcf; align-self: flex-start; border-bottom-left-radius: 3px; border: 1px solid rgba(255,255,255,.08); }
+      #chat-input-row {
+        display: flex; border-top: 1px solid rgba(183,154,91,.2); padding: 10px;
+        gap: 8px; background: #111;
+      }
+      #chat-input {
+        flex: 1; border: 1px solid rgba(183,154,91,.3); border-radius: 8px;
+        padding: 8px 12px; font-size: 14px; outline: none;
+        background: #1a1a1a; color: white;
+      }
+      #chat-input::placeholder { color: #666; }
+      #chat-send {
+        background: linear-gradient(135deg, #d8bd72, #b79a5b);
+        color: #050505; border: none;
+        border-radius: 8px; padding: 8px 14px;
+        cursor: pointer; font-size: 14px; font-weight: bold;
+        font-family: Oswald, sans-serif;
+      }
+      #chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+    `;
+
+    const html = `
+      <style>${styles}</style>
+      <button id="chat-btn" onclick="toggleChat()">💬 Ask Us</button>
+      <div id="chat-box">
+        <div id="chat-header">
+          Fort Reilly Foundation
+          <span>Never Fight Alone — Ask us anything</span>
+        </div>
+        <div id="chat-messages">
+          <div class="msg bot">Hello! I'm Chesty! I'm here to help answer questions about the Fort Reilly Foundation, Veteran Resources, or how you can get involved. How can I help?</div>
+        </div>
+        <div id="chat-input-row">
+          <input id="chat-input" type="text" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMessage()" />
+          <button id="chat-send" onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+    `;
+
+    document.body.insertAdjacentHTML("beforeend", html);
+
+    const history = [];
+
+    function toggleChat() {
+      const box = document.getElementById("chat-box");
+      box.style.display = box.style.display === "flex" ? "none" : "flex";
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("chat-input");
+      const send = document.getElementById("chat-send");
+      const messages = document.getElementById("chat-messages");
+      const text = input.value.trim();
+      if (!text) return;
+
+      input.value = "";
+      send.disabled = true;
+
+      messages.innerHTML += `<div class="msg user">${text}</div>`;
+      messages.innerHTML += `<div class="msg bot" id="typing">...</div>`;
+      messages.scrollTop = messages.scrollHeight;
+
+      history.push({ role: "user", content: text });
+
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: history }),
+        });
+        const data = await res.json();
+        const reply = data.reply;
+        history.push({ role: "assistant", content: reply });
+        document.getElementById("typing").outerHTML = `<div class="msg bot">${reply}</div>`;
+      } catch {
+        document.getElementById("typing").outerHTML = `<div class="msg bot">Sorry, something went wrong. Please try again.</div>`;
+      }
+
+      send.disabled = false;
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
+  <!-- ======= END CHAT WIDGET ======= -->
 
 </body>
 </html>
