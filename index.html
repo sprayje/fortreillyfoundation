@@ -47,16 +47,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        overflow: visible;
+        height: 160px;
+        overflow: hidden;
       }
 
       .top-logo img {
+        max-width: 100%;
+        max-height: 120px;
         width: auto;
         height: auto;
-        max-width: 100%;
-        max-height: 220px;
         object-fit: contain;
-        object-position: center;
       }
 
       .floating-nav {
@@ -312,11 +312,12 @@
 
       @media (max-width: 900px) {
         .top-logo {
-          padding: 14px 4%;
+          height: 120px;
+          padding: 12px 4%;
         }
 
         .top-logo img {
-          max-height: 150px;
+          max-height: 90px;
         }
 
         .floating-nav {
@@ -397,9 +398,7 @@
         <a href="#" onclick="closeNav()">Home</a>
         <a href="#about" onclick="closeNav()">About</a>
         <a href="#programs" onclick="closeNav()">Programs</a>
-        <a href="veteran-resources.html" onclick="closeNav()">
-          Veteran Resources
-        </a>
+        <a href="veteran-resources.html" onclick="closeNav()">Veteran Resources</a>
         <a href="trivia/" onclick="closeNav()">Trivia</a>
         <a href="#gear" onclick="closeNav()">Gear/Shop</a>
         <a href="#contact" onclick="closeNav()">Contact</a>
