@@ -22,7 +22,7 @@
       .floating-nav { position: sticky; top: 0; z-index: 10; background: rgba(8,8,8,.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(183,154,91,.3); display: flex; align-items: center; gap: 20px; padding-right: 3%; }
       .nav-logo img { height: 80px; }
       .nav-links { display: flex; gap: 26px; flex: 1; justify-content: center; align-items: center; }
-      .nav-links a, .nav-donate, .btn, .chat-launcher, .chat-send { font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 1.3px; font-weight: 700; }
+      .nav-links a, .nav-donate, .btn, .chat-launcher, .chat-send, .chat-mode-btn { font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 1.3px; font-weight: 700; }
       .nav-links a { font-size: .88rem; opacity: .9; }
       .nav-links a:hover { color: var(--light); }
       .nav-donate, .btn-gold, .chat-launcher, .chat-send { background: linear-gradient(135deg, var(--light), var(--gold)); color: #050505; }
@@ -59,7 +59,7 @@
 
       .ai-chatbot { position: fixed; right: 20px; bottom: 20px; z-index: 30; }
       .chat-launcher { border: 0; border-radius: 999px; padding: 14px 20px; box-shadow: 0 16px 44px rgba(0,0,0,.45); cursor: pointer; }
-      .chat-panel { position: absolute; right: 0; bottom: 62px; width: min(390px, calc(100vw - 32px)); max-height: min(640px, calc(100vh - 110px)); display: none; grid-template-rows: auto minmax(220px, 1fr) auto auto; overflow: hidden; border: 1px solid rgba(216,189,114,.45); border-radius: 8px; background: rgba(12,12,12,.98); box-shadow: 0 25px 90px rgba(0,0,0,.6); }
+      .chat-panel { position: absolute; right: 0; bottom: 62px; width: min(390px, calc(100vw - 32px)); max-height: min(680px, calc(100vh - 110px)); display: none; grid-template-rows: auto minmax(220px, 1fr) auto auto auto; overflow: hidden; border: 1px solid rgba(216,189,114,.45); border-radius: 8px; background: rgba(12,12,12,.98); box-shadow: 0 25px 90px rgba(0,0,0,.6); }
       .chat-panel.open { display: grid; }
       .chat-header { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 14px; border-bottom: 1px solid rgba(216,189,114,.25); }
       .chat-header strong { font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 1.2px; }
@@ -69,7 +69,10 @@
       .chat-message.user { align-self: flex-end; border-color: rgba(216,189,114,.35); background: rgba(183,154,91,.18); }
       .chat-message strong { display: block; margin-bottom: 4px; color: var(--light); font-size: .8rem; }
       .chat-message p { white-space: pre-wrap; overflow-wrap: anywhere; }
-      .chat-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 12px; border-top: 1px solid rgba(216,189,114,.25); }
+      .chat-mode-actions { display: flex; gap: 8px; padding: 10px 12px 0; border-top: 1px solid rgba(216,189,114,.18); }
+      .chat-mode-btn { min-height: 38px; border: 1px solid rgba(216,189,114,.45); border-radius: 4px; background: rgba(183,154,91,.16); color: var(--light); padding: 0 12px; cursor: pointer; }
+      .chat-mode-btn:hover { background: rgba(183,154,91,.26); color: #fff; }
+      .chat-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 12px; }
       .chat-form textarea { min-height: 48px; max-height: 130px; resize: vertical; border: 1px solid rgba(216,189,114,.28); border-radius: 4px; background: #050505; color: #fff; font: inherit; padding: 10px; }
       .chat-send { border: 0; border-radius: 4px; padding: 0 14px; cursor: pointer; }
       .chat-status { min-height: 24px; padding: 0 12px 12px; color: var(--light); font-size: .85rem; }
@@ -102,59 +105,29 @@
   </head>
 
   <body>
-    <header class="top-logo">
-      <img src="assets.gitkeep/fort-reilly-full-logo-web-small.png" alt="Fort Reilly Foundation" />
-    </header>
-
+    <header class="top-logo"><img src="assets.gitkeep/fort-reilly-full-logo-web-small.png" alt="Fort Reilly Foundation" /></header>
     <nav class="floating-nav">
       <a class="nav-logo" href="#"><img src="assets.gitkeep/fr-shield.PNG" alt="FR Shield" /></a>
       <div class="nav-links" id="nav-links">
-        <a href="#" onclick="closeNav()">Home</a>
-        <a href="#about" onclick="closeNav()">About</a>
-        <a href="#programs" onclick="closeNav()">Programs</a>
-        <a href="veteran-resources.html" onclick="closeNav()">Veteran Resources</a>
-        <a href="trivia/" onclick="closeNav()">Trivia</a>
-        <a href="#gear" onclick="closeNav()">Gear/Shop</a>
-        <a href="#help" onclick="openChat(); closeNav(); return false;">Ask Master Guns</a>
-        <a href="#contact" onclick="closeNav()">Contact</a>
+        <a href="#" onclick="closeNav()">Home</a><a href="#about" onclick="closeNav()">About</a><a href="#programs" onclick="closeNav()">Programs</a><a href="veteran-resources.html" onclick="closeNav()">Veteran Resources</a><a href="trivia/" onclick="closeNav()">Trivia</a><a href="#gear" onclick="closeNav()">Gear/Shop</a><a href="#help" onclick="openChat(); closeNav(); return false;">Ask Master Guns</a><a href="#contact" onclick="closeNav()">Contact</a>
       </div>
-      <button class="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
-      <a class="nav-donate" href="#donate">Donate</a>
+      <button class="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button><a class="nav-donate" href="#donate">Donate</a>
     </nav>
-
     <main>
-      <section class="hero">
-        <img class="hero-bg" src="assets.gitkeep/tj-hero.PNG" alt="TJ Reilly" />
-        <div class="hero-content">
-          <h1>Still In The Fight.</h1>
-          <div class="hero-sub">Support. Brotherhood. Purpose.</div>
-          <div class="hero-buttons">
-            <a class="btn btn-gold" href="#about">Our Mission</a>
-            <a class="btn btn-outline" href="trivia/">Play Trivia</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="mission-section" id="about">
-        <div class="mission-intro"><h2 class="section-title">We're Here For Those Who Served.</h2><div class="gold-line"></div><p>Fort Reilly Foundation exists to support veterans, service members, and their families through every mission of life.</p></div>
-        <div class="mission-card" id="programs"><div class="mission-icon">+</div><h3>Mental Wellness</h3><p>Support for the mind through peer connection and resources.</p></div>
-        <div class="mission-card"><div class="mission-icon">...</div><h3>Brotherhood</h3><p>Building bonds that last beyond the uniform.</p></div>
-        <div class="mission-card"><div class="mission-icon">*</div><h3>Transition Support</h3><p>Helping veterans transition with purpose.</p></div>
-        <div class="mission-card"><div class="mission-icon">..</div><h3>Family Support</h3><p>Standing with the families behind our heroes.</p></div>
-      </section>
-
+      <section class="hero"><img class="hero-bg" src="assets.gitkeep/tj-hero.PNG" alt="TJ Reilly" /><div class="hero-content"><h1>Still In The Fight.</h1><div class="hero-sub">Support. Brotherhood. Purpose.</div><div class="hero-buttons"><a class="btn btn-gold" href="#about">Our Mission</a><a class="btn btn-outline" href="trivia/">Play Trivia</a></div></div></section>
+      <section class="mission-section" id="about"><div class="mission-intro"><h2 class="section-title">We're Here For Those Who Served.</h2><div class="gold-line"></div><p>Fort Reilly Foundation exists to support veterans, service members, and their families through every mission of life.</p></div><div class="mission-card" id="programs"><div class="mission-icon">+</div><h3>Mental Wellness</h3><p>Support for the mind through peer connection and resources.</p></div><div class="mission-card"><div class="mission-icon">...</div><h3>Brotherhood</h3><p>Building bonds that last beyond the uniform.</p></div><div class="mission-card"><div class="mission-icon">*</div><h3>Transition Support</h3><p>Helping veterans transition with purpose.</p></div><div class="mission-card"><div class="mission-icon">..</div><h3>Family Support</h3><p>Standing with the families behind our heroes.</p></div></section>
       <section class="story-section"><h2 class="section-title">A Living Mission Born From Sacrifice.</h2><div class="story-box"><p>Built from the legacy of LCPL TJ Reilly, this foundation carries forward duty, loyalty, brotherhood, and service.</p></div></section>
       <section class="events-section" id="gear"><h2 class="section-title">Gear / Shop</h2><div class="gold-line"></div><div class="story-box"><p>Fort Reilly Foundation gear will be available soon. Every purchase helps support the mission and keep the legacy moving forward.</p></div></section>
       <section class="events-section"><h2 class="section-title">Upcoming Missions</h2><div class="gold-line"></div><div class="events-grid"><div class="event-card"><div class="event-date">JUN 14</div><h3>Memorial Golf Tournament</h3><p>Riverside Country Club</p></div><div class="event-card"><div class="event-date">JUN 28</div><h3>Brotherhood Retreat</h3><p>Blue Ridge Mountains</p></div><div class="event-card"><div class="event-date">JUL 12</div><h3>Community Mission Day</h3><p>Veterans Outreach Event</p></div></div></section>
       <section class="story-section" id="donate"><h2 class="section-title">Help Keep The Mission Moving.</h2><div class="story-box"><p>Your support helps Fort Reilly Foundation serve veterans, families, and communities through outreach, events, connection, and mission-driven support.</p><br /><a class="btn btn-gold" href="#">Donate</a></div></section>
     </main>
-
     <footer id="contact"><h3>Fort Reilly Foundation</h3><p>fortreillyfoundation.org</p></footer>
 
     <div class="ai-chatbot" id="help">
       <div class="chat-panel" id="chat-panel" aria-label="Ask Master Guns">
         <div class="chat-header"><strong>Ask Master Guns</strong><button class="chat-close" type="button" onclick="closeChat()" aria-label="Close Ask Master Guns">x</button></div>
-        <div class="chat-messages" id="chat-messages" aria-live="polite"><article class="chat-message assistant"><strong>Master Guns</strong><p>Master Guns here. Ask me about Fort Reilly Foundation or veteran resources, and I will point you in the right direction.</p></article></div>
+        <div class="chat-messages" id="chat-messages" aria-live="polite"><article class="chat-message assistant"><strong>Master Guns</strong><p>Master Guns here. Ask me a question, or hit Chew Me Out if you want the motivational boot-camp version.</p></article></div>
+        <div class="chat-mode-actions"><button class="chat-mode-btn" id="chew-out-btn" type="button">Chew Me Out</button></div>
         <form class="chat-form" id="chat-form"><textarea id="chat-input" placeholder="Ask Master Guns..." maxlength="2000" required></textarea><button class="chat-send" type="submit">Send</button></form>
         <div class="chat-status" id="chat-status" role="status"></div>
       </div>
@@ -163,6 +136,7 @@
 
     <script>
       const AI_CHAT_ENDPOINT = "https://fort-reilly-chat.thefrontporch606.workers.dev";
+      const CHEW_OUT_PREFIX = "The visitor clicked Chew Me Out and is explicitly asking for a consensual, motivational drill-instructor style response from Master Guns. Go full tough-love mode: loud, direct, funny, motivating, and military-flavored. Keep it clean enough for a nonprofit website: no slurs, no hate, no threats, no sexual content, no medical/legal advice, and do not encourage self-harm. Give them a hard push to stop making excuses and take one concrete next step. Their request: ";
       const chatHistory = [];
       function toggleNav() { document.getElementById("nav-links").classList.toggle("open"); }
       function closeNav() { document.getElementById("nav-links").classList.remove("open"); }
@@ -171,18 +145,15 @@
       function toggleChat() { document.getElementById("chat-panel").classList.toggle("open"); }
       function escapeHTML(value) { return String(value || "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#039;" }[char])); }
       function addChatMessage(role, body) { const list = document.getElementById("chat-messages"); const article = document.createElement("article"); article.className = `chat-message ${role}`; article.innerHTML = `<strong>${role === "user" ? "You" : "Master Guns"}</strong><p>${escapeHTML(body)}</p>`; list.appendChild(article); list.scrollTop = list.scrollHeight; }
-      document.getElementById("chat-form").addEventListener("submit", async (event) => {
-        event.preventDefault();
+      async function sendToMasterGuns(message, displayMessage) {
         const input = document.getElementById("chat-input");
         const status = document.getElementById("chat-status");
-        const button = event.currentTarget.querySelector("button");
-        const message = input.value.trim();
-        if (!message) return;
-        addChatMessage("user", message);
+        const buttons = document.querySelectorAll(".chat-send, .chat-mode-btn");
+        addChatMessage("user", displayMessage || message);
         chatHistory.push({ role: "user", content: message });
         input.value = "";
         status.textContent = "Thinking...";
-        button.disabled = true;
+        buttons.forEach((button) => button.disabled = true);
         try {
           const response = await fetch(AI_CHAT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: chatHistory }) });
           const data = await response.json();
@@ -195,9 +166,20 @@
           chatHistory.pop();
           status.textContent = error.message;
         } finally {
-          button.disabled = false;
+          buttons.forEach((button) => button.disabled = false);
           input.focus();
         }
+      }
+      document.getElementById("chat-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const message = document.getElementById("chat-input").value.trim();
+        if (message) sendToMasterGuns(message);
+      });
+      document.getElementById("chew-out-btn").addEventListener("click", () => {
+        openChat();
+        const typed = document.getElementById("chat-input").value.trim();
+        const request = typed || "Chew me out and motivate me to get moving today.";
+        sendToMasterGuns(CHEW_OUT_PREFIX + request, typed ? `Chew me out: ${typed}` : "Chew me out.");
       });
     </script>
   </body>
