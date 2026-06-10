@@ -8,389 +8,106 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;700&display=swap");
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body { background: #050505; color: #fff; font-family: Inter, sans-serif; }
+      a { text-decoration: none; color: inherit; }
+      img { display: block; max-width: 100%; }
 
-      html {
-        scroll-behavior: smooth;
-      }
+      :root { --gold: #b79a5b; --light: #d8bd72; --soft: #cfcfcf; }
 
-      body {
-        background: #050505;
-        color: #fff;
-        font-family: Inter, sans-serif;
-      }
+      .top-logo { background: #474741; border-bottom: 1px solid rgba(183,154,91,.25); display: flex; justify-content: center; align-items: center; padding: 10px 5%; overflow: hidden; }
+      .top-logo img { width: auto; max-width: 100%; height: 80px; object-fit: contain; }
 
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
+      .floating-nav { position: sticky; top: 0; z-index: 10; background: rgba(8,8,8,.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(183,154,91,.3); display: flex; align-items: center; gap: 20px; padding-right: 3%; }
+      .nav-logo img { height: 80px; }
+      .nav-links { display: flex; gap: 26px; flex: 1; justify-content: center; align-items: center; }
+      .nav-links a, .nav-donate, .btn, .chat-launcher, .chat-send { font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 1.3px; font-weight: 700; }
+      .nav-links a { font-size: .88rem; opacity: .9; }
+      .nav-links a:hover { color: var(--light); }
+      .nav-donate, .btn-gold, .chat-launcher, .chat-send { background: linear-gradient(135deg, var(--light), var(--gold)); color: #050505; }
+      .nav-donate { padding: 9px 18px; border-radius: 4px; }
+      .hamburger { display: none; margin-left: auto; background: none; border: 0; padding: 12px; }
+      .hamburger span { display: block; width: 25px; height: 2px; background: var(--light); margin: 5px; }
 
-      img {
-        display: block;
-        max-width: 100%;
-      }
+      .hero { position: relative; min-height: 82vh; display: flex; align-items: center; overflow: hidden; background: #000; }
+      .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% top; filter: brightness(1.05); }
+      .hero:after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,.75) 25%, rgba(0,0,0,.3) 50%, transparent), linear-gradient(to top, rgba(0,0,0,.5), transparent 50%); }
+      .hero-content { position: relative; z-index: 1; max-width: 430px; padding: 60px 5%; }
+      .hero h1, .section-title { font-family: Oswald, sans-serif; text-transform: uppercase; line-height: .95; letter-spacing: 1.5px; }
+      .hero h1 { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 20px; }
+      .hero-sub { color: var(--light); font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: clamp(1rem, 2.5vw, 1.6rem); margin-bottom: 32px; }
+      .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+      .btn { display: inline-flex; justify-content: center; align-items: center; min-width: 160px; padding: 15px 24px; border-radius: 4px; }
+      .btn-outline { border: 1px solid var(--gold); background: rgba(0,0,0,.25); }
 
-      :root {
-        --gold: #b79a5b;
-        --light: #d8bd72;
-        --soft: #cfcfcf;
-      }
+      section { padding: 85px 6%; }
+      .section-title { font-size: clamp(2rem, 5vw, 3.4rem); margin-bottom: 22px; }
+      .gold-line { width: 58px; height: 3px; background: var(--gold); margin-bottom: 22px; }
+      .mission-section { background: linear-gradient(180deg, #151515, #080808); display: grid; grid-template-columns: 1.2fr repeat(4, 1fr); gap: 28px; border-block: 1px solid rgba(183,154,91,.18); }
+      p { color: var(--soft); line-height: 1.7; }
+      .mission-card { text-align: center; padding: 22px; border-left: 1px solid rgba(255,255,255,.12); }
+      .mission-icon { color: var(--light); font-size: 2.8rem; margin-bottom: 16px; }
+      .mission-card h3, .event-card h3, footer h3 { font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px; }
+      .story-section { background: #050505; }
+      .story-box { max-width: 900px; background: linear-gradient(180deg, #141414, #080808); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 42px; box-shadow: 0 25px 80px rgba(0,0,0,.45); }
+      .events-section { background: #090909; }
+      .events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 34px; }
+      .event-card { min-height: 210px; padding: 28px; border: 1px solid rgba(183,154,91,.25); border-radius: 8px; background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01)); }
+      .event-date { color: var(--light); font-family: Oswald, sans-serif; margin-bottom: 16px; }
+      footer { padding: 48px 6%; text-align: center; border-top: 1px solid rgba(183,154,91,.2); color: #aaa; }
 
-      .top-logo {
-        background: #474741;
-        border-bottom: 1px solid rgba(183, 154, 91, 0.25);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px 5%;
-        overflow: hidden;
-      }
-
-      .top-logo img {
-        width: auto;
-        max-width: 100%;
-        height: 80px;
-        object-fit: contain;
-      }
-
-      .floating-nav {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        background: rgba(8, 8, 8, 0.96);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(183, 154, 91, 0.3);
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        padding-right: 3%;
-      }
-
-      .nav-logo img {
-        height: 80px;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 26px;
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .nav-links a,
-      .nav-donate,
-      .btn {
-        font-family: Oswald, sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1.3px;
-        font-weight: 700;
-      }
-
-      .nav-links a {
-        font-size: 0.88rem;
-        opacity: 0.9;
-      }
-
-      .nav-links a:hover {
-        color: var(--light);
-      }
-
-      .nav-donate,
-      .btn-gold {
-        background: linear-gradient(135deg, var(--light), var(--gold));
-        color: #050505;
-      }
-
-      .nav-donate {
-        padding: 9px 18px;
-        border-radius: 4px;
-      }
-
-      .hamburger {
-        display: none;
-        margin-left: auto;
-        background: none;
-        border: 0;
-        padding: 12px;
-      }
-
-      .hamburger span {
-        display: block;
-        width: 25px;
-        height: 2px;
-        background: var(--light);
-        margin: 5px;
-      }
-
-      .hero {
-        position: relative;
-        min-height: 82vh;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-        background: #000;
-      }
-
-      .hero-bg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 60% top;
-        filter: brightness(1.05);
-      }
-
-      .hero:after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0.75) 25%,
-            rgba(0, 0, 0, 0.3) 50%,
-            transparent
-          ),
-          linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 50%);
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 430px;
-        padding: 60px 5%;
-      }
-
-      .hero h1,
-      .section-title {
-        font-family: Oswald, sans-serif;
-        text-transform: uppercase;
-        line-height: 0.95;
-        letter-spacing: 1.5px;
-      }
-
-      .hero h1 {
-        font-size: clamp(3rem, 7vw, 6rem);
-        margin-bottom: 20px;
-      }
-
-      .hero-sub {
-        color: var(--light);
-        font-family: Oswald, sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: clamp(1rem, 2.5vw, 1.6rem);
-        margin-bottom: 32px;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 160px;
-        padding: 15px 24px;
-        border-radius: 4px;
-      }
-
-      .btn-outline {
-        border: 1px solid var(--gold);
-        background: rgba(0, 0, 0, 0.25);
-      }
-
-      section {
-        padding: 85px 6%;
-      }
-
-      .section-title {
-        font-size: clamp(2rem, 5vw, 3.4rem);
-        margin-bottom: 22px;
-      }
-
-      .gold-line {
-        width: 58px;
-        height: 3px;
-        background: var(--gold);
-        margin-bottom: 22px;
-      }
-
-      .mission-section {
-        background: linear-gradient(180deg, #151515, #080808);
-        display: grid;
-        grid-template-columns: 1.2fr repeat(4, 1fr);
-        gap: 28px;
-        border-block: 1px solid rgba(183, 154, 91, 0.18);
-      }
-
-      p {
-        color: var(--soft);
-        line-height: 1.7;
-      }
-
-      .mission-card {
-        text-align: center;
-        padding: 22px;
-        border-left: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .mission-icon {
-        color: var(--light);
-        font-size: 2.8rem;
-        margin-bottom: 16px;
-      }
-
-      .mission-card h3,
-      .event-card h3,
-      footer h3 {
-        font-family: Oswald, sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1.2px;
-        margin-bottom: 12px;
-      }
-
-      .story-section {
-        background: #050505;
-      }
-
-      .story-box {
-        max-width: 900px;
-        background: linear-gradient(180deg, #141414, #080808);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 8px;
-        padding: 42px;
-        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
-      }
-
-      .events-section {
-        background: #090909;
-      }
-
-      .events-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        margin-top: 34px;
-      }
-
-      .event-card {
-        min-height: 210px;
-        padding: 28px;
-        border: 1px solid rgba(183, 154, 91, 0.25);
-        border-radius: 8px;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.05),
-          rgba(255, 255, 255, 0.01)
-        );
-      }
-
-      .event-date {
-        color: var(--light);
-        font-family: Oswald, sans-serif;
-        margin-bottom: 16px;
-      }
-
-      footer {
-        padding: 48px 6%;
-        text-align: center;
-        border-top: 1px solid rgba(183, 154, 91, 0.2);
-        color: #aaa;
-      }
+      .ai-chatbot { position: fixed; right: 20px; bottom: 20px; z-index: 30; }
+      .chat-launcher { border: 0; border-radius: 999px; padding: 14px 20px; box-shadow: 0 16px 44px rgba(0,0,0,.45); cursor: pointer; }
+      .chat-panel { position: absolute; right: 0; bottom: 62px; width: min(390px, calc(100vw - 32px)); max-height: min(640px, calc(100vh - 110px)); display: none; grid-template-rows: auto minmax(220px, 1fr) auto auto; overflow: hidden; border: 1px solid rgba(216,189,114,.45); border-radius: 8px; background: rgba(12,12,12,.98); box-shadow: 0 25px 90px rgba(0,0,0,.6); }
+      .chat-panel.open { display: grid; }
+      .chat-header { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 14px; border-bottom: 1px solid rgba(216,189,114,.25); }
+      .chat-header strong { font-family: Oswald, sans-serif; text-transform: uppercase; letter-spacing: 1.2px; }
+      .chat-close { border: 1px solid rgba(216,189,114,.35); background: transparent; color: #fff; width: 34px; height: 34px; border-radius: 4px; cursor: pointer; }
+      .chat-messages { display: flex; flex-direction: column; gap: 10px; overflow: auto; padding: 14px; }
+      .chat-message { max-width: 88%; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 10px; background: rgba(255,255,255,.05); }
+      .chat-message.user { align-self: flex-end; border-color: rgba(216,189,114,.35); background: rgba(183,154,91,.18); }
+      .chat-message strong { display: block; margin-bottom: 4px; color: var(--light); font-size: .8rem; }
+      .chat-message p { white-space: pre-wrap; overflow-wrap: anywhere; }
+      .chat-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 12px; border-top: 1px solid rgba(216,189,114,.25); }
+      .chat-form textarea { min-height: 48px; max-height: 130px; resize: vertical; border: 1px solid rgba(216,189,114,.28); border-radius: 4px; background: #050505; color: #fff; font: inherit; padding: 10px; }
+      .chat-send { border: 0; border-radius: 4px; padding: 0 14px; cursor: pointer; }
+      .chat-status { min-height: 24px; padding: 0 12px 12px; color: var(--light); font-size: .85rem; }
 
       @media (max-width: 900px) {
-        .top-logo {
-          padding: 8px 12px;
-        }
+        .top-logo { padding: 8px 12px; }
+        .top-logo img { height: 60px; }
+        .floating-nav { flex-wrap: wrap; }
+        .nav-links { display: none; order: 99; width: 100%; flex-direction: column; padding: 16px 6%; gap: 18px; border-top: 1px solid rgba(183,154,91,.2); }
+        .nav-links.open { display: flex; }
+        .hamburger { display: block; }
+        .hero { min-height: 75vh; }
+        .hero-bg { object-position: 65% top; }
+        .hero-content { max-width: 60%; padding: 40px 5% 50px; }
+        .hero h1 { font-size: clamp(1.8rem, 8vw, 3rem); }
+        .hero-buttons { flex-direction: column; }
+        .btn { width: 100%; min-width: 0; }
+        .mission-section, .events-grid { grid-template-columns: 1fr; }
+        .mission-card { border-left: 0; border-top: 1px solid rgba(255,255,255,.12); }
+      }
 
-        .top-logo img {
-          height: 60px;
-        }
-
-        .floating-nav {
-          flex-wrap: wrap;
-        }
-
-        .nav-links {
-          display: none;
-          order: 99;
-          width: 100%;
-          flex-direction: column;
-          padding: 16px 6%;
-          gap: 18px;
-          border-top: 1px solid rgba(183, 154, 91, 0.2);
-        }
-
-        .nav-links.open {
-          display: flex;
-        }
-
-        .hamburger {
-          display: block;
-        }
-
-        .hero {
-          min-height: 75vh;
-        }
-
-        .hero-bg {
-          object-position: 65% top;
-        }
-
-        .hero-content {
-          max-width: 60%;
-          padding: 40px 5% 50px;
-        }
-
-        .hero h1 {
-          font-size: clamp(1.8rem, 8vw, 3rem);
-        }
-
-        .hero-buttons {
-          flex-direction: column;
-        }
-
-        .btn {
-          width: 100%;
-          min-width: 0;
-        }
-
-        .mission-section,
-        .events-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .mission-card {
-          border-left: 0;
-          border-top: 1px solid rgba(255, 255, 255, 0.12);
-        }
+      @media (max-width: 560px) {
+        .nav-logo img { height: 64px; }
+        .hero-content { max-width: 76%; }
+        section { padding: 64px 5%; }
+        .story-box { padding: 26px; }
+        .ai-chatbot { right: 12px; bottom: 12px; }
       }
     </style>
   </head>
 
   <body>
     <header class="top-logo">
-      <img
-        src="assets.gitkeep/fort-reilly-full-logo-web-small.png"
-        alt="Fort Reilly Foundation"
-      />
+      <img src="assets.gitkeep/fort-reilly-full-logo-web-small.png" alt="Fort Reilly Foundation" />
     </header>
 
     <nav class="floating-nav">
-      <a class="nav-logo" href="#">
-        <img src="assets.gitkeep/fr-shield.PNG" alt="FR Shield" />
-      </a>
-
+      <a class="nav-logo" href="#"><img src="assets.gitkeep/fr-shield.PNG" alt="FR Shield" /></a>
       <div class="nav-links" id="nav-links">
         <a href="#" onclick="closeNav()">Home</a>
         <a href="#about" onclick="closeNav()">About</a>
@@ -398,26 +115,19 @@
         <a href="veteran-resources.html" onclick="closeNav()">Veteran Resources</a>
         <a href="trivia/" onclick="closeNav()">Trivia</a>
         <a href="#gear" onclick="closeNav()">Gear/Shop</a>
+        <a href="#help" onclick="openChat(); closeNav(); return false;">AI Help</a>
         <a href="#contact" onclick="closeNav()">Contact</a>
       </div>
-
-      <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
+      <button class="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
       <a class="nav-donate" href="#donate">Donate</a>
     </nav>
 
     <main>
       <section class="hero">
         <img class="hero-bg" src="assets.gitkeep/tj-hero.PNG" alt="TJ Reilly" />
-
         <div class="hero-content">
           <h1>Still In The Fight.</h1>
           <div class="hero-sub">Support. Brotherhood. Purpose.</div>
-
           <div class="hero-buttons">
             <a class="btn btn-gold" href="#about">Our Mission</a>
             <a class="btn btn-outline" href="trivia/">Play Trivia</a>
@@ -426,113 +136,69 @@
       </section>
 
       <section class="mission-section" id="about">
-        <div class="mission-intro">
-          <h2 class="section-title">We're Here For Those Who Served.</h2>
-          <div class="gold-line"></div>
-          <p>
-            Fort Reilly Foundation exists to support veterans, service members,
-            and their families through every mission of life.
-          </p>
-        </div>
-
-        <div class="mission-card" id="programs">
-          <div class="mission-icon">+</div>
-          <h3>Mental Wellness</h3>
-          <p>Support for the mind through peer connection and resources.</p>
-        </div>
-
-        <div class="mission-card">
-          <div class="mission-icon">...</div>
-          <h3>Brotherhood</h3>
-          <p>Building bonds that last beyond the uniform.</p>
-        </div>
-
-        <div class="mission-card">
-          <div class="mission-icon">★</div>
-          <h3>Transition Support</h3>
-          <p>Helping veterans transition with purpose.</p>
-        </div>
-
-        <div class="mission-card">
-          <div class="mission-icon">••</div>
-          <h3>Family Support</h3>
-          <p>Standing with the families behind our heroes.</p>
-        </div>
+        <div class="mission-intro"><h2 class="section-title">We're Here For Those Who Served.</h2><div class="gold-line"></div><p>Fort Reilly Foundation exists to support veterans, service members, and their families through every mission of life.</p></div>
+        <div class="mission-card" id="programs"><div class="mission-icon">+</div><h3>Mental Wellness</h3><p>Support for the mind through peer connection and resources.</p></div>
+        <div class="mission-card"><div class="mission-icon">...</div><h3>Brotherhood</h3><p>Building bonds that last beyond the uniform.</p></div>
+        <div class="mission-card"><div class="mission-icon">*</div><h3>Transition Support</h3><p>Helping veterans transition with purpose.</p></div>
+        <div class="mission-card"><div class="mission-icon">..</div><h3>Family Support</h3><p>Standing with the families behind our heroes.</p></div>
       </section>
 
-      <section class="story-section">
-        <h2 class="section-title">A Living Mission Born From Sacrifice.</h2>
-        <div class="story-box">
-          <p>
-            Built from the legacy of LCPL TJ Reilly, this foundation carries
-            forward duty, loyalty, brotherhood, and service.
-          </p>
-        </div>
-      </section>
-
-      <section class="events-section" id="gear">
-        <h2 class="section-title">Gear / Shop</h2>
-        <div class="gold-line"></div>
-        <div class="story-box">
-          <p>
-            Fort Reilly Foundation gear will be available soon. Every purchase
-            helps support the mission and keep the legacy moving forward.
-          </p>
-        </div>
-      </section>
-
-      <section class="events-section">
-        <h2 class="section-title">Upcoming Missions</h2>
-        <div class="gold-line"></div>
-
-        <div class="events-grid">
-          <div class="event-card">
-            <div class="event-date">JUN 14</div>
-            <h3>Memorial Golf Tournament</h3>
-            <p>Riverside Country Club</p>
-          </div>
-
-          <div class="event-card">
-            <div class="event-date">JUN 28</div>
-            <h3>Brotherhood Retreat</h3>
-            <p>Blue Ridge Mountains</p>
-          </div>
-
-          <div class="event-card">
-            <div class="event-date">JUL 12</div>
-            <h3>Community Mission Day</h3>
-            <p>Veterans Outreach Event</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="story-section" id="donate">
-        <h2 class="section-title">Help Keep The Mission Moving.</h2>
-        <div class="story-box">
-          <p>
-            Your support helps Fort Reilly Foundation serve veterans, families,
-            and communities through outreach, events, connection, and
-            mission-driven support.
-          </p>
-          <br />
-          <a class="btn btn-gold" href="#">Donate</a>
-        </div>
-      </section>
+      <section class="story-section"><h2 class="section-title">A Living Mission Born From Sacrifice.</h2><div class="story-box"><p>Built from the legacy of LCPL TJ Reilly, this foundation carries forward duty, loyalty, brotherhood, and service.</p></div></section>
+      <section class="events-section" id="gear"><h2 class="section-title">Gear / Shop</h2><div class="gold-line"></div><div class="story-box"><p>Fort Reilly Foundation gear will be available soon. Every purchase helps support the mission and keep the legacy moving forward.</p></div></section>
+      <section class="events-section"><h2 class="section-title">Upcoming Missions</h2><div class="gold-line"></div><div class="events-grid"><div class="event-card"><div class="event-date">JUN 14</div><h3>Memorial Golf Tournament</h3><p>Riverside Country Club</p></div><div class="event-card"><div class="event-date">JUN 28</div><h3>Brotherhood Retreat</h3><p>Blue Ridge Mountains</p></div><div class="event-card"><div class="event-date">JUL 12</div><h3>Community Mission Day</h3><p>Veterans Outreach Event</p></div></div></section>
+      <section class="story-section" id="donate"><h2 class="section-title">Help Keep The Mission Moving.</h2><div class="story-box"><p>Your support helps Fort Reilly Foundation serve veterans, families, and communities through outreach, events, connection, and mission-driven support.</p><br /><a class="btn btn-gold" href="#">Donate</a></div></section>
     </main>
 
-    <footer id="contact">
-      <h3>Fort Reilly Foundation</h3>
-      <p>fortreillyfoundation.org</p>
-    </footer>
+    <footer id="contact"><h3>Fort Reilly Foundation</h3><p>fortreillyfoundation.org</p></footer>
+
+    <div class="ai-chatbot" id="help">
+      <div class="chat-panel" id="chat-panel" aria-label="Fort Reilly AI Help">
+        <div class="chat-header"><strong>Fort Reilly AI Help</strong><button class="chat-close" type="button" onclick="closeChat()" aria-label="Close AI help">x</button></div>
+        <div class="chat-messages" id="chat-messages" aria-live="polite"><article class="chat-message assistant"><strong>Fort Reilly AI</strong><p>Hi, I am here to help answer questions about Fort Reilly Foundation and veteran resources.</p></article></div>
+        <form class="chat-form" id="chat-form"><textarea id="chat-input" placeholder="Ask a question..." maxlength="2000" required></textarea><button class="chat-send" type="submit">Send</button></form>
+        <div class="chat-status" id="chat-status" role="status"></div>
+      </div>
+      <button class="chat-launcher" type="button" onclick="toggleChat()">AI Help</button>
+    </div>
 
     <script>
-      function toggleNav() {
-        document.getElementById("nav-links").classList.toggle("open");
-      }
-
-      function closeNav() {
-        document.getElementById("nav-links").classList.remove("open");
-      }
+      const AI_CHAT_ENDPOINT = "https://fort-reilly-chat.thefrontporch606.workers.dev";
+      const chatHistory = [];
+      function toggleNav() { document.getElementById("nav-links").classList.toggle("open"); }
+      function closeNav() { document.getElementById("nav-links").classList.remove("open"); }
+      function openChat() { document.getElementById("chat-panel").classList.add("open"); setTimeout(() => document.getElementById("chat-input").focus(), 50); }
+      function closeChat() { document.getElementById("chat-panel").classList.remove("open"); }
+      function toggleChat() { document.getElementById("chat-panel").classList.toggle("open"); }
+      function escapeHTML(value) { return String(value || "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#039;" }[char])); }
+      function addChatMessage(role, body) { const list = document.getElementById("chat-messages"); const article = document.createElement("article"); article.className = `chat-message ${role}`; article.innerHTML = `<strong>${role === "user" ? "You" : "Fort Reilly AI"}</strong><p>${escapeHTML(body)}</p>`; list.appendChild(article); list.scrollTop = list.scrollHeight; }
+      document.getElementById("chat-form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const input = document.getElementById("chat-input");
+        const status = document.getElementById("chat-status");
+        const button = event.currentTarget.querySelector("button");
+        const message = input.value.trim();
+        if (!message) return;
+        addChatMessage("user", message);
+        chatHistory.push({ role: "user", content: message });
+        input.value = "";
+        status.textContent = "Thinking...";
+        button.disabled = true;
+        try {
+          const response = await fetch(AI_CHAT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: chatHistory }) });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.error || "The AI chatbot is not responding yet.");
+          const reply = data.reply || "I received that, but the response was empty.";
+          chatHistory.push({ role: "assistant", content: reply });
+          addChatMessage("assistant", reply);
+          status.textContent = "";
+        } catch (error) {
+          chatHistory.pop();
+          status.textContent = error.message;
+        } finally {
+          button.disabled = false;
+          input.focus();
+        }
+      });
     </script>
   </body>
 </html>
