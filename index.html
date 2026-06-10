@@ -115,7 +115,7 @@
         <a href="veteran-resources.html" onclick="closeNav()">Veteran Resources</a>
         <a href="trivia/" onclick="closeNav()">Trivia</a>
         <a href="#gear" onclick="closeNav()">Gear/Shop</a>
-        <a href="#help" onclick="openChat(); closeNav(); return false;">AI Help</a>
+        <a href="#help" onclick="openChat(); closeNav(); return false;">Ask Master Guns</a>
         <a href="#contact" onclick="closeNav()">Contact</a>
       </div>
       <button class="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -152,13 +152,13 @@
     <footer id="contact"><h3>Fort Reilly Foundation</h3><p>fortreillyfoundation.org</p></footer>
 
     <div class="ai-chatbot" id="help">
-      <div class="chat-panel" id="chat-panel" aria-label="Fort Reilly AI Help">
-        <div class="chat-header"><strong>Fort Reilly AI Help</strong><button class="chat-close" type="button" onclick="closeChat()" aria-label="Close AI help">x</button></div>
-        <div class="chat-messages" id="chat-messages" aria-live="polite"><article class="chat-message assistant"><strong>Fort Reilly AI</strong><p>Hi, I am here to help answer questions about Fort Reilly Foundation and veteran resources.</p></article></div>
-        <form class="chat-form" id="chat-form"><textarea id="chat-input" placeholder="Ask a question..." maxlength="2000" required></textarea><button class="chat-send" type="submit">Send</button></form>
+      <div class="chat-panel" id="chat-panel" aria-label="Ask Master Guns">
+        <div class="chat-header"><strong>Ask Master Guns</strong><button class="chat-close" type="button" onclick="closeChat()" aria-label="Close Ask Master Guns">x</button></div>
+        <div class="chat-messages" id="chat-messages" aria-live="polite"><article class="chat-message assistant"><strong>Master Guns</strong><p>Master Guns here. Ask me about Fort Reilly Foundation or veteran resources, and I will point you in the right direction.</p></article></div>
+        <form class="chat-form" id="chat-form"><textarea id="chat-input" placeholder="Ask Master Guns..." maxlength="2000" required></textarea><button class="chat-send" type="submit">Send</button></form>
         <div class="chat-status" id="chat-status" role="status"></div>
       </div>
-      <button class="chat-launcher" type="button" onclick="toggleChat()">AI Help</button>
+      <button class="chat-launcher" type="button" onclick="toggleChat()">Ask Master Guns</button>
     </div>
 
     <script>
@@ -170,7 +170,7 @@
       function closeChat() { document.getElementById("chat-panel").classList.remove("open"); }
       function toggleChat() { document.getElementById("chat-panel").classList.toggle("open"); }
       function escapeHTML(value) { return String(value || "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#039;" }[char])); }
-      function addChatMessage(role, body) { const list = document.getElementById("chat-messages"); const article = document.createElement("article"); article.className = `chat-message ${role}`; article.innerHTML = `<strong>${role === "user" ? "You" : "Fort Reilly AI"}</strong><p>${escapeHTML(body)}</p>`; list.appendChild(article); list.scrollTop = list.scrollHeight; }
+      function addChatMessage(role, body) { const list = document.getElementById("chat-messages"); const article = document.createElement("article"); article.className = `chat-message ${role}`; article.innerHTML = `<strong>${role === "user" ? "You" : "Master Guns"}</strong><p>${escapeHTML(body)}</p>`; list.appendChild(article); list.scrollTop = list.scrollHeight; }
       document.getElementById("chat-form").addEventListener("submit", async (event) => {
         event.preventDefault();
         const input = document.getElementById("chat-input");
@@ -186,7 +186,7 @@
         try {
           const response = await fetch(AI_CHAT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: chatHistory }) });
           const data = await response.json();
-          if (!response.ok) throw new Error(data.error || "The AI chatbot is not responding yet.");
+          if (!response.ok) throw new Error(data.error || "Ask Master Guns is not responding yet.");
           const reply = data.reply || "I received that, but the response was empty.";
           chatHistory.push({ role: "assistant", content: reply });
           addChatMessage("assistant", reply);
