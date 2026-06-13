@@ -1,0 +1,1508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VETERAN RESOURCES GUIDE | London &amp; Laurel County, Kentucky</title>
+<style>
+:root {
+  --black: #0b0b0b;
+  --tan: #c7a34a;
+  --tan-dark: #9b7628;
+  --tan-soft: #f5ecd4;
+  --white: #ffffff;
+  --offwhite: #fbfaf7;
+  --line: #ded8cc;
+  --muted: #595959;
+  --crisis: #b42318;
+  --shadow: 0 12px 34px rgba(11, 11, 11, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  padding-top: var(--rail-offset, 74px);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--black);
+  background: var(--white);
+  line-height: 1.55;
+}
+a { color: var(--tan-dark); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+button, input { font: inherit; }
+.site-rail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: minmax(300px, 340px) minmax(260px, 1fr) minmax(350px, 440px);
+  gap: 14px;
+  align-items: center;
+  padding: 12px clamp(16px, 4vw, 48px);
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 3px solid var(--tan);
+  box-shadow: 0 8px 26px rgba(11, 11, 11, 0.09);
+  backdrop-filter: blur(14px);
+}
+.site-links {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr 0.75fr;
+  gap: 6px;
+}
+.donate-btn,
+.chatbot-btn,
+.resources-btn,
+.crisis-action,
+#clearSearch,
+.topic-links a,
+.az-links button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: 800;
+}
+.donate-btn {
+  background: var(--tan);
+  color: var(--black);
+  border: 1px solid var(--tan-dark);
+}
+.resources-btn {
+  background: var(--black);
+  color: var(--tan);
+  border: 1px solid var(--black);
+}
+.chatbot-btn {
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--tan);
+}
+.search-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+#resourceSearch {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--offwhite);
+  color: var(--black);
+  font-size: 1rem;
+  outline: none;
+}
+#resourceSearch:focus { border-color: var(--tan-dark); box-shadow: 0 0 0 3px rgba(199, 163, 74, 0.22); }
+#clearSearch {
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--tan-dark);
+  padding: 0 14px;
+  cursor: pointer;
+}
+.crisis-actions {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  border: 1px solid rgba(180, 35, 24, 0.25);
+  border-radius: 7px;
+  overflow: hidden;
+  background: var(--white);
+}
+.crisis-action {
+  min-height: 46px;
+  flex-direction: column;
+  border-radius: 0;
+  padding: 0 12px;
+  color: var(--tan-dark);
+  text-align: center;
+  line-height: 1.08;
+}
+.crisis-action:first-child { border-right: 1px solid rgba(180, 35, 24, 0.18); }
+.crisis-action span {
+  display: block;
+  color: var(--black);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hero {
+  background: var(--white);
+  padding: clamp(34px, 6vw, 72px) clamp(18px, 5vw, 64px) 30px;
+  border-bottom: 1px solid var(--line);
+}
+.wrap { max-width: 1180px; margin: 0 auto; }
+.brand-logo {
+  display: block;
+  width: min(560px, 100%);
+  height: auto;
+  max-height: 280px;
+  object-fit: contain;
+  margin: 0 auto clamp(24px, 4vw, 42px);
+}
+.eyebrow {
+  color: var(--tan-dark);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.84rem;
+}
+h1 { margin: 0.35rem 0 0.35rem; color: var(--black); font-size: clamp(2rem, 5vw, 4.4rem); line-height: 0.98; }
+.subtitle { margin: 0.5rem 0; color: var(--black); font-size: 1.12rem; font-weight: 700; }
+.updated { max-width: 850px; margin: 0.55rem 0 0; color: var(--muted); font-size: 0.95rem; }
+.crisis { display: none; }
+.search-panel {
+  position: static;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+.search-inner { max-width: 1180px; margin: 0 auto; padding: 22px 18px; }
+.search-panel > .search-inner > .search-row { display: none; }
+.indexes { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px; }
+.index-box { background: var(--offwhite); border: 1px solid var(--line); border-radius: 8px; padding: 16px; box-shadow: var(--shadow); }
+.index-box h2 { margin: 0 0 12px; color: var(--black); font-size: 1rem; text-transform: uppercase; }
+.topic-links, .az-links { display: flex; flex-wrap: wrap; gap: 9px; }
+.topic-links a, .az-links button {
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--tan-dark);
+  padding: 0 12px;
+  cursor: pointer;
+}
+.topic-links a:hover, .az-links button:hover, .az-links button.active { border-color: var(--tan); background: var(--tan-soft); }
+main { max-width: 1180px; margin: 26px auto 58px; padding: 0 18px; }
+.result-count { margin: 0 0 18px; color: var(--muted); font-weight: 800; }
+.resource-section { margin: 0 0 36px; scroll-margin-top: 88px; }
+.section-heading { display: flex; justify-content: space-between; gap: 18px; align-items: end; border-bottom: 2px solid var(--tan); margin-bottom: 16px; padding-bottom: 10px; }
+.section-heading h2 { margin: 0; color: var(--black); font-size: clamp(1.45rem, 3vw, 2.15rem); }
+.section-heading span { color: var(--muted); margin-bottom: 4px; font-weight: 700; }
+h3 { color: var(--black); margin: 24px 0 12px; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.02em; }
+.resource-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--tan);
+  border-radius: 8px;
+  padding: 18px;
+  margin: 13px 0;
+  box-shadow: var(--shadow);
+}
+.resource-card:hover { border-color: var(--tan); box-shadow: 0 16px 38px rgba(11, 11, 11, 0.12); }
+.card-top { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+h4 { margin: 0 0 8px; color: var(--black); font-size: 1.12rem; line-height: 1.25; }
+.subject { flex: 0 0 auto; max-width: 300px; color: var(--black); background: var(--tan-soft); border: 1px solid rgba(199, 163, 74, 0.35); border-radius: 999px; padding: 6px 10px; font-size: 0.83rem; }
+.badge { display: inline-block; margin-left: 6px; font-size: 0.72rem; color: var(--black); background: var(--tan); border-radius: 999px; padding: 2px 7px; vertical-align: middle; }
+.details p { margin: 0.34rem 0; color: var(--black); }
+.details a { color: var(--tan-dark); word-break: break-word; }
+.no-results { display: none; background: var(--offwhite); border: 1px dashed var(--line); padding: 18px; border-radius: 8px; color: var(--black); }
+footer { padding: 24px 18px; border-top: 1px solid var(--line); color: var(--black); text-align: center; background: var(--white); }
+@media (max-width: 960px) {
+  .site-rail {
+    grid-template-columns: minmax(260px, 1.15fr) minmax(120px, 0.7fr) minmax(130px, 0.75fr);
+    gap: 6px;
+    padding: 8px 10px;
+  }
+  .site-links {
+    grid-template-columns: 1.1fr 0.95fr 0.75fr;
+  }
+  .donate-btn {
+    min-height: 40px;
+    font-size: 0.88rem;
+  }
+  .chatbot-btn,
+  .resources-btn {
+    min-height: 40px;
+    font-size: 0.72rem;
+  }
+  .search-row {
+    grid-template-columns: minmax(0, 1fr) 48px;
+    gap: 5px;
+  }
+  #resourceSearch {
+    min-height: 40px;
+    padding: 0 8px;
+    font-size: 0.86rem;
+  }
+  #clearSearch {
+    display: none;
+  }
+  .crisis-actions {
+    grid-template-columns: 1fr 0.82fr;
+  }
+  .crisis-action {
+    min-height: 40px;
+    padding: 0 4px;
+    font-size: 0.78rem;
+  }
+  .crisis-action span {
+    font-size: 0.54rem;
+  }
+  .indexes { grid-template-columns: 1fr; }
+  .card-top { flex-direction: column; }
+  .subject { max-width: 100%; }
+  .resource-section { scroll-margin-top: 72px; }
+}
+@media (max-width: 560px) {
+  .site-rail {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: visible;
+    align-items: center;
+  }
+  .site-links {
+    width: 100%;
+    grid-template-columns: 1fr 0.9fr 0.75fr;
+  }
+  .search-row {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+  #resourceSearch {
+    min-width: 0;
+  }
+  .crisis-actions {
+    width: 100%;
+  }
+  .crisis-action:first-child {
+    border-right: 1px solid rgba(180, 35, 24, 0.18);
+    border-bottom: 0;
+  }
+  .hero { padding-top: 20px; }
+  .brand-logo {
+    width: min(360px, 92vw);
+    max-height: 170px;
+    margin-bottom: 20px;
+  }
+}
+
+</style>
+</head>
+<body>
+<nav class="site-rail" aria-label="Veteran resource quick actions">
+  <div class="site-links">
+    <a class="resources-btn" href="veteran-resources.html">Veteran Resources</a>
+    <a class="chatbot-btn" href="index.html">AI Chatbot</a>
+    <a class="donate-btn" href="shop.html">Shop</a>
+  </div>
+  <div class="search-row">
+    <input id="resourceSearch" type="search" placeholder="Search Veteran Resources" aria-label="Search veteran resources">
+    <button id="clearSearch" type="button">Clear</button>
+  </div>
+  <div class="crisis-actions" aria-label="Veterans Crisis Line">
+    <a class="crisis-action" href="tel:988"><span>Veterans Crisis Line</span>988 then Press 1</a>
+    <a class="crisis-action" href="https://www.veteranscrisisline.net/get-help-now/chat/" target="_blank" rel="noopener">Chat Online</a>
+  </div>
+</nav>
+<header class="hero">
+  <div class="wrap">
+    <img class="brand-logo" src="assets/fort-reilly-logo-cropped.jpeg" alt="Fort Reilly Foundation">
+    <div class="eyebrow">Local | State | Federal Resources</div>
+    <h1>Veteran Resources Guide</h1>
+    <p class="subtitle">London &amp; Laurel County, Kentucky • Local, State, and Federal Resources</p>
+    <p class="updated">Compiled April 2026 • Updated May 2026 — Complete merged list with all original + all new additions. Every resource sorted alphabetically within each section.</p>
+    <div class="crisis">VETERANS CRISIS LINE: CALL OR TEXT 988 THEN PRESS 1 | CHAT: VeteransCrisisLine.net</div>
+  </div>
+</header>
+
+<div class="search-panel">
+  <div class="search-inner">
+    <div class="search-row">
+      <input class="resourceSearchOriginal" type="search" placeholder="Search resources by keyword, benefit, phone number, agency, city, or service..." aria-label="Search veteran resources">
+      <button class="clearSearchOriginal" type="button">Clear</button>
+    </div>
+    <div class="indexes">
+      <div class="index-box">
+        <h2>Browse by Topic</h2>
+        <nav class="topic-links" aria-label="Resource topics"><a href="#benefits-claims-assistance">Benefits &amp; Claims Assistance</a>
+<a href="#burial-cemetery-benefits">Burial &amp; Cemetery Benefits</a>
+<a href="#crisis-mental-health-suicide-prevention">Crisis, Mental Health &amp; Suicide Prevention</a>
+<a href="#education-benefits">Education Benefits</a>
+<a href="#employment-career-services">Employment &amp; Career Services</a>
+<a href="#financial-assistance-benefits">Financial Assistance &amp; Benefits</a>
+<a href="#healthcare">Healthcare</a>
+<a href="#homelessness-housing-assistance">Homelessness &amp; Housing Assistance</a>
+<a href="#legal-services">Legal Services</a>
+<a href="#special-programs-national-nonprofit-organizations">Special Programs &amp; National Nonprofit Organizations</a>
+<a href="#substance-use-addiction-recovery">Substance Use &amp; Addiction Recovery</a>
+<a href="#transportation-to-va-appointments">Transportation To Va Appointments</a>
+<a href="#veteran-identification-records">Veteran Identification &amp; Records</a>
+<a href="#women-veterans-resources">Women Veterans Resources</a>
+<a href="#local-county-resources-laurel-county-ky">Local &amp; County Resources — Laurel County, Ky</a></nav>
+      </div>
+      <div class="index-box">
+        <h2>A–Z Resource Index</h2>
+        <div class="az-links" aria-label="Alphabetical resource filter">
+          <button type="button" data-letter="all">All</button><button type="button" data-letter="(">(</button><button type="button" data-letter="A">A</button><button type="button" data-letter="B">B</button><button type="button" data-letter="C">C</button><button type="button" data-letter="D">D</button><button type="button" data-letter="E">E</button><button type="button" data-letter="F">F</button><button type="button" data-letter="G">G</button><button type="button" data-letter="H">H</button><button type="button" data-letter="I">I</button><button type="button" data-letter="J">J</button><button type="button" data-letter="K">K</button><button type="button" data-letter="L">L</button><button type="button" data-letter="M">M</button><button type="button" data-letter="N">N</button><button type="button" data-letter="O">O</button><button type="button" data-letter="P">P</button><button type="button" data-letter="Q">Q</button><button type="button" data-letter="S">S</button><button type="button" data-letter="T">T</button><button type="button" data-letter="U">U</button><button type="button" data-letter="V">V</button><button type="button" data-letter="W">W</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <p class="result-count" id="resultCount"></p>
+  <div class="no-results" id="noResults">No matching resources found. Try a broader keyword such as “claims,” “housing,” “healthcare,” “education,” or “transportation.”</div>
+  
+    <section class="resource-section" id="benefits-claims-assistance">
+      <div class="section-heading">
+        <h2>Benefits &amp; Claims Assistance</h2>
+        <span>14 resources</span>
+      </div>
+      <h3>Veteran Service Organizations — Claims Help</h3>
+            <article class="resource-card" data-search="benefits &amp; claims assistance veteran service organizations — claims help american legion post 16 — london, ky local american legion post serving laurel county veterans with claims help, community programs, and membership. address: 1785 barbourville st (p.o. box 71), london, ky 40741 phone: (502) 896-4734 (legion riders director) website: https://americanlegionpost16.org" data-letter="A">
+              <div class="card-top">
+                <h4>American Legion Post 16 — London, KY </h4>
+                <span class="subject">Veteran Service Organizations — Claims Help</span>
+              </div>
+              <div class="details"><p>Local American Legion post serving Laurel County veterans with claims help, community programs, and membership.</p><p>Address: 1785 Barbourville St (P.O. Box 71), London, KY 40741</p><p>Phone: (502) 896-4734 (Legion Riders Director)</p><p>Website: <a href="https://americanlegionpost16.org" target="_blank" rel="noopener">https://americanlegionpost16.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance veteran service organizations — claims help american legion — national (claims &amp; benefits assistance) free va claims representation for veterans and families through accredited service officers. address: 700 n pennsylvania st, indianapolis, in 46204 phone: 1-800-433-3318 website: https://www.legion.org" data-letter="A">
+              <div class="card-top">
+                <h4>American Legion — National (Claims &amp; Benefits Assistance) </h4>
+                <span class="subject">Veteran Service Organizations — Claims Help</span>
+              </div>
+              <div class="details"><p>Free VA claims representation for veterans and families through accredited service officers.</p><p>Address: 700 N Pennsylvania St, Indianapolis, IN 46204</p><p>Phone: 1-800-433-3318</p><p>Website: <a href="https://www.legion.org" target="_blank" rel="noopener">https://www.legion.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance veteran service organizations — claims help dav chapter #66 — london, ky local chapter with meetings, peer support, events (including laurel county veteran coffee muster), and claims coordination. co-located with va vet center london access point. address: 300 dav lane, london, ky 40741 phone: (606) 877-1308 facebook: search “dav london ky chapter #66” for current events" data-letter="D">
+              <div class="card-top">
+                <h4>DAV Chapter #66 — London, KY <span class="badge">New</span></h4>
+                <span class="subject">Veteran Service Organizations — Claims Help</span>
+              </div>
+              <div class="details"><p>Local chapter with meetings, peer support, events (including Laurel County Veteran Coffee Muster), and claims coordination. Co-located with VA Vet Center London access point.</p><p>Address: 300 DAV Lane, London, KY 40741</p><p>Phone: (606) 877-1308</p><p>Facebook: Search “DAV London KY Chapter #66” for current events</p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance veteran service organizations — claims help dav — kentucky department state-level dav coordination of claims, advocacy, and services for kentucky disabled veterans. address: p.o. box 129, shepherdsville, ky 40165 phone: contact dav national: 1-877-426-2838 website: https://davwebsites.dav.org/ky/" data-letter="D">
+              <div class="card-top">
+                <h4>DAV — Kentucky Department </h4>
+                <span class="subject">Veteran Service Organizations — Claims Help</span>
+              </div>
+              <div class="details"><p>State-level DAV coordination of claims, advocacy, and services for Kentucky disabled veterans.</p><p>Address: P.O. Box 129, Shepherdsville, KY 40165</p><p>Phone: Contact DAV National: 1-877-426-2838</p><p>Website: <a href="https://davwebsites.dav.org/ky/" target="_blank" rel="noopener">https://davwebsites.dav.org/ky/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance veteran service organizations — claims help disabled american veterans (dav) — national headquarters free va claims assistance, benefits counseling, and transportation to va appointments for disabled veterans. address: 3725 alexandria pike, cold spring, ky 41076 phone: 1-877-426-2838 (1-877-i am a vet) website: https://www.dav.org" data-letter="D">
+              <div class="card-top">
+                <h4>Disabled American Veterans (DAV) — National Headquarters </h4>
+                <span class="subject">Veteran Service Organizations — Claims Help</span>
+              </div>
+              <div class="details"><p>Free VA claims assistance, benefits counseling, and transportation to VA appointments for disabled veterans.</p><p>Address: 3725 Alexandria Pike, Cold Spring, KY 41076</p><p>Phone: 1-877-426-2838 (1-877-I AM A VET)</p><p>Website: <a href="https://www.dav.org" target="_blank" rel="noopener">https://www.dav.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance veteran service organizations — claims help vfw post 3302 — laurel county post, london, ky veterans of foreign wars local post serving london/laurel county — claims, community programs, and fellowship. address: 3027 west laurel rd, london, ky phone: contact vfw national: 1-816-756-3390 website: https://www.vfw.org/find-a-post" data-letter="V">
+              <div class="card-top">
+                <h4>VFW Post 3302 — Laurel County Post, London, KY </h4>
+                <span class="subject">Veteran Service Organizations — Claims Help</span>
+              </div>
+              <div class="details"><p>Veterans of Foreign Wars local post serving London/Laurel County — claims, community programs, and fellowship.</p><p>Address: 3027 West Laurel Rd, London, KY</p><p>Phone: Contact VFW National: 1-816-756-3390</p><p>Website: <a href="https://www.vfw.org/find-a-post" target="_blank" rel="noopener">https://www.vfw.org/find-a-post</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance veteran service organizations — claims help vfw — national headquarters the nation’s largest war veterans service organization. free claims assistance, advocacy, and community support. address: 406 w 34th st, kansas city, mo 64111 phone: 1-816-756-3390 website: https://www.vfw.org" data-letter="V">
+              <div class="card-top">
+                <h4>VFW — National Headquarters </h4>
+                <span class="subject">Veteran Service Organizations — Claims Help</span>
+              </div>
+              <div class="details"><p>The nation’s largest war veterans service organization. Free claims assistance, advocacy, and community support.</p><p>Address: 406 W 34th St, Kansas City, MO 64111</p><p>Phone: 1-816-756-3390</p><p>Website: <a href="https://www.vfw.org" target="_blank" rel="noopener">https://www.vfw.org</a></p></div>
+            </article>
+            <h3>State Resources</h3>
+            <article class="resource-card" data-search="benefits &amp; claims assistance state resources joseph trinetto, kdva benefits representative – region 13 (laurel county) direct accredited contact for laurel county veterans (serves knox, laurel, whitley, bell, clay, owsley). phone: (606) 344-1003 email: joseph.trinetto@ky.gov note: free service — use this direct line in addition to the main kdva number." data-letter="J">
+              <div class="card-top">
+                <h4>Joseph Trinetto, KDVA Benefits Representative – Region 13 (Laurel County) <span class="badge">New</span></h4>
+                <span class="subject">State Resources</span>
+              </div>
+              <div class="details"><p>Direct accredited contact for Laurel County veterans (serves Knox, Laurel, Whitley, Bell, Clay, Owsley).</p><p>Phone: (606) 344-1003</p><p>Email: <a href="mailto:Joseph.trinetto@ky.gov">Joseph.trinetto@ky.gov</a></p><p>Note: Free service — use this direct line in addition to the main KDVA number.</p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance state resources kdva london regional office — benefits representative (serving laurel county) free, accredited veterans benefits assistance — claims, eligibility consultation, and application help — at no charge. address: travels to and serves bell, clay, knox, laurel, owsley &amp; whitley counties phone: contact kdva main at (502) 564-9203 website: https://veterans.ky.gov/benefits/pages/your-benefits-representative.aspx" data-letter="K">
+              <div class="card-top">
+                <h4>KDVA London Regional Office — Benefits Representative (Serving Laurel County) </h4>
+                <span class="subject">State Resources</span>
+              </div>
+              <div class="details"><p>Free, accredited veterans benefits assistance — claims, eligibility consultation, and application help — at no charge.</p><p>Address: Travels to and serves Bell, Clay, Knox, Laurel, Owsley &amp; Whitley Counties</p><p>Phone: Contact KDVA main at (502) 564-9203</p><p>Website: <a href="https://veterans.ky.gov/Benefits/Pages/Your-Benefits-Representative.aspx" target="_blank" rel="noopener">https://veterans.ky.gov/Benefits/Pages/Your-Benefits-Representative.aspx</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance state resources kentucky department of veterans affairs (kdva) — frankfort hq kentucky’s primary state agency for veteran benefits, claims assistance, cemeteries, long-term care, and special programs. all 120 ky counties covered by 23 federally accredited benefits representatives. address: 1111b louisville rd, frankfort, ky 40601 phone: (502) 564-9203 | tuition waiver: (502) 503-7911 website: https://veterans.ky.gov" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Department of Veterans Affairs (KDVA) — Frankfort HQ </h4>
+                <span class="subject">State Resources</span>
+              </div>
+              <div class="details"><p>Kentucky’s primary state agency for veteran benefits, claims assistance, cemeteries, long-term care, and special programs. All 120 KY counties covered by 23 federally accredited Benefits Representatives.</p><p>Address: 1111B Louisville Rd, Frankfort, KY 40601</p><p>Phone: (502) 564-9203 | Tuition Waiver: (502) 503-7911</p><p>Website: <a href="https://veterans.ky.gov" target="_blank" rel="noopener">https://veterans.ky.gov</a></p></div>
+            </article>
+            <h3>Federal Resources</h3>
+            <article class="resource-card" data-search="benefits &amp; claims assistance federal resources u.s. department of veterans affairs (va) — main benefits line primary federal agency for all veteran benefits: disability compensation, pension, education, housing loans, life insurance, burial, and more. address: 810 vermont ave nw, washington, dc 20420 phone: 1-800-827-1000 (mon–fri, 8am–9pm et) website: https://www.va.gov" data-letter="U">
+              <div class="card-top">
+                <h4>U.S. Department of Veterans Affairs (VA) — Main Benefits Line </h4>
+                <span class="subject">Federal Resources</span>
+              </div>
+              <div class="details"><p>Primary federal agency for all veteran benefits: disability compensation, pension, education, housing loans, life insurance, burial, and more.</p><p>Address: 810 Vermont Ave NW, Washington, DC 20420</p><p>Phone: 1-800-827-1000 (Mon–Fri, 8AM–9PM ET)</p><p>Website: <a href="https://www.va.gov" target="_blank" rel="noopener">https://www.va.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance federal resources va accredited claims agents &amp; attorneys directory of va-accredited attorneys and claims agents who can represent veterans in claims and appeals. phone: 1-800-827-1000 website: https://www.va.gov/ogc/accreditation.asp" data-letter="V">
+              <div class="card-top">
+                <h4>VA Accredited Claims Agents &amp; Attorneys </h4>
+                <span class="subject">Federal Resources</span>
+              </div>
+              <div class="details"><p>Directory of VA-accredited attorneys and claims agents who can represent veterans in claims and appeals.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/ogc/accreditation.asp" target="_blank" rel="noopener">https://www.va.gov/ogc/accreditation.asp</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance federal resources va benefits online application portal (ebenefits / va.gov) apply online for disability compensation, gi bill, home loans, life insurance, and other benefits. phone: 1-800-827-1000 website: https://www.va.gov/disability/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Benefits Online Application Portal (eBenefits / VA.gov) </h4>
+                <span class="subject">Federal Resources</span>
+              </div>
+              <div class="details"><p>Apply online for disability compensation, GI Bill, home loans, life insurance, and other benefits.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/disability/" target="_blank" rel="noopener">https://www.va.gov/disability/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="benefits &amp; claims assistance federal resources va veteran readiness &amp; employment (vr&amp;e / chapter 31) career counseling, training, and employment assistance for veterans with service-connected disabilities. phone: 1-800-827-1000 website: https://www.va.gov/careers-employment/vocational-rehabilitation/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Veteran Readiness &amp; Employment (VR&amp;E / Chapter 31) </h4>
+                <span class="subject">Federal Resources</span>
+              </div>
+              <div class="details"><p>Career counseling, training, and employment assistance for veterans with service-connected disabilities.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/careers-employment/vocational-rehabilitation/" target="_blank" rel="noopener">https://www.va.gov/careers-employment/vocational-rehabilitation/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="burial-cemetery-benefits">
+      <div class="section-heading">
+        <h2>Burial &amp; Cemetery Benefits</h2>
+        <span>7 resources</span>
+      </div>
+      <h3>State Resources — Kentucky Veterans Cemeteries</h3>
+            <article class="resource-card" data-search="burial &amp; cemetery benefits state resources — kentucky veterans cemeteries kentucky veterans cemetery — central state veterans cemetery serving central kentucky. address: 2501 n dixie blvd, radcliff, ky 40160 phone: (270) 351-5115 website: https://veterans.ky.gov/cemeteries" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Veterans Cemetery — Central </h4>
+                <span class="subject">State Resources — Kentucky Veterans Cemeteries</span>
+              </div>
+              <div class="details"><p>State veterans cemetery serving central Kentucky.</p><p>Address: 2501 N Dixie Blvd, Radcliff, KY 40160</p><p>Phone: (270) 351-5115</p><p>Website: <a href="https://veterans.ky.gov/cemeteries" target="_blank" rel="noopener">https://veterans.ky.gov/cemeteries</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="burial &amp; cemetery benefits state resources — kentucky veterans cemeteries kentucky veterans cemetery — north state veterans cemetery serving northern kentucky. address: 205 eibeck lane, williamstown, ky 41097 phone: (859) 823-0720 website: https://veterans.ky.gov/cemeteries" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Veterans Cemetery — North </h4>
+                <span class="subject">State Resources — Kentucky Veterans Cemeteries</span>
+              </div>
+              <div class="details"><p>State veterans cemetery serving northern Kentucky.</p><p>Address: 205 Eibeck Lane, Williamstown, KY 41097</p><p>Phone: (859) 823-0720</p><p>Website: <a href="https://veterans.ky.gov/cemeteries" target="_blank" rel="noopener">https://veterans.ky.gov/cemeteries</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="burial &amp; cemetery benefits state resources — kentucky veterans cemeteries kentucky veterans cemetery — northeast state veterans cemetery serving northeastern kentucky. address: 100 veterans memorial dr, grayson, ky 41143 phone: (606) 929-5354 website: https://veterans.ky.gov/cemeteries" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Veterans Cemetery — Northeast </h4>
+                <span class="subject">State Resources — Kentucky Veterans Cemeteries</span>
+              </div>
+              <div class="details"><p>State veterans cemetery serving northeastern Kentucky.</p><p>Address: 100 Veterans Memorial Dr, Grayson, KY 41143</p><p>Phone: (606) 929-5354</p><p>Website: <a href="https://veterans.ky.gov/cemeteries" target="_blank" rel="noopener">https://veterans.ky.gov/cemeteries</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="burial &amp; cemetery benefits state resources — kentucky veterans cemeteries kentucky veterans cemetery — southeast (nearest to london, ky) closest state veterans cemetery to london/laurel county. free burial for eligible veterans; $500 fee for spouses. address: 1280 kentucky highway 118, hyden, ky 41749 phone: (606) 672-2750 website: https://veterans.ky.gov/cemeteries" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Veterans Cemetery — Southeast (Nearest to London, KY) </h4>
+                <span class="subject">State Resources — Kentucky Veterans Cemeteries</span>
+              </div>
+              <div class="details"><p>Closest state veterans cemetery to London/Laurel County. Free burial for eligible veterans; $500 fee for spouses.</p><p>Address: 1280 Kentucky Highway 118, Hyden, KY 41749</p><p>Phone: (606) 672-2750</p><p>Website: <a href="https://veterans.ky.gov/cemeteries" target="_blank" rel="noopener">https://veterans.ky.gov/cemeteries</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="burial &amp; cemetery benefits state resources — kentucky veterans cemeteries kentucky veterans cemetery — west state veterans cemetery serving western kentucky. address: 5817 fort campbell blvd, hopkinsville, ky 42240 phone: (270) 889-6106 website: https://veterans.ky.gov/cemeteries" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Veterans Cemetery — West </h4>
+                <span class="subject">State Resources — Kentucky Veterans Cemeteries</span>
+              </div>
+              <div class="details"><p>State veterans cemetery serving western Kentucky.</p><p>Address: 5817 Fort Campbell Blvd, Hopkinsville, KY 42240</p><p>Phone: (270) 889-6106</p><p>Website: <a href="https://veterans.ky.gov/cemeteries" target="_blank" rel="noopener">https://veterans.ky.gov/cemeteries</a></p></div>
+            </article>
+            <h3>Federal Resources</h3>
+            <article class="resource-card" data-search="burial &amp; cemetery benefits federal resources national cemetery scheduling office (va burial benefits) schedule burial at a national cemetery. va provides gravesite, opening/closing, grave liner, perpetual care, and headstone/marker at no cost to eligible veterans. phone: 1-800-535-1117 website: https://www.cem.va.gov" data-letter="N">
+              <div class="card-top">
+                <h4>National Cemetery Scheduling Office (VA Burial Benefits) </h4>
+                <span class="subject">Federal Resources</span>
+              </div>
+              <div class="details"><p>Schedule burial at a national cemetery. VA provides gravesite, opening/closing, grave liner, perpetual care, and headstone/marker at no cost to eligible veterans.</p><p>Phone: 1-800-535-1117</p><p>Website: <a href="https://www.cem.va.gov" target="_blank" rel="noopener">https://www.cem.va.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="burial &amp; cemetery benefits federal resources va burial benefits — funeral expense allowance va may reimburse burial and funeral expenses for eligible veterans. also covers presidential memorial certificates. phone: 1-800-827-1000 website: https://www.va.gov/burials-memorials/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Burial Benefits — Funeral Expense Allowance </h4>
+                <span class="subject">Federal Resources</span>
+              </div>
+              <div class="details"><p>VA may reimburse burial and funeral expenses for eligible veterans. Also covers Presidential Memorial Certificates.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/burials-memorials/" target="_blank" rel="noopener">https://www.va.gov/burials-memorials/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="crisis-mental-health-suicide-prevention">
+      <div class="section-heading">
+        <h2>Crisis, Mental Health &amp; Suicide Prevention</h2>
+        <span>9 resources</span>
+      </div>
+      <h3>Local Mental Health Resources</h3>
+            <article class="resource-card" data-search="crisis, mental health &amp; suicide prevention local mental health resources hazard va community clinic — mental health services outpatient mental health and primary care for eastern kentucky veterans. address: 160 nautilus dr, hazard, ky 41701 phone: contact lexington va: (859) 233-4511 website: https://www.va.gov/lexington-health-care/locations/hazard-va-clinic/" data-letter="H">
+              <div class="card-top">
+                <h4>Hazard VA Community Clinic — Mental Health Services </h4>
+                <span class="subject">Local Mental Health Resources</span>
+              </div>
+              <div class="details"><p>Outpatient mental health and primary care for eastern Kentucky veterans.</p><p>Address: 160 Nautilus Dr, Hazard, KY 41701</p><p>Phone: Contact Lexington VA: (859) 233-4511</p><p>Website: <a href="https://www.va.gov/lexington-health-care/locations/hazard-va-clinic/" target="_blank" rel="noopener">https://www.va.gov/lexington-health-care/locations/hazard-va-clinic/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="crisis, mental health &amp; suicide prevention local mental health resources lexington va health care system — mental health (full services) full-spectrum mental health inpatient and outpatient services including ptsd, substance use residential treatment, and crisis stabilization. address: 1101 veterans dr, lexington, ky 40502 phone: (859) 233-4511 website: https://www.va.gov/lexington-health-care/health-services/" data-letter="L">
+              <div class="card-top">
+                <h4>Lexington VA Health Care System — Mental Health (Full Services) </h4>
+                <span class="subject">Local Mental Health Resources</span>
+              </div>
+              <div class="details"><p>Full-spectrum mental health inpatient and outpatient services including PTSD, substance use residential treatment, and crisis stabilization.</p><p>Address: 1101 Veterans Dr, Lexington, KY 40502</p><p>Phone: (859) 233-4511</p><p>Website: <a href="https://www.va.gov/lexington-health-care/health-services/" target="_blank" rel="noopener">https://www.va.gov/lexington-health-care/health-services/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="crisis, mental health &amp; suicide prevention local mental health resources lexington va vet center — london community access point confidential readjustment counseling, ptsd, mst, bereavement, family counseling, and transition support. no va health enrollment required for many services. highly recommended local resource. address: 300 dav lane, london, ky 40741 (co-located with dav chapter #66) phone: (859) 253-0717 (call main number for london access point appointments) hours: by appointment only (typically mon–fri 8:00 am–4:30 pm) website: https://www.va.gov/lexington-vet-center/locations/" data-letter="L">
+              <div class="card-top">
+                <h4>Lexington VA Vet Center — London Community Access Point <span class="badge">New</span></h4>
+                <span class="subject">Local Mental Health Resources</span>
+              </div>
+              <div class="details"><p>Confidential readjustment counseling, PTSD, MST, bereavement, family counseling, and transition support. No VA health enrollment required for many services. Highly recommended local resource.</p><p>Address: 300 DAV Lane, London, KY 40741 (co-located with DAV Chapter #66)</p><p>Phone: (859) 253-0717 (call main number for London access point appointments)</p><p>Hours: By appointment only (typically Mon–Fri 8:00 AM–4:30 PM)</p><p>Website: <a href="https://www.va.gov/lexington-vet-center/locations/" target="_blank" rel="noopener">https://www.va.gov/lexington-vet-center/locations/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="crisis, mental health &amp; suicide prevention local mental health resources somerset va community clinic — mental health services (nearest cboc to london) provides outpatient mental health counseling, ptsd treatment, and substance use services closest to laurel county. address: 300 medpark dr, somerset, ky 42503 phone: (606) 676-0786 website: https://www.va.gov/lexington-health-care/locations/somerset-va-clinic/" data-letter="S">
+              <div class="card-top">
+                <h4>Somerset VA Community Clinic — Mental Health Services (Nearest CBOC to London) </h4>
+                <span class="subject">Local Mental Health Resources</span>
+              </div>
+              <div class="details"><p>Provides outpatient mental health counseling, PTSD treatment, and substance use services closest to Laurel County.</p><p>Address: 300 Medpark Dr, Somerset, KY 42503</p><p>Phone: (606) 676-0786</p><p>Website: <a href="https://www.va.gov/lexington-health-care/locations/somerset-va-clinic/" target="_blank" rel="noopener">https://www.va.gov/lexington-health-care/locations/somerset-va-clinic/</a></p></div>
+            </article>
+            <h3>VA Mental Health Services</h3>
+            <article class="resource-card" data-search="crisis, mental health &amp; suicide prevention va mental health services national center for ptsd va’s leading resource for ptsd research, education, and treatment information. includes self-help tools and mobile apps. phone: no direct phone; use va main: 1-800-827-1000 website: https://www.ptsd.va.gov" data-letter="N">
+              <div class="card-top">
+                <h4>National Center for PTSD </h4>
+                <span class="subject">VA Mental Health Services</span>
+              </div>
+              <div class="details"><p>VA’s leading resource for PTSD research, education, and treatment information. Includes self-help tools and mobile apps.</p><p>Phone: No direct phone; use VA main: 1-800-827-1000</p><p>Website: <a href="https://www.ptsd.va.gov" target="_blank" rel="noopener">https://www.ptsd.va.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="crisis, mental health &amp; suicide prevention va mental health services va make the connection (stories &amp; resources) veteran stories of recovery and mental health resources to reduce stigma and connect veterans with support. phone: 1-800-827-1000 website: https://www.maketheconnection.net" data-letter="V">
+              <div class="card-top">
+                <h4>VA Make the Connection (Stories &amp; Resources) </h4>
+                <span class="subject">VA Mental Health Services</span>
+              </div>
+              <div class="details"><p>Veteran stories of recovery and mental health resources to reduce stigma and connect veterans with support.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.maketheconnection.net" target="_blank" rel="noopener">https://www.maketheconnection.net</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="crisis, mental health &amp; suicide prevention va mental health services va mental health services — general information va provides mental health care including ptsd treatment, depression, anxiety, mst counseling, and substance use treatment. same-day services available. phone: 1-877-222-8387 (mon–fri, 8am–8pm et) website: https://www.va.gov/health-care/health-needs-conditions/mental-health/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Mental Health Services — General Information </h4>
+                <span class="subject">VA Mental Health Services</span>
+              </div>
+              <div class="details"><p>VA provides mental health care including PTSD treatment, depression, anxiety, MST counseling, and substance use treatment. Same-day services available.</p><p>Phone: 1-877-222-8387 (Mon–Fri, 8AM–8PM ET)</p><p>Website: <a href="https://www.va.gov/health-care/health-needs-conditions/mental-health/" target="_blank" rel="noopener">https://www.va.gov/health-care/health-needs-conditions/mental-health/</a></p></div>
+            </article>
+            <h3>Crisis Lines — 24/7</h3>
+            <article class="resource-card" data-search="crisis, mental health &amp; suicide prevention crisis lines — 24/7 samhsa national helpline (substance abuse &amp; mental health) free, confidential, 24/7 treatment referral service for mental health and substance use disorders. phone: 1-800-662-4357 (1-800-662-help) — 24/7, free, confidential website: https://www.samhsa.gov/find-help/national-helpline" data-letter="S">
+              <div class="card-top">
+                <h4>SAMHSA National Helpline (Substance Abuse &amp; Mental Health) </h4>
+                <span class="subject">Crisis Lines — 24/7</span>
+              </div>
+              <div class="details"><p>Free, confidential, 24/7 treatment referral service for mental health and substance use disorders.</p><p>Phone: 1-800-662-4357 (1-800-662-HELP) — 24/7, free, confidential</p><p>Website: <a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" rel="noopener">https://www.samhsa.gov/find-help/national-helpline</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="crisis, mental health &amp; suicide prevention crisis lines — 24/7 veterans crisis line — highest priority confidential 24/7 crisis support for veterans and their loved ones. many responders are veterans themselves. also text 838255. phone: call or text 988, then press 1 | tty: 711 | chat: veteranscrisisline.net website: https://www.veteranscrisisline.net" data-letter="V">
+              <div class="card-top">
+                <h4>Veterans Crisis Line — HIGHEST PRIORITY </h4>
+                <span class="subject">Crisis Lines — 24/7</span>
+              </div>
+              <div class="details"><p>Confidential 24/7 crisis support for veterans and their loved ones. Many responders are veterans themselves. Also text 838255.</p><p>Phone: CALL or TEXT 988, then Press 1 | TTY: 711 | Chat: VeteransCrisisLine.net</p><p>Website: <a href="https://www.veteranscrisisline.net" target="_blank" rel="noopener">https://www.veteranscrisisline.net</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="education-benefits">
+      <div class="section-heading">
+        <h2>Education Benefits</h2>
+        <span>9 resources</span>
+      </div>
+      
+            <article class="resource-card" data-search="education benefits  (all original entries sorted a-z — no new additions in this section)" data-letter="(">
+              <div class="card-top">
+                <h4>(All original entries sorted A-Z — no new additions in this section) </h4>
+                <span class="subject">Education Benefits</span>
+              </div>
+              <div class="details"></div>
+            </article>
+            
+            <article class="resource-card" data-search="education benefits  fry scholarship (children of fallen service members) post-9/11 gi bill benefits for children of service members who died in the line of duty on or after 9/11. phone: 1-888-442-4551 website: https://www.va.gov/education/survivor-dependent-education-assistance/" data-letter="F">
+              <div class="card-top">
+                <h4>Fry Scholarship (Children of Fallen Service Members) </h4>
+                <span class="subject">Education Benefits</span>
+              </div>
+              <div class="details"><p>Post-9/11 GI Bill benefits for children of service members who died in the line of duty on or after 9/11.</p><p>Phone: 1-888-442-4551</p><p>Website: <a href="https://www.va.gov/education/survivor-dependent-education-assistance/" target="_blank" rel="noopener">https://www.va.gov/education/survivor-dependent-education-assistance/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="education benefits  gi bill (post-9/11 — chapter 33) covers tuition, housing allowance (bah), and books/supplies for eligible veterans. can also be transferred to dependents. phone: 1-888-442-4551 (1-888-gibill1) website: https://www.va.gov/education/about-gi-bill-benefits/post-9-11/" data-letter="G">
+              <div class="card-top">
+                <h4>GI Bill (Post-9/11 — Chapter 33) </h4>
+                <span class="subject">Education Benefits</span>
+              </div>
+              <div class="details"><p>Covers tuition, housing allowance (BAH), and books/supplies for eligible veterans. Can also be transferred to dependents.</p><p>Phone: 1-888-442-4551 (1-888-GIBILL1)</p><p>Website: <a href="https://www.va.gov/education/about-gi-bill-benefits/post-9-11/" target="_blank" rel="noopener">https://www.va.gov/education/about-gi-bill-benefits/post-9-11/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="education benefits  kentucky dependent tuition waiver — kdva free tuition at any ky public 2-year, 4-year, or vo-tech school for spouses/children/stepchildren of qualifying kentucky veterans. address: 1111b louisville rd, frankfort, ky 40601 phone: (502) 503-7911 | email: kdva.tuitionwaiver@ky.gov website: https://veterans.ky.gov/benefits/pages/education-for-veterans-in-kentucky.aspx" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Dependent Tuition Waiver — KDVA </h4>
+                <span class="subject">Education Benefits</span>
+              </div>
+              <div class="details"><p>Free tuition at any KY public 2-year, 4-year, or vo-tech school for spouses/children/stepchildren of qualifying Kentucky veterans.</p><p>Address: 1111B Louisville Rd, Frankfort, KY 40601</p><p>Phone: (502) 503-7911 | Email: <a href="mailto:kdva.tuitionwaiver@ky.gov">kdva.tuitionwaiver@ky.gov</a></p><p>Website: <a href="https://veterans.ky.gov/Benefits/Pages/Education-for-Veterans-in-Kentucky.aspx" target="_blank" rel="noopener">https://veterans.ky.gov/Benefits/Pages/Education-for-Veterans-in-Kentucky.aspx</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="education benefits  kentucky national guard tuition award program pays in-state tuition for full or part-time study at ky public colleges for ky national guard members while funds are available. phone: (502) 564-9203 website: https://veterans.ky.gov" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky National Guard Tuition Award Program </h4>
+                <span class="subject">Education Benefits</span>
+              </div>
+              <div class="details"><p>Pays in-state tuition for full or part-time study at KY public colleges for KY National Guard members while funds are available.</p><p>Phone: (502) 564-9203</p><p>Website: <a href="https://veterans.ky.gov" target="_blank" rel="noopener">https://veterans.ky.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="education benefits  montgomery gi bill — active duty (chapter 30) monthly education benefit for active duty veterans who contributed to the program while serving. phone: 1-888-442-4551 website: https://www.va.gov/education/about-gi-bill-benefits/montgomery-active-duty/" data-letter="M">
+              <div class="card-top">
+                <h4>Montgomery GI Bill — Active Duty (Chapter 30) </h4>
+                <span class="subject">Education Benefits</span>
+              </div>
+              <div class="details"><p>Monthly education benefit for active duty veterans who contributed to the program while serving.</p><p>Phone: 1-888-442-4551</p><p>Website: <a href="https://www.va.gov/education/about-gi-bill-benefits/montgomery-active-duty/" target="_blank" rel="noopener">https://www.va.gov/education/about-gi-bill-benefits/montgomery-active-duty/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="education benefits  southeast kentucky community &amp; technical college (skctcs) — london campus kctcs system helps veterans apply for gi bill, kentucky tuition waiver, and other education benefits. va certifying officials on staff. address: 164 university dr, middlesboro, ky 40965 (regional campus near london) phone: (606) 248-2112 website: https://kctcs.edu/education-training/military-veterans/" data-letter="S">
+              <div class="card-top">
+                <h4>Southeast Kentucky Community &amp; Technical College (SKCTCS) — London Campus </h4>
+                <span class="subject">Education Benefits</span>
+              </div>
+              <div class="details"><p>KCTCS system helps veterans apply for GI Bill, Kentucky Tuition Waiver, and other education benefits. VA certifying officials on staff.</p><p>Address: 164 University Dr, Middlesboro, KY 40965 (regional campus near London)</p><p>Phone: (606) 248-2112</p><p>Website: <a href="https://kctcs.edu/education-training/military-veterans/" target="_blank" rel="noopener">https://kctcs.edu/education-training/military-veterans/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="education benefits  va survivor &amp; dependent educational assistance (chapter 35) educational financial assistance for eligible dependents of veterans who are permanently disabled or died from service-connected conditions. phone: 1-888-442-4551 website: https://www.va.gov/education/survivor-dependent-education-assistance/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Survivor &amp; Dependent Educational Assistance (Chapter 35) </h4>
+                <span class="subject">Education Benefits</span>
+              </div>
+              <div class="details"><p>Educational financial assistance for eligible dependents of veterans who are permanently disabled or died from service-connected conditions.</p><p>Phone: 1-888-442-4551</p><p>Website: <a href="https://www.va.gov/education/survivor-dependent-education-assistance/" target="_blank" rel="noopener">https://www.va.gov/education/survivor-dependent-education-assistance/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="education benefits  va veteran readiness &amp; employment (chapter 31 / vr&amp;e) education, training, and employment services for veterans with service-connected disabilities of 10% or higher. phone: 1-800-827-1000 website: https://www.va.gov/careers-employment/vocational-rehabilitation/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Veteran Readiness &amp; Employment (Chapter 31 / VR&amp;E) </h4>
+                <span class="subject">Education Benefits</span>
+              </div>
+              <div class="details"><p>Education, training, and employment services for veterans with service-connected disabilities of 10% or higher.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/careers-employment/vocational-rehabilitation/" target="_blank" rel="noopener">https://www.va.gov/careers-employment/vocational-rehabilitation/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="employment-career-services">
+      <div class="section-heading">
+        <h2>Employment &amp; Career Services</h2>
+        <span>7 resources</span>
+      </div>
+      <h3>Federal Employment Resources</h3>
+            <article class="resource-card" data-search="employment &amp; career services federal employment resources american job center / careeronestop (federal) federal job search, career assessment, resume help, and local american job center locations with priority of service for veterans. phone: 1-877-872-5627 website: https://www.careeronestop.org/veterans/" data-letter="A">
+              <div class="card-top">
+                <h4>American Job Center / CareerOneStop (Federal) </h4>
+                <span class="subject">Federal Employment Resources</span>
+              </div>
+              <div class="details"><p>Federal job search, career assessment, resume help, and local American Job Center locations with priority of service for veterans.</p><p>Phone: 1-877-872-5627</p><p>Website: <a href="https://www.careeronestop.org/Veterans/" target="_blank" rel="noopener">https://www.careeronestop.org/Veterans/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="employment &amp; career services federal employment resources fedhirevets — federal government veterans employment helps veterans qualify for federal job preferences, schedule a appointments, and veterans’ employment opportunity act (veoa) rights. phone: contact opm: 1-202-606-1800 website: https://www.fedshirevets.gov" data-letter="F">
+              <div class="card-top">
+                <h4>FedHireVets — Federal Government Veterans Employment </h4>
+                <span class="subject">Federal Employment Resources</span>
+              </div>
+              <div class="details"><p>Helps veterans qualify for federal job preferences, Schedule A appointments, and Veterans’ Employment Opportunity Act (VEOA) rights.</p><p>Phone: Contact OPM: 1-202-606-1800</p><p>Website: <a href="https://www.fedshirevets.gov" target="_blank" rel="noopener">https://www.fedshirevets.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="employment &amp; career services federal employment resources hire heroes usa (national nonprofit, free) free employment assistance — resume writing, interview coaching, job placement — for transitioning military, veterans, and military spouses. phone: 1-844-634-1520 website: https://www.hireheroesusa.org" data-letter="H">
+              <div class="card-top">
+                <h4>Hire Heroes USA (National Nonprofit, Free) </h4>
+                <span class="subject">Federal Employment Resources</span>
+              </div>
+              <div class="details"><p>Free employment assistance — resume writing, interview coaching, job placement — for transitioning military, veterans, and military spouses.</p><p>Phone: 1-844-634-1520</p><p>Website: <a href="https://www.hireheroesusa.org" target="_blank" rel="noopener">https://www.hireheroesusa.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="employment &amp; career services federal employment resources my next move for veterans (dol) translates military experience into civilian career options with salary data, job listings, and required skills for 900+ careers. phone: contact careeronestop: 1-877-872-5627 website: https://www.mynextmove.org/vets/" data-letter="M">
+              <div class="card-top">
+                <h4>My Next Move for Veterans (DOL) </h4>
+                <span class="subject">Federal Employment Resources</span>
+              </div>
+              <div class="details"><p>Translates military experience into civilian career options with salary data, job listings, and required skills for 900+ careers.</p><p>Phone: Contact CareerOneStop: 1-877-872-5627</p><p>Website: <a href="https://www.mynextmove.org/vets/" target="_blank" rel="noopener">https://www.mynextmove.org/vets/</a></p></div>
+            </article>
+            <h3>State Employment Resources</h3>
+            <article class="resource-card" data-search="employment &amp; career services state employment resources kentucky career center — laurel county (local office) priority veteran employment services, job search, resume help, training, and career counseling at the local level. address: 100 university drive, kctcs london campus, london, ky 40741 phone: (606) 330-2115 website: https://kcc.ky.gov/veterans/" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Career Center — Laurel County (Local Office) <span class="badge">New</span></h4>
+                <span class="subject">State Employment Resources</span>
+              </div>
+              <div class="details"><p>Priority veteran employment services, job search, resume help, training, and career counseling at the local level.</p><p>Address: 100 University Drive, KCTCS London Campus, London, KY 40741</p><p>Phone: (606) 330-2115</p><p>Website: <a href="https://kcc.ky.gov/veterans/" target="_blank" rel="noopener">https://kcc.ky.gov/veterans/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="employment &amp; career services state employment resources kentucky career center — veterans employment services priority of service to veterans. job search, resume help, training, career counseling, and connections to ky veterans employment preference for state jobs. address: offices statewide (nearest: london, ky area) phone: statewide: 1-877-872-5627 website: https://kcc.ky.gov/veterans/" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Career Center — Veterans Employment Services </h4>
+                <span class="subject">State Employment Resources</span>
+              </div>
+              <div class="details"><p>Priority of service to veterans. Job search, resume help, training, career counseling, and connections to KY Veterans Employment Preference for state jobs.</p><p>Address: Offices statewide (nearest: London, KY area)</p><p>Phone: Statewide: 1-877-872-5627</p><p>Website: <a href="https://kcc.ky.gov/veterans/" target="_blank" rel="noopener">https://kcc.ky.gov/veterans/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="employment &amp; career services state employment resources ky valor — kentucky veterans accelerated learning for occupational readiness 150,000+ job opportunities and 44+ accelerated career pathways using military training and experience toward kentucky civilian credentials. phone: (502) 564-9203 website: https://kcc.ky.gov/veterans/" data-letter="K">
+              <div class="card-top">
+                <h4>KY VALOR — Kentucky Veterans Accelerated Learning for Occupational Readiness </h4>
+                <span class="subject">State Employment Resources</span>
+              </div>
+              <div class="details"><p>150,000+ job opportunities and 44+ accelerated career pathways using military training and experience toward Kentucky civilian credentials.</p><p>Phone: (502) 564-9203</p><p>Website: <a href="https://kcc.ky.gov/veterans/" target="_blank" rel="noopener">https://kcc.ky.gov/veterans/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="financial-assistance-benefits">
+      <div class="section-heading">
+        <h2>Financial Assistance &amp; Benefits</h2>
+        <span>10 resources</span>
+      </div>
+      
+            <article class="resource-card" data-search="financial assistance &amp; benefits  (all original entries sorted a-z — no new additions)" data-letter="(">
+              <div class="card-top">
+                <h4>(All original entries sorted A-Z — no new additions) </h4>
+                <span class="subject">Financial Assistance &amp; Benefits</span>
+              </div>
+              <div class="details"></div>
+            </article>
+            
+            <article class="resource-card" data-search="financial assistance &amp; benefits  dependency &amp; indemnity compensation (dic) — survivors tax-exempt monthly benefit for surviving spouses, children, and parents of veterans who died from service-connected causes. phone: 1-800-827-1000 website: https://www.va.gov/disability/dependency-indemnity-compensation/" data-letter="D">
+              <div class="card-top">
+                <h4>Dependency &amp; Indemnity Compensation (DIC) — Survivors </h4>
+                <span class="subject">Financial Assistance &amp; Benefits</span>
+              </div>
+              <div class="details"><p>Tax-exempt monthly benefit for surviving spouses, children, and parents of veterans who died from service-connected causes.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/disability/dependency-indemnity-compensation/" target="_blank" rel="noopener">https://www.va.gov/disability/dependency-indemnity-compensation/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="financial assistance &amp; benefits  kentucky disabled veterans sportsman license veterans with 50%+ service-connected disability receive free 3-year combination hunting/fishing license. 100% disabled veterans pay no fees at state parks. phone: ky dept. of fish &amp; wildlife: 1-800-858-1549 website: https://fw.ky.gov" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Disabled Veterans Sportsman License </h4>
+                <span class="subject">Financial Assistance &amp; Benefits</span>
+              </div>
+              <div class="details"><p>Veterans with 50%+ service-connected disability receive free 3-year combination hunting/fishing license. 100% disabled veterans pay no fees at state parks.</p><p>Phone: KY Dept. of Fish &amp; Wildlife: 1-800-858-1549</p><p>Website: <a href="https://fw.ky.gov" target="_blank" rel="noopener">https://fw.ky.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="financial assistance &amp; benefits  kentucky homeless veterans grant program — kdva emergency small cash grants for utilities, rent, food, and shelter for honorably discharged ky veterans facing homelessness or financial hardship. phone: email: kdvafinancialassist@ky.gov | (502) 564-9203 website: https://veterans.ky.gov" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Homeless Veterans Grant Program — KDVA </h4>
+                <span class="subject">Financial Assistance &amp; Benefits</span>
+              </div>
+              <div class="details"><p>Emergency small cash grants for utilities, rent, food, and shelter for honorably discharged KY veterans facing homelessness or financial hardship.</p><p>Phone: Email: <a href="mailto:kdvafinancialassist@ky.gov">kdvafinancialassist@ky.gov</a> | (502) 564-9203</p><p>Website: <a href="https://veterans.ky.gov" target="_blank" rel="noopener">https://veterans.ky.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="financial assistance &amp; benefits  kentucky military retirement income tax exclusion veterans may exclude up to $31,110 of military retirement pay from ky state income taxes. active duty pay is fully exempt. phone: ky dept. of revenue: (502) 564-4581 website: https://revenue.ky.gov" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Military Retirement Income Tax Exclusion </h4>
+                <span class="subject">Financial Assistance &amp; Benefits</span>
+              </div>
+              <div class="details"><p>Veterans may exclude up to $31,110 of military retirement pay from KY state income taxes. Active duty pay is fully exempt.</p><p>Phone: KY Dept. of Revenue: (502) 564-4581</p><p>Website: <a href="https://revenue.ky.gov" target="_blank" rel="noopener">https://revenue.ky.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="financial assistance &amp; benefits  kentucky property tax homestead exemption — disabled veterans deducts $49,100 from assessed home value for ky veterans with 100% permanent service-connected disability. apply once — automatic renewal. address: apply at your local property valuation administrator (pva) office phone: laurel county pva: (606) 864-2889 website: https://revenue.ky.gov/property/residential-farm-commercial-property/pages/homestead-exemption.aspx" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Property Tax Homestead Exemption — Disabled Veterans </h4>
+                <span class="subject">Financial Assistance &amp; Benefits</span>
+              </div>
+              <div class="details"><p>Deducts $49,100 from assessed home value for KY veterans with 100% permanent service-connected disability. Apply once — automatic renewal.</p><p>Address: Apply at your local Property Valuation Administrator (PVA) Office</p><p>Phone: Laurel County PVA: (606) 864-2889</p><p>Website: <a href="https://revenue.ky.gov/Property/Residential-Farm-Commercial-Property/Pages/Homestead-Exemption.aspx" target="_blank" rel="noopener">https://revenue.ky.gov/Property/Residential-Farm-Commercial-Property/Pages/Homestead-Exemption.aspx</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="financial assistance &amp; benefits  va aid &amp; attendance / housebound benefits additional pension for veterans who need daily personal care assistance or are mostly housebound. phone: 1-800-827-1000 website: https://www.va.gov/pension/aid-attendance-housebound/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Aid &amp; Attendance / Housebound Benefits </h4>
+                <span class="subject">Financial Assistance &amp; Benefits</span>
+              </div>
+              <div class="details"><p>Additional pension for veterans who need daily personal care assistance or are mostly housebound.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/pension/aid-attendance-housebound/" target="_blank" rel="noopener">https://www.va.gov/pension/aid-attendance-housebound/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="financial assistance &amp; benefits  va disability compensation monthly tax-free payments for veterans with service-connected disabilities. rating from 0–100% determines payment amount. phone: 1-800-827-1000 website: https://www.va.gov/disability/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Disability Compensation </h4>
+                <span class="subject">Financial Assistance &amp; Benefits</span>
+              </div>
+              <div class="details"><p>Monthly tax-free payments for veterans with service-connected disabilities. Rating from 0–100% determines payment amount.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/disability/" target="_blank" rel="noopener">https://www.va.gov/disability/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="financial assistance &amp; benefits  va life insurance programs (sgli, vgli, s-dvi) multiple va life insurance programs for veterans and service members. phone: 1-800-419-1473 website: https://www.va.gov/life-insurance/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Life Insurance Programs (SGLI, VGLI, S-DVI) </h4>
+                <span class="subject">Financial Assistance &amp; Benefits</span>
+              </div>
+              <div class="details"><p>Multiple VA life insurance programs for veterans and service members.</p><p>Phone: 1-800-419-1473</p><p>Website: <a href="https://www.va.gov/life-insurance/" target="_blank" rel="noopener">https://www.va.gov/life-insurance/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="financial assistance &amp; benefits  va pension (non-service-connected) monthly needs-based pension for wartime veterans with limited income and net worth who are disabled or age 65+. phone: 1-800-827-1000 website: https://www.va.gov/pension/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Pension (Non-Service-Connected) </h4>
+                <span class="subject">Financial Assistance &amp; Benefits</span>
+              </div>
+              <div class="details"><p>Monthly needs-based pension for wartime veterans with limited income and net worth who are disabled or age 65+.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/pension/" target="_blank" rel="noopener">https://www.va.gov/pension/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="healthcare">
+      <div class="section-heading">
+        <h2>Healthcare</h2>
+        <span>12 resources</span>
+      </div>
+      <h3>VA Healthcare — Enrollment &amp; Information</h3>
+            <article class="resource-card" data-search="healthcare va healthcare — enrollment &amp; information (unchanged)" data-letter="(">
+              <div class="card-top">
+                <h4>(Unchanged) </h4>
+                <span class="subject">VA Healthcare — Enrollment &amp; Information</span>
+              </div>
+              <div class="details"></div>
+            </article>
+            
+            <article class="resource-card" data-search="healthcare va healthcare — enrollment &amp; information va health care enrollment all veterans should apply for va health care enrollment, regardless of disability status or income. phone: 1-877-222-8387 | apply online at va.gov website: https://www.va.gov/health-care/apply/application/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Health Care Enrollment </h4>
+                <span class="subject">VA Healthcare — Enrollment &amp; Information</span>
+              </div>
+              <div class="details"><p>All veterans should apply for VA health care enrollment, regardless of disability status or income.</p><p>Phone: 1-877-222-8387 | Apply online at VA.gov</p><p>Website: <a href="https://www.va.gov/health-care/apply/application/" target="_blank" rel="noopener">https://www.va.gov/health-care/apply/application/</a></p></div>
+            </article>
+            <h3>VA Medical Centers — Serving London/Laurel County Area</h3>
+            <article class="resource-card" data-search="healthcare va medical centers — serving london/laurel county area hazard va community based outpatient clinic (cboc) — recently expanded (may 2026) (updated) primary care services for eastern kentucky veterans. as of may 2026, significantly upgraded to a modern ~30% larger facility with enhanced primary care, mental health, women’s health, physical therapy, and telehealth. address: 160 nautilus dr, hazard, ky 41701 (confirm current address on va.gov) phone: contact lexington va: (859) 233-4511 website: https://www.va.gov/lexington-health-care/locations/hazard-va-clinic/" data-letter="H">
+              <div class="card-top">
+                <h4>Hazard VA Community Based Outpatient Clinic (CBOC) — Recently Expanded (May 2026) (UPDATED) </h4>
+                <span class="subject">VA Medical Centers — Serving London/Laurel County Area</span>
+              </div>
+              <div class="details"><p>Primary care services for eastern Kentucky veterans. As of May 2026, significantly upgraded to a modern ~30% larger facility with enhanced primary care, mental health, women’s health, physical therapy, and telehealth.</p><p>Address: 160 Nautilus Dr, Hazard, KY 41701 (confirm current address on VA.gov)</p><p>Phone: Contact Lexington VA: (859) 233-4511</p><p>Website: <a href="https://www.va.gov/lexington-health-care/locations/hazard-va-clinic/" target="_blank" rel="noopener">https://www.va.gov/lexington-health-care/locations/hazard-va-clinic/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="healthcare va medical centers — serving london/laurel county area lexington va health care system — franklin r. sousley campus additional lexington va campus providing healthcare services to kentucky veterans. address: 2250 leestown rd, lexington, ky 40511 phone: (859) 233-4511 website: https://www.va.gov/lexington-health-care/" data-letter="L">
+              <div class="card-top">
+                <h4>Lexington VA Health Care System — Franklin R. Sousley Campus </h4>
+                <span class="subject">VA Medical Centers — Serving London/Laurel County Area</span>
+              </div>
+              <div class="details"><p>Additional Lexington VA campus providing healthcare services to Kentucky veterans.</p><p>Address: 2250 Leestown Rd, Lexington, KY 40511</p><p>Phone: (859) 233-4511</p><p>Website: <a href="https://www.va.gov/lexington-health-care/" target="_blank" rel="noopener">https://www.va.gov/lexington-health-care/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="healthcare va medical centers — serving london/laurel county area lexington va health care system — troy bowling campus (full medical center) full-service va medical center including inpatient, outpatient, specialty care, surgery, ptsd residential, substance use, and geriatric services. address: 1101 veterans dr, lexington, ky 40502 phone: (859) 233-4511 website: https://www.va.gov/lexington-health-care/" data-letter="L">
+              <div class="card-top">
+                <h4>Lexington VA Health Care System — Troy Bowling Campus (Full Medical Center) </h4>
+                <span class="subject">VA Medical Centers — Serving London/Laurel County Area</span>
+              </div>
+              <div class="details"><p>Full-service VA Medical Center including inpatient, outpatient, specialty care, surgery, PTSD residential, substance use, and geriatric services.</p><p>Address: 1101 Veterans Dr, Lexington, KY 40502</p><p>Phone: (859) 233-4511</p><p>Website: <a href="https://www.va.gov/lexington-health-care/" target="_blank" rel="noopener">https://www.va.gov/lexington-health-care/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="healthcare va medical centers — serving london/laurel county area somerset va community based outpatient clinic (cboc) — nearest to london primary care and mental health services. approximately 45 miles from london, ky. mon–fri 8am–4:30pm. address: 300 medpark dr, somerset, ky 42503 phone: (606) 676-0786 website: https://www.va.gov/lexington-health-care/locations/somerset-va-clinic/" data-letter="S">
+              <div class="card-top">
+                <h4>Somerset VA Community Based Outpatient Clinic (CBOC) — NEAREST to London </h4>
+                <span class="subject">VA Medical Centers — Serving London/Laurel County Area</span>
+              </div>
+              <div class="details"><p>Primary care and mental health services. Approximately 45 miles from London, KY. Mon–Fri 8AM–4:30PM.</p><p>Address: 300 Medpark Dr, Somerset, KY 42503</p><p>Phone: (606) 676-0786</p><p>Website: <a href="https://www.va.gov/lexington-health-care/locations/somerset-va-clinic/" target="_blank" rel="noopener">https://www.va.gov/lexington-health-care/locations/somerset-va-clinic/</a></p></div>
+            </article>
+            <h3>Long-Term Care — Kentucky Veterans Centers</h3>
+            <article class="resource-card" data-search="healthcare long-term care — kentucky veterans centers paul e. patton eastern kentucky veterans center (hazard) 120-bed state veterans nursing home offering long-term care, rehabilitation, memory care, and social services. closer option for many laurel county veterans. address: 200 veterans drive, hazard, ky 41701 phone: (606) 435-6196 website: https://veterans.ky.gov/veterans-centers/eastern-kentucky/pages/default.aspx" data-letter="P">
+              <div class="card-top">
+                <h4>Paul E. Patton Eastern Kentucky Veterans Center (Hazard) <span class="badge">New</span></h4>
+                <span class="subject">Long-Term Care — Kentucky Veterans Centers</span>
+              </div>
+              <div class="details"><p>120-bed state veterans nursing home offering long-term care, rehabilitation, memory care, and social services. Closer option for many Laurel County veterans.</p><p>Address: 200 Veterans Drive, Hazard, KY 41701</p><p>Phone: (606) 435-6196</p><p>Website: <a href="https://veterans.ky.gov/Veterans-Centers/Eastern-Kentucky/Pages/default.aspx" target="_blank" rel="noopener">https://veterans.ky.gov/Veterans-Centers/Eastern-Kentucky/Pages/default.aspx</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="healthcare long-term care — kentucky veterans centers thomson-hood veterans center (nearest state veterans nursing home) state-operated skilled nursing facility for qualifying veterans. services include long-term care, memory care, therapy, and social services. nearest to london area. address: 100 veterans dr, wilmore, ky 40390 phone: (859) 858-2814 website: https://veterans.ky.gov/veterans-centers/" data-letter="T">
+              <div class="card-top">
+                <h4>Thomson-Hood Veterans Center (Nearest State Veterans Nursing Home) </h4>
+                <span class="subject">Long-Term Care — Kentucky Veterans Centers</span>
+              </div>
+              <div class="details"><p>State-operated skilled nursing facility for qualifying veterans. Services include long-term care, memory care, therapy, and social services. Nearest to London area.</p><p>Address: 100 Veterans Dr, Wilmore, KY 40390</p><p>Phone: (859) 858-2814</p><p>Website: <a href="https://veterans.ky.gov/Veterans-Centers/" target="_blank" rel="noopener">https://veterans.ky.gov/Veterans-Centers/</a></p></div>
+            </article>
+            <h3>Veterans Health — Specialty Programs</h3>
+            <article class="resource-card" data-search="healthcare veterans health — specialty programs va caregiver support program support, education, and financial stipends for family members and friends who serve as caregivers for eligible veterans. phone: 1-855-260-3274 website: https://www.caregiver.va.gov" data-letter="V">
+              <div class="card-top">
+                <h4>VA Caregiver Support Program </h4>
+                <span class="subject">Veterans Health — Specialty Programs</span>
+              </div>
+              <div class="details"><p>Support, education, and financial stipends for family members and friends who serve as caregivers for eligible veterans.</p><p>Phone: 1-855-260-3274</p><p>Website: <a href="https://www.caregiver.va.gov" target="_blank" rel="noopener">https://www.caregiver.va.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="healthcare veterans health — specialty programs va community care network (outside va network) when va cannot provide care, eligible veterans may receive it from community providers at va expense through the mission act. phone: 1-866-606-8198 website: https://www.va.gov/communitycare/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Community Care Network (Outside VA Network) </h4>
+                <span class="subject">Veterans Health — Specialty Programs</span>
+              </div>
+              <div class="details"><p>When VA cannot provide care, eligible veterans may receive it from community providers at VA expense through the MISSION Act.</p><p>Phone: 1-866-606-8198</p><p>Website: <a href="https://www.va.gov/communitycare/" target="_blank" rel="noopener">https://www.va.gov/communitycare/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="healthcare veterans health — specialty programs va substance use disorder (sud) treatment va-covered treatment for alcohol, drugs, and prescription medication misuse. phone: 1-800-827-1000 | samhsa: 1-800-662-4357 website: https://www.va.gov/health-care/health-needs-conditions/substance-use-problems/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Substance Use Disorder (SUD) Treatment </h4>
+                <span class="subject">Veterans Health — Specialty Programs</span>
+              </div>
+              <div class="details"><p>VA-covered treatment for alcohol, drugs, and prescription medication misuse.</p><p>Phone: 1-800-827-1000 | SAMHSA: 1-800-662-4357</p><p>Website: <a href="https://www.va.gov/health-care/health-needs-conditions/substance-use-problems/" target="_blank" rel="noopener">https://www.va.gov/health-care/health-needs-conditions/substance-use-problems/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="healthcare veterans health — specialty programs va women veterans program specialized healthcare and services for women veterans including mst counseling, reproductive health, mental health, and benefits assistance. phone: 1-855-829-6636 website: https://www.va.gov/womenvet/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Women Veterans Program </h4>
+                <span class="subject">Veterans Health — Specialty Programs</span>
+              </div>
+              <div class="details"><p>Specialized healthcare and services for women veterans including MST counseling, reproductive health, mental health, and benefits assistance.</p><p>Phone: 1-855-829-6636</p><p>Website: <a href="https://www.va.gov/womenvet/" target="_blank" rel="noopener">https://www.va.gov/womenvet/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="homelessness-housing-assistance">
+      <div class="section-heading">
+        <h2>Homelessness &amp; Housing Assistance</h2>
+        <span>10 resources</span>
+      </div>
+      
+            <article class="resource-card" data-search="homelessness &amp; housing assistance  (all original entries sorted a-z — no new additions)" data-letter="(">
+              <div class="card-top">
+                <h4>(All original entries sorted A-Z — no new additions) </h4>
+                <span class="subject">Homelessness &amp; Housing Assistance</span>
+              </div>
+              <div class="details"></div>
+            </article>
+            
+            <article class="resource-card" data-search="homelessness &amp; housing assistance  health care for homeless veterans (hchv) — va va outreach and case management for homeless veterans connecting them to va healthcare, mental health, and housing services. phone: 1-877-424-3838 website: https://www.va.gov/homeless/hchv.asp" data-letter="H">
+              <div class="card-top">
+                <h4>Health Care for Homeless Veterans (HCHV) — VA </h4>
+                <span class="subject">Homelessness &amp; Housing Assistance</span>
+              </div>
+              <div class="details"><p>VA outreach and case management for homeless veterans connecting them to VA healthcare, mental health, and housing services.</p><p>Phone: 1-877-424-3838</p><p>Website: <a href="https://www.va.gov/homeless/hchv.asp" target="_blank" rel="noopener">https://www.va.gov/homeless/hchv.asp</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="homelessness &amp; housing assistance  hud-vash (hud-va supportive housing) program combines hud housing choice vouchers with va case management for homeless veterans seeking permanent housing. phone: 1-877-424-3838 website: https://www.hud.gov/helping-americans/housing-choice-vouchers-homeless-veterans" data-letter="H">
+              <div class="card-top">
+                <h4>HUD-VASH (HUD-VA Supportive Housing) Program </h4>
+                <span class="subject">Homelessness &amp; Housing Assistance</span>
+              </div>
+              <div class="details"><p>Combines HUD Housing Choice Vouchers with VA case management for homeless veterans seeking permanent housing.</p><p>Phone: 1-877-424-3838</p><p>Website: <a href="https://www.hud.gov/helping-americans/housing-choice-vouchers-homeless-veterans" target="_blank" rel="noopener">https://www.hud.gov/helping-americans/housing-choice-vouchers-homeless-veterans</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="homelessness &amp; housing assistance  kentucky housing corporation (khc) — vett program veterans emerging towards transition — housing choice vouchers for qualifying homeless veterans in 87 ky counties. address: 1231 louisville rd, frankfort, ky 40601 phone: (502) 564-7630 | 1-800-633-8896 website: https://www.kyhousing.org/programs/pages/veterans-programs.aspx" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Housing Corporation (KHC) — VETT Program </h4>
+                <span class="subject">Homelessness &amp; Housing Assistance</span>
+              </div>
+              <div class="details"><p>Veterans Emerging Towards Transition — Housing Choice Vouchers for qualifying homeless veterans in 87 KY counties.</p><p>Address: 1231 Louisville Rd, Frankfort, KY 40601</p><p>Phone: (502) 564-7630 | 1-800-633-8896</p><p>Website: <a href="https://www.kyhousing.org/Programs/Pages/Veterans-Programs.aspx" target="_blank" rel="noopener">https://www.kyhousing.org/Programs/Pages/Veterans-Programs.aspx</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="homelessness &amp; housing assistance  kentucky river foothills development council — ssvf (serves laurel county) ssvf program covering laurel county — rental/utility deposits, eviction prevention, emergency rental assistance, and case management. address: richmond, ky (serves 21 counties including laurel) phone: (859) 408-7017 website: https://foothillscap.org/programs/supportive-services-for-veteran-families/" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky River Foothills Development Council — SSVF (Serves Laurel County) </h4>
+                <span class="subject">Homelessness &amp; Housing Assistance</span>
+              </div>
+              <div class="details"><p>SSVF program covering Laurel County — rental/utility deposits, eviction prevention, emergency rental assistance, and case management.</p><p>Address: Richmond, KY (serves 21 counties including Laurel)</p><p>Phone: (859) 408-7017</p><p>Website: <a href="https://foothillscap.org/programs/supportive-services-for-veteran-families/" target="_blank" rel="noopener">https://foothillscap.org/programs/supportive-services-for-veteran-families/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="homelessness &amp; housing assistance  national call center for homeless veterans — va 24/7 hotline connecting homeless or at-risk veterans to emergency shelter, supportive housing, health care, and other resources. phone: 1-877-424-3838 (24/7) website: https://www.va.gov/homeless/" data-letter="N">
+              <div class="card-top">
+                <h4>National Call Center for Homeless Veterans — VA </h4>
+                <span class="subject">Homelessness &amp; Housing Assistance</span>
+              </div>
+              <div class="details"><p>24/7 hotline connecting homeless or at-risk veterans to emergency shelter, supportive housing, health care, and other resources.</p><p>Phone: 1-877-424-3838 (24/7)</p><p>Website: <a href="https://www.va.gov/homeless/" target="_blank" rel="noopener">https://www.va.gov/homeless/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="homelessness &amp; housing assistance  va home loan program va-backed home loans with no down payment required, no pmi, and competitive rates for eligible veterans. phone: 1-877-827-3702 website: https://www.va.gov/housing-assistance/home-loans/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Home Loan Program </h4>
+                <span class="subject">Homelessness &amp; Housing Assistance</span>
+              </div>
+              <div class="details"><p>VA-backed home loans with no down payment required, no PMI, and competitive rates for eligible veterans.</p><p>Phone: 1-877-827-3702</p><p>Website: <a href="https://www.va.gov/housing-assistance/home-loans/" target="_blank" rel="noopener">https://www.va.gov/housing-assistance/home-loans/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="homelessness &amp; housing assistance  va specially adapted housing (sah) grant grants up to $109,986 (fy2024) for severely disabled veterans to build, buy, or modify a home for independent living. phone: 1-800-827-1000 website: https://www.va.gov/housing-assistance/disability-housing-grants/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Specially Adapted Housing (SAH) Grant </h4>
+                <span class="subject">Homelessness &amp; Housing Assistance</span>
+              </div>
+              <div class="details"><p>Grants up to $109,986 (FY2024) for severely disabled veterans to build, buy, or modify a home for independent living.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/housing-assistance/disability-housing-grants/" target="_blank" rel="noopener">https://www.va.gov/housing-assistance/disability-housing-grants/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="homelessness &amp; housing assistance  va supportive services for veteran families (ssvf) — national rapid re-housing and homelessness prevention including temporary rental assistance, deposits, and utility help for very low-income veteran families. phone: 1-877-424-3838 website: https://www.va.gov/homeless/ssvf/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Supportive Services for Veteran Families (SSVF) — National </h4>
+                <span class="subject">Homelessness &amp; Housing Assistance</span>
+              </div>
+              <div class="details"><p>Rapid re-housing and homelessness prevention including temporary rental assistance, deposits, and utility help for very low-income veteran families.</p><p>Phone: 1-877-424-3838</p><p>Website: <a href="https://www.va.gov/homeless/ssvf/" target="_blank" rel="noopener">https://www.va.gov/homeless/ssvf/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="homelessness &amp; housing assistance  volunteers of america (voa) mid-states — ssvf kentucky ssvf services promoting housing stability for very low-income veteran families — rental assistance, utility help, case management. address: lexington: 2473 fortune dr, ste 110, lexington, ky 40509 phone: (859) 254-3469 | louisville: (502) 384-0868 website: https://www.voamid.org/locations/supportive-services-for-veterans-and-families-program-kentucky/" data-letter="V">
+              <div class="card-top">
+                <h4>Volunteers of America (VOA) Mid-States — SSVF Kentucky </h4>
+                <span class="subject">Homelessness &amp; Housing Assistance</span>
+              </div>
+              <div class="details"><p>SSVF services promoting housing stability for very low-income veteran families — rental assistance, utility help, case management.</p><p>Address: Lexington: 2473 Fortune Dr, Ste 110, Lexington, KY 40509</p><p>Phone: (859) 254-3469 | Louisville: (502) 384-0868</p><p>Website: <a href="https://www.voamid.org/locations/supportive-services-for-veterans-and-families-program-kentucky/" target="_blank" rel="noopener">https://www.voamid.org/locations/supportive-services-for-veterans-and-families-program-kentucky/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="legal-services">
+      <div class="section-heading">
+        <h2>Legal Services</h2>
+        <span>4 resources</span>
+      </div>
+      
+            <article class="resource-card" data-search="legal services  (all original entries sorted a-z — no new additions)" data-letter="(">
+              <div class="card-top">
+                <h4>(All original entries sorted A-Z — no new additions) </h4>
+                <span class="subject">Legal Services</span>
+              </div>
+              <div class="details"></div>
+            </article>
+            
+            <article class="resource-card" data-search="legal services  kentucky office of veteran legal services — kdva ky state office partnering with legal agencies to provide legal services to veterans across the commonwealth. address: 1111b louisville rd, frankfort, ky 40601 phone: (502) 564-9203 website: https://veterans.ky.gov" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Office of Veteran Legal Services — KDVA </h4>
+                <span class="subject">Legal Services</span>
+              </div>
+              <div class="details"><p>KY state office partnering with legal agencies to provide legal services to veterans across the Commonwealth.</p><p>Address: 1111B Louisville Rd, Frankfort, KY 40601</p><p>Phone: (502) 564-9203</p><p>Website: <a href="https://veterans.ky.gov" target="_blank" rel="noopener">https://veterans.ky.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="legal services  legal aid of the bluegrass (serves laurel county) free civil legal services for low-income individuals including veterans in eastern kentucky. address: 301 e main st, lexington, ky 40507 phone: (859) 278-3551 | 1-800-928-4556 website: https://lablaw.org" data-letter="L">
+              <div class="card-top">
+                <h4>Legal Aid of the Bluegrass (Serves Laurel County) </h4>
+                <span class="subject">Legal Services</span>
+              </div>
+              <div class="details"><p>Free civil legal services for low-income individuals including veterans in eastern Kentucky.</p><p>Address: 301 E Main St, Lexington, KY 40507</p><p>Phone: (859) 278-3551 | 1-800-928-4556</p><p>Website: <a href="https://lablaw.org" target="_blank" rel="noopener">https://lablaw.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="legal services  va accredited claims agents &amp; attorneys directory of va-accredited attorneys and claims agents who can represent veterans in claims and appeals. phone: 1-800-827-1000 website: https://www.va.gov/ogc/accreditation.asp" data-letter="V">
+              <div class="card-top">
+                <h4>VA Accredited Claims Agents &amp; Attorneys </h4>
+                <span class="subject">Legal Services</span>
+              </div>
+              <div class="details"><p>Directory of VA-accredited attorneys and claims agents who can represent veterans in claims and appeals.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/ogc/accreditation.asp" target="_blank" rel="noopener">https://www.va.gov/ogc/accreditation.asp</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="special-programs-national-nonprofit-organizations">
+      <div class="section-heading">
+        <h2>Special Programs &amp; National Nonprofit Organizations</h2>
+        <span>18 resources</span>
+      </div>
+      <h3>National Organizations (Serving Kentucky Veterans)</h3>
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) american red cross military &amp; veteran caregiver network emergency communication, financial assistance, counseling referrals, and support for active duty, veterans, and families. phone: 1-877-272-7337 website: https://www.redcross.org/get-help/military-families.html" data-letter="A">
+              <div class="card-top">
+                <h4>American Red Cross Military &amp; Veteran Caregiver Network </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Emergency communication, financial assistance, counseling referrals, and support for active duty, veterans, and families.</p><p>Phone: 1-877-272-7337</p><p>Website: <a href="https://www.redcross.org/get-help/military-families.html" target="_blank" rel="noopener">https://www.redcross.org/get-help/military-families.html</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) amvets (american veterans) vso serving veterans of all eras — claims representation, scholarships, legislative advocacy, and community programs. address: 4647 forbes blvd, lanham, md 20706 phone: 1-877-726-8387 website: https://www.amvets.org" data-letter="A">
+              <div class="card-top">
+                <h4>AMVETS (American Veterans) </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>VSO serving veterans of all eras — claims representation, scholarships, legislative advocacy, and community programs.</p><p>Address: 4647 Forbes Blvd, Lanham, MD 20706</p><p>Phone: 1-877-726-8387</p><p>Website: <a href="https://www.amvets.org" target="_blank" rel="noopener">https://www.amvets.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) canine companions for independence (service dogs for veterans) provides highly trained assistance dogs for veterans with disabilities at no cost. address: north central training center serves kentucky phone: 1-800-572-2275 website: https://caninecompanions.org" data-letter="C">
+              <div class="card-top">
+                <h4>Canine Companions for Independence (Service Dogs for Veterans) </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Provides highly trained assistance dogs for veterans with disabilities at no cost.</p><p>Address: North Central Training Center serves Kentucky</p><p>Phone: 1-800-572-2275</p><p>Website: <a href="https://caninecompanions.org" target="_blank" rel="noopener">https://caninecompanions.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) dav (disabled american veterans) — transportation network free transportation to and from va medical appointments for disabled veterans through dav’s volunteer driver program. phone: 1-877-426-2838 website: https://www.dav.org/veterans/request-a-ride/" data-letter="D">
+              <div class="card-top">
+                <h4>DAV (Disabled American Veterans) — Transportation Network </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Free transportation to and from VA medical appointments for disabled veterans through DAV’s volunteer driver program.</p><p>Phone: 1-877-426-2838</p><p>Website: <a href="https://www.dav.org/veterans/request-a-ride/" target="_blank" rel="noopener">https://www.dav.org/veterans/request-a-ride/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) fisher house foundation free lodging for military and veteran families near va hospitals while loved ones receive treatment. phone: 1-888-294-8560 website: https://www.fisherhouse.org" data-letter="F">
+              <div class="card-top">
+                <h4>Fisher House Foundation </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Free lodging for military and veteran families near VA hospitals while loved ones receive treatment.</p><p>Phone: 1-888-294-8560</p><p>Website: <a href="https://www.fisherhouse.org" target="_blank" rel="noopener">https://www.fisherhouse.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) gary sinise foundation programs supporting severely wounded warriors, building smart homes for disabled veterans, and supporting first responders. phone: 1-310-893-0130 website: https://www.garysinisefoundation.org" data-letter="G">
+              <div class="card-top">
+                <h4>Gary Sinise Foundation </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Programs supporting severely wounded warriors, building smart homes for disabled veterans, and supporting first responders.</p><p>Phone: 1-310-893-0130</p><p>Website: <a href="https://www.garysinisefoundation.org" target="_blank" rel="noopener">https://www.garysinisefoundation.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) iraq &amp; afghanistan veterans of america (iava) advocacy and services for post-9/11 veterans including mental health, benefits navigation, and community connection. phone: 1-855-91-rapid (1-855-917-2743) website: https://iava.org" data-letter="I">
+              <div class="card-top">
+                <h4>Iraq &amp; Afghanistan Veterans of America (IAVA) </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Advocacy and services for post-9/11 veterans including mental health, benefits navigation, and community connection.</p><p>Phone: 1-855-91-RAPID (1-855-917-2743)</p><p>Website: <a href="https://iava.org" target="_blank" rel="noopener">https://iava.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) kentucky wounded heroes kentucky nonprofit providing outdoor healing activities (hunting, fishing, travel) to honor and support the emotional wellness of wounded veterans, first responders, and ems. address: p.o. box 43048, louisville, ky 40253 phone: contact via website website: https://kentuckywoundedheroes.net" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Wounded Heroes </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Kentucky nonprofit providing outdoor healing activities (hunting, fishing, travel) to honor and support the emotional wellness of wounded veterans, first responders, and EMS.</p><p>Address: P.O. Box 43048, Louisville, KY 40253</p><p>Phone: Contact via website</p><p>Website: <a href="https://kentuckywoundedheroes.net" target="_blank" rel="noopener">https://kentuckywoundedheroes.net</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) military order of the purple heart represents combat-wounded veterans in va claims and provides service programs. phone: 1-703-642-5360 website: https://www.purpleheart.org" data-letter="M">
+              <div class="card-top">
+                <h4>Military Order of the Purple Heart </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Represents combat-wounded veterans in VA claims and provides service programs.</p><p>Phone: 1-703-642-5360</p><p>Website: <a href="https://www.purpleheart.org" target="_blank" rel="noopener">https://www.purpleheart.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) mission continues connects veterans with volunteer service platoons, giving veterans a continued sense of purpose and community. phone: 1-314-588-8805 website: https://missioncontinues.org" data-letter="M">
+              <div class="card-top">
+                <h4>Mission Continues </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Connects veterans with volunteer service platoons, giving veterans a continued sense of purpose and community.</p><p>Phone: 1-314-588-8805</p><p>Website: <a href="https://missioncontinues.org" target="_blank" rel="noopener">https://missioncontinues.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) national veterans foundation crisis intervention, case management, and direct services for veterans in need via 24/7 toll-free helpline. phone: 1-888-777-4443 (lifeline for vets — 24/7) website: https://nvf.org" data-letter="N">
+              <div class="card-top">
+                <h4>National Veterans Foundation </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Crisis intervention, case management, and direct services for veterans in need via 24/7 toll-free helpline.</p><p>Phone: 1-888-777-4443 (Lifeline for Vets — 24/7)</p><p>Website: <a href="https://nvf.org" target="_blank" rel="noopener">https://nvf.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) operation homefront financial assistance, transitional housing, and long-term stability programs for military families including emergency relief. phone: 1-210-659-7756 website: https://www.operationhomefront.org" data-letter="O">
+              <div class="card-top">
+                <h4>Operation Homefront </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Financial assistance, transitional housing, and long-term stability programs for military families including emergency relief.</p><p>Phone: 1-210-659-7756</p><p>Website: <a href="https://www.operationhomefront.org" target="_blank" rel="noopener">https://www.operationhomefront.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) paralyzed veterans of america (pva) benefits advocacy and resources specifically for veterans with spinal cord injury or disease. address: 801 18th st nw, washington, dc 20006 phone: 1-800-424-8200 website: https://www.pva.org" data-letter="P">
+              <div class="card-top">
+                <h4>Paralyzed Veterans of America (PVA) </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Benefits advocacy and resources specifically for veterans with spinal cord injury or disease.</p><p>Address: 801 18th St NW, Washington, DC 20006</p><p>Phone: 1-800-424-8200</p><p>Website: <a href="https://www.pva.org" target="_blank" rel="noopener">https://www.pva.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) team red white &amp; blue (team rwb) physical and social activity programs connecting veterans to community. chapters across kentucky. phone: 1-877-809-7922 website: https://www.teamrwb.org" data-letter="T">
+              <div class="card-top">
+                <h4>Team Red White &amp; Blue (Team RWB) </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Physical and social activity programs connecting veterans to community. Chapters across Kentucky.</p><p>Phone: 1-877-809-7922</p><p>Website: <a href="https://www.teamrwb.org" target="_blank" rel="noopener">https://www.teamrwb.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) vfw — kentucky department state-level vfw coordination providing advocacy, claims help, community programs, and emergency grants. phone: 1-816-756-3390 (national) website: https://www.vfw.org" data-letter="V">
+              <div class="card-top">
+                <h4>VFW — Kentucky Department </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>State-level VFW coordination providing advocacy, claims help, community programs, and emergency grants.</p><p>Phone: 1-816-756-3390 (National)</p><p>Website: <a href="https://www.vfw.org" target="_blank" rel="noopener">https://www.vfw.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations national organizations (serving kentucky veterans) wounded warrior project (wwp) programs supporting post-9/11 injured veterans: mental health, career counseling, peer support, physical wellness, and family support. address: national hq: 4899 belfort rd, ste 300, jacksonville, fl 32256 phone: 1-888-997-2586 (wwp resource center) website: https://www.woundedwarriorproject.org" data-letter="W">
+              <div class="card-top">
+                <h4>Wounded Warrior Project (WWP) </h4>
+                <span class="subject">National Organizations (Serving Kentucky Veterans)</span>
+              </div>
+              <div class="details"><p>Programs supporting post-9/11 injured veterans: mental health, career counseling, peer support, physical wellness, and family support.</p><p>Address: National HQ: 4899 Belfort Rd, Ste 300, Jacksonville, FL 32256</p><p>Phone: 1-888-997-2586 (WWP Resource Center)</p><p>Website: <a href="https://www.woundedwarriorproject.org" target="_blank" rel="noopener">https://www.woundedwarriorproject.org</a></p></div>
+            </article>
+            <h3>Local VSO Chapters &amp; Peer Support (Laurel County)</h3>
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations local vso chapters &amp; peer support (laurel county) dav chapter #66 — london, ky (already listed above in section 1 — duplicate for reference)" data-letter="D">
+              <div class="card-top">
+                <h4>DAV Chapter #66 — London, KY <span class="badge">New</span></h4>
+                <span class="subject">Local VSO Chapters &amp; Peer Support (Laurel County)</span>
+              </div>
+              <div class="details"><p>(Already listed above in Section 1 — duplicate for reference)</p></div>
+            </article>
+            
+            <article class="resource-card" data-search="special programs &amp; national nonprofit organizations local vso chapters &amp; peer support (laurel county) vietnam veterans of america (vva) chapter #1050 — london, ky active local chapter serving vietnam-era and all-era veterans with advocacy, camaraderie, and community programs. mailing address: p.o. box 1168, london, ky 40743 phone: (606) 862-9440 email: pjtuta@aol.com website: https://vva.org/chapter/vva-chapter-1050/" data-letter="V">
+              <div class="card-top">
+                <h4>Vietnam Veterans of America (VVA) Chapter #1050 — London, KY <span class="badge">New</span></h4>
+                <span class="subject">Local VSO Chapters &amp; Peer Support (Laurel County)</span>
+              </div>
+              <div class="details"><p>Active local chapter serving Vietnam-era and all-era veterans with advocacy, camaraderie, and community programs.</p><p>Mailing Address: P.O. Box 1168, London, KY 40743</p><p>Phone: (606) 862-9440</p><p>Email: <a href="mailto:pjtuta@aol.com">pjtuta@aol.com</a></p><p>Website: <a href="https://vva.org/chapter/vva-chapter-1050/" target="_blank" rel="noopener">https://vva.org/chapter/vva-chapter-1050/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="substance-use-addiction-recovery">
+      <div class="section-heading">
+        <h2>Substance Use &amp; Addiction Recovery</h2>
+        <span>2 resources</span>
+      </div>
+      
+            <article class="resource-card" data-search="substance use &amp; addiction recovery  samhsa veterans mental health &amp; substance use resources national treatment referral, information, and support services for veterans struggling with substance use and mental health issues. phone: 1-800-662-4357 (24/7) website: https://www.samhsa.gov/find-support/how-to-cope/veterans" data-letter="S">
+              <div class="card-top">
+                <h4>SAMHSA Veterans Mental Health &amp; Substance Use Resources </h4>
+                <span class="subject">Substance Use &amp; Addiction Recovery</span>
+              </div>
+              <div class="details"><p>National treatment referral, information, and support services for veterans struggling with substance use and mental health issues.</p><p>Phone: 1-800-662-4357 (24/7)</p><p>Website: <a href="https://www.samhsa.gov/find-support/how-to-cope/veterans" target="_blank" rel="noopener">https://www.samhsa.gov/find-support/how-to-cope/veterans</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="substance use &amp; addiction recovery  va substance use disorder (sud) treatment locator va provides residential, intensive outpatient, and outpatient sud treatment for alcohol, opioids, and other substances. phone: 1-800-827-1000 website: https://www.va.gov/health-care/health-needs-conditions/substance-use-problems/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Substance Use Disorder (SUD) Treatment Locator </h4>
+                <span class="subject">Substance Use &amp; Addiction Recovery</span>
+              </div>
+              <div class="details"><p>VA provides residential, intensive outpatient, and outpatient SUD treatment for alcohol, opioids, and other substances.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/health-care/health-needs-conditions/substance-use-problems/" target="_blank" rel="noopener">https://www.va.gov/health-care/health-needs-conditions/substance-use-problems/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="transportation-to-va-appointments">
+      <div class="section-heading">
+        <h2>Transportation To Va Appointments</h2>
+        <span>3 resources</span>
+      </div>
+      
+            <article class="resource-card" data-search="transportation to va appointments  dav transportation network — free rides to va appointments dav coordinates volunteer drivers to provide free transportation for veterans who have no other way to get to their va medical appointments. phone: 1-877-426-2838 website: https://www.dav.org/veterans/request-a-ride/" data-letter="D">
+              <div class="card-top">
+                <h4>DAV Transportation Network — Free Rides to VA Appointments </h4>
+                <span class="subject">Transportation To Va Appointments</span>
+              </div>
+              <div class="details"><p>DAV coordinates volunteer drivers to provide free transportation for veterans who have no other way to get to their VA medical appointments.</p><p>Phone: 1-877-426-2838</p><p>Website: <a href="https://www.dav.org/veterans/request-a-ride/" target="_blank" rel="noopener">https://www.dav.org/veterans/request-a-ride/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="transportation to va appointments  kdva transportation for veterans — medical/behavioral health kentucky state program providing transportation assistance for veterans to reach medical and behavioral health appointments. phone: (502) 564-9203 website: https://veterans.ky.gov" data-letter="K">
+              <div class="card-top">
+                <h4>KDVA Transportation for Veterans — Medical/Behavioral Health </h4>
+                <span class="subject">Transportation To Va Appointments</span>
+              </div>
+              <div class="details"><p>Kentucky state program providing transportation assistance for veterans to reach medical and behavioral health appointments.</p><p>Phone: (502) 564-9203</p><p>Website: <a href="https://veterans.ky.gov" target="_blank" rel="noopener">https://veterans.ky.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="transportation to va appointments  va beneficiary travel (mileage reimbursement) va reimburses eligible veterans for travel costs to va appointments. phone: contact somerset va: (606) 676-0786 or lexington va: (859) 233-4511 website: https://www.va.gov/health-care/get-reimbursed-for-travel-pay/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Beneficiary Travel (Mileage Reimbursement) </h4>
+                <span class="subject">Transportation To Va Appointments</span>
+              </div>
+              <div class="details"><p>VA reimburses eligible veterans for travel costs to VA appointments.</p><p>Phone: Contact Somerset VA: (606) 676-0786 or Lexington VA: (859) 233-4511</p><p>Website: <a href="https://www.va.gov/health-care/get-reimbursed-for-travel-pay/" target="_blank" rel="noopener">https://www.va.gov/health-care/get-reimbursed-for-travel-pay/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="veteran-identification-records">
+      <div class="section-heading">
+        <h2>Veteran Identification &amp; Records</h2>
+        <span>3 resources</span>
+      </div>
+      
+            <article class="resource-card" data-search="veteran identification &amp; records  dd-214 records request — national archives request copies of military discharge papers (dd-214) and other service records essential for benefits applications. address: national personnel records center, 1 archives dr, st. louis, mo 63138 phone: 1-314-801-0800 website: https://www.archives.gov/veterans/military-service-records" data-letter="D">
+              <div class="card-top">
+                <h4>DD-214 Records Request — National Archives </h4>
+                <span class="subject">Veteran Identification &amp; Records</span>
+              </div>
+              <div class="details"><p>Request copies of military discharge papers (DD-214) and other service records essential for benefits applications.</p><p>Address: National Personnel Records Center, 1 Archives Dr, St. Louis, MO 63138</p><p>Phone: 1-314-801-0800</p><p>Website: <a href="https://www.archives.gov/veterans/military-service-records" target="_blank" rel="noopener">https://www.archives.gov/veterans/military-service-records</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="veteran identification &amp; records  kentucky veteran designation on driver’s license veterans can have ‘veteran’ designation added to their ky driver’s license or id card as proof of service. address: apply at any ky circuit court clerk / dmv office phone: ky transportation cabinet: (502) 564-1257 website: https://transportation.ky.gov" data-letter="K">
+              <div class="card-top">
+                <h4>Kentucky Veteran Designation on Driver’s License </h4>
+                <span class="subject">Veteran Identification &amp; Records</span>
+              </div>
+              <div class="details"><p>Veterans can have ‘VETERAN’ designation added to their KY driver’s license or ID card as proof of service.</p><p>Address: Apply at any KY Circuit Court Clerk / DMV Office</p><p>Phone: KY Transportation Cabinet: (502) 564-1257</p><p>Website: <a href="https://transportation.ky.gov" target="_blank" rel="noopener">https://transportation.ky.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="veteran identification &amp; records  va veteran id card (vic) official va-issued photo id for veterans with honorable discharge. free and accepted as proof of service at many businesses for discounts. phone: 1-800-827-1000 website: https://www.va.gov/records/get-veteran-id-cards/vic/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Veteran ID Card (VIC) </h4>
+                <span class="subject">Veteran Identification &amp; Records</span>
+              </div>
+              <div class="details"><p>Official VA-issued photo ID for veterans with honorable discharge. Free and accepted as proof of service at many businesses for discounts.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/records/get-veteran-id-cards/vic/" target="_blank" rel="noopener">https://www.va.gov/records/get-veteran-id-cards/vic/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="women-veterans-resources">
+      <div class="section-heading">
+        <h2>Women Veterans Resources</h2>
+        <span>3 resources</span>
+      </div>
+      
+            <article class="resource-card" data-search="women veterans resources  kdva women veterans programs kentucky state programs and outreach specifically addressing the unique needs of women veterans. address: 1111b louisville rd, frankfort, ky 40601 phone: (502) 564-9203 website: https://veterans.ky.gov" data-letter="K">
+              <div class="card-top">
+                <h4>KDVA Women Veterans Programs </h4>
+                <span class="subject">Women Veterans Resources</span>
+              </div>
+              <div class="details"><p>Kentucky state programs and outreach specifically addressing the unique needs of women veterans.</p><p>Address: 1111B Louisville Rd, Frankfort, KY 40601</p><p>Phone: (502) 564-9203</p><p>Website: <a href="https://veterans.ky.gov" target="_blank" rel="noopener">https://veterans.ky.gov</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="women veterans resources  va military sexual trauma (mst) counseling free counseling for any veteran who experienced military sexual trauma — regardless of when it occurred or whether reported. phone: 1-800-827-1000 website: https://www.va.gov/health-care/health-needs-conditions/military-sexual-trauma/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Military Sexual Trauma (MST) Counseling </h4>
+                <span class="subject">Women Veterans Resources</span>
+              </div>
+              <div class="details"><p>Free counseling for any veteran who experienced military sexual trauma — regardless of when it occurred or whether reported.</p><p>Phone: 1-800-827-1000</p><p>Website: <a href="https://www.va.gov/health-care/health-needs-conditions/military-sexual-trauma/" target="_blank" rel="noopener">https://www.va.gov/health-care/health-needs-conditions/military-sexual-trauma/</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="women veterans resources  va women veterans call center dedicated line for women veterans to ask questions about va benefits, health care, military sexual trauma (mst), and services. phone: 1-855-829-6636 (mon–fri, 8am–10pm | sat 8am–6:30pm et) website: https://www.va.gov/womenvet/" data-letter="V">
+              <div class="card-top">
+                <h4>VA Women Veterans Call Center </h4>
+                <span class="subject">Women Veterans Resources</span>
+              </div>
+              <div class="details"><p>Dedicated line for women veterans to ask questions about VA benefits, health care, Military Sexual Trauma (MST), and services.</p><p>Phone: 1-855-829-6636 (Mon–Fri, 8AM–10PM | Sat 8AM–6:30PM ET)</p><p>Website: <a href="https://www.va.gov/womenvet/" target="_blank" rel="noopener">https://www.va.gov/womenvet/</a></p></div>
+            </article>
+            
+    </section>
+    
+    <section class="resource-section" id="local-county-resources-laurel-county-ky">
+      <div class="section-heading">
+        <h2>Local &amp; County Resources — Laurel County, Ky</h2>
+        <span>7 resources</span>
+      </div>
+      
+            <article class="resource-card" data-search="local &amp; county resources — laurel county, ky  big sandy area community action program (bigsandy cap) community action programs in the eastern kentucky region connecting low-income residents and veterans to utility assistance, food, and housing resources. address: eastern ky region phone: (606) 886-2374 website: contact regional cap agencies" data-letter="B">
+              <div class="card-top">
+                <h4>Big Sandy Area Community Action Program (BIGSANDY CAP) </h4>
+                <span class="subject">Local &amp; County Resources — Laurel County, Ky</span>
+              </div>
+              <div class="details"><p>Community action programs in the eastern Kentucky region connecting low-income residents and veterans to utility assistance, food, and housing resources.</p><p>Address: Eastern KY region</p><p>Phone: (606) 886-2374</p><p>Website: Contact regional CAP agencies</p></div>
+            </article>
+            
+            <article class="resource-card" data-search="local &amp; county resources — laurel county, ky  end of complete guide total resources: 85+ (original + all new additions) last updated: may 29, 2026" data-letter="E">
+              <div class="card-top">
+                <h4>END OF COMPLETE GUIDE </h4>
+                <span class="subject">Local &amp; County Resources — Laurel County, Ky</span>
+              </div>
+              <div class="details"><p>Total Resources: 85+ (Original + All New Additions)</p><p>Last Updated: May 29, 2026</p></div>
+            </article>
+            
+            <article class="resource-card" data-search="local &amp; county resources — laurel county, ky  laurel county judge-executive’s office county government resource for local programs, emergency assistance referrals, and community services for laurel county residents including veterans. address: 203 s main st, london, ky 40741 phone: (606) 864-5158 website: https://www.laurelcounty.org" data-letter="L">
+              <div class="card-top">
+                <h4>Laurel County Judge-Executive’s Office </h4>
+                <span class="subject">Local &amp; County Resources — Laurel County, Ky</span>
+              </div>
+              <div class="details"><p>County government resource for local programs, emergency assistance referrals, and community services for Laurel County residents including veterans.</p><p>Address: 203 S Main St, London, KY 40741</p><p>Phone: (606) 864-5158</p><p>Website: <a href="https://www.laurelcounty.org" target="_blank" rel="noopener">https://www.laurelcounty.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="local &amp; county resources — laurel county, ky  laurel county public library free internet access, printing, and public resources for veterans seeking online benefits applications, research, or community connections. address: 116 e 4th st, london, ky 40741 phone: (606) 864-5759 website: https://laurellibrary.org" data-letter="L">
+              <div class="card-top">
+                <h4>Laurel County Public Library </h4>
+                <span class="subject">Local &amp; County Resources — Laurel County, Ky</span>
+              </div>
+              <div class="details"><p>Free internet access, printing, and public resources for veterans seeking online benefits applications, research, or community connections.</p><p>Address: 116 E 4th St, London, KY 40741</p><p>Phone: (606) 864-5759</p><p>Website: <a href="https://laurellibrary.org" target="_blank" rel="noopener">https://laurellibrary.org</a></p></div>
+            </article>
+            
+            <article class="resource-card" data-search="local &amp; county resources — laurel county, ky  quick reference — most important phone numbers (updated may 2026)" data-letter="Q">
+              <div class="card-top">
+                <h4>QUICK REFERENCE — MOST IMPORTANT PHONE NUMBERS (Updated May 2026) </h4>
+                <span class="subject">Local &amp; County Resources — Laurel County, Ky</span>
+              </div>
+              <div class="details"></div>
+            </article>
+            
+            <article class="resource-card" data-search="local &amp; county resources — laurel county, ky  this document contains every single resource discussed or added today in one complete, alphabetical-within-section format." data-letter="T">
+              <div class="card-top">
+                <h4>This document contains every single resource discussed or added today in one complete, alphabetical-within-section format. </h4>
+                <span class="subject">Local &amp; County Resources — Laurel County, Ky</span>
+              </div>
+              <div class="details"></div>
+            </article>
+            
+            <article class="resource-card" data-search="local &amp; county resources — laurel county, ky  united way of laurel county / 211 helpline local 211 helpline connecting laurel county residents including veterans with health, human services, housing, food, and financial assistance. address: london, ky area phone: dial 2-1-1 website: https://uwbg211.org" data-letter="U">
+              <div class="card-top">
+                <h4>United Way of Laurel County / 211 Helpline </h4>
+                <span class="subject">Local &amp; County Resources — Laurel County, Ky</span>
+              </div>
+              <div class="details"><p>Local 211 helpline connecting Laurel County residents including veterans with health, human services, housing, food, and financial assistance.</p><p>Address: London, KY area</p><p>Phone: Dial 2-1-1</p><p>Website: <a href="https://uwbg211.org" target="_blank" rel="noopener">https://uwbg211.org</a></p></div>
+            </article>
+            
+    </section>
+    
+</main>
+
+<footer>
+  <p>This page is organized from the uploaded Veteran Resources Guide. Please verify urgent, legal, medical, and benefits information directly with the listed agency before taking action.</p>
+</footer>
+
+<script>
+const searchInput = document.getElementById('resourceSearch');
+const clearBtn = document.getElementById('clearSearch');
+const cards = Array.from(document.querySelectorAll('.resource-card'));
+const sections = Array.from(document.querySelectorAll('.resource-section'));
+const resultCount = document.getElementById('resultCount');
+const noResults = document.getElementById('noResults');
+const letterButtons = Array.from(document.querySelectorAll('[data-letter]'));
+let activeLetter = 'all';
+
+function filterResources() {
+  const query = searchInput.value.trim().toLowerCase();
+  let visible = 0;
+
+  cards.forEach(card => {
+    const matchesQuery = !query || card.dataset.search.includes(query);
+    const name = card.querySelector('h4').innerText.trim().replace(/^The\s+/i,'').replace(/^A\s+/i,'').replace(/^An\s+/i,'');
+    const matchesLetter = activeLetter === 'all' || name.charAt(0).toUpperCase() === activeLetter;
+    const show = matchesQuery && matchesLetter;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+
+  sections.forEach(section => {
+    const hasVisibleCards = Array.from(section.querySelectorAll('.resource-card')).some(card => card.style.display !== 'none');
+    section.style.display = hasVisibleCards ? '' : 'none';
+    section.querySelectorAll('h3').forEach(h3 => {
+      let sibling = h3.nextElementSibling, hasVisible = false;
+      while (sibling && sibling.tagName !== 'H3') {
+        if (sibling.classList && sibling.classList.contains('resource-card') && sibling.style.display !== 'none') {
+          hasVisible = true; break;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      h3.style.display = hasVisible ? '' : 'none';
+    });
+  });
+
+  resultCount.textContent = `${visible} resource${visible === 1 ? '' : 's'} shown`;
+  noResults.style.display = visible ? 'none' : 'block';
+}
+
+searchInput.addEventListener('input', filterResources);
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  activeLetter = 'all';
+  letterButtons.forEach(btn => btn.classList.remove('active'));
+  filterResources();
+  searchInput.focus();
+});
+letterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeLetter = btn.dataset.letter;
+    letterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterResources();
+  });
+});
+
+function scrollToHashTarget(hash, behavior = 'smooth') {
+  const target = document.querySelector(hash);
+  if (!target) return;
+  const rail = document.querySelector('.site-rail');
+  const offset = (rail ? rail.offsetHeight : 0) + 22;
+  const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({ top: Math.max(0, top), behavior });
+}
+
+function updateRailOffset() {
+  const rail = document.querySelector('.site-rail');
+  if (!rail) return;
+  document.documentElement.style.setProperty('--rail-offset', `${rail.offsetHeight}px`);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', event => {
+    const hash = link.getAttribute('href');
+    if (!hash || hash === '#') return;
+    event.preventDefault();
+    history.pushState(null, '', hash);
+    scrollToHashTarget(hash);
+  });
+});
+
+window.addEventListener('load', () => {
+  updateRailOffset();
+  if (window.location.hash) {
+    setTimeout(() => scrollToHashTarget(window.location.hash, 'auto'), 250);
+  }
+});
+window.addEventListener('resize', updateRailOffset);
+filterResources();
+</script>
+</body>
+</html>

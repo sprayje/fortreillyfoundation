@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop | Fort Reilly Foundation</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="shop-page">
+    <header class="shop-nav" aria-label="Main navigation">
+      <a class="shop-brand" href="index.html">
+        <img src="assets/fort-reilly-logo-cropped.jpeg" alt="Fort Reilly Foundation">
+      </a>
+      <nav>
+        <a href="index.html">AI Chatbot</a>
+        <a href="veteran-resources.html">Veteran Resources</a>
+        <a aria-current="page" href="shop.html">Shop</a>
+      </nav>
+      <button id="cartOpen" class="cart-button" type="button" aria-controls="cartDrawer" aria-expanded="false">
+        Cart <span id="cartBadge">0</span>
+      </button>
+    </header>
+
+    <main class="storefront">
+      <section class="storefront-heading">
+        <p>Fort Reilly Foundation</p>
+        <h1>Apparel Shop</h1>
+      </section>
+
+      <section id="productGrid" class="nike-grid" aria-live="polite"></section>
+      <p id="shopEmpty" class="shop-empty hidden">Products are ready to be added. Send the first product name, images, Stripe Price IDs, colors, and sizes.</p>
+    </main>
+
+    <div id="cartOverlay" class="cart-overlay hidden"></div>
+    <aside id="cartDrawer" class="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+      <header>
+        <div>
+          <p>Shopping Bag</p>
+          <h2 id="cartTitle">0 Items</h2>
+        </div>
+        <button id="cartClose" class="icon-close" type="button" aria-label="Close cart">x</button>
+      </header>
+
+      <div id="cartLines" class="cart-lines"></div>
+
+      <footer>
+        <div class="cart-summary">
+          <span>Estimated subtotal</span>
+          <strong id="cartSubtotal">$0.00</strong>
+        </div>
+        <p id="cartStatus" class="cart-status" role="status"></p>
+        <button id="checkoutButton" class="checkout-button" type="button" disabled>Checkout</button>
+      </footer>
+    </aside>
+
+    <script src="js/shop.js"></script>
+  </body>
+</html>

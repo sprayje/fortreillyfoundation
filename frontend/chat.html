@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat | Fort Reilly Foundation</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="chat-page">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="trivia-logo trivia-logo-small" aria-label="Mandatory Trivia">
+          <span class="trivia-logo-top">Mandatory</span>
+          <strong>Trivia</strong>
+        </div>
+        <span>Fort Reilly Foundation Chat</span>
+      </div>
+      <nav>
+        <a id="adminLink" class="nav-link hidden" href="admin.html">Admin</a>
+        <button id="logoutBtn" class="ghost-btn" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <main class="chat-layout">
+      <aside class="sidebar">
+        <h2>Rooms</h2>
+        <div id="roomList" class="room-list"></div>
+      </aside>
+
+      <section class="conversation">
+        <div class="room-heading">
+          <div>
+            <h1 id="roomName">Select a room</h1>
+            <p id="roomTopic"></p>
+          </div>
+          <span id="roomStatus" class="status-pill"></span>
+        </div>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <p id="typingNotice" class="typing"></p>
+
+        <form id="messageForm" class="composer">
+          <button id="emojiBtn" class="icon-btn" type="button" title="Add emoji">+</button>
+          <input id="messageInput" type="text" placeholder="Write a message..." maxlength="2000" autocomplete="off">
+          <input id="gifInput" type="url" placeholder="GIF URL" aria-label="GIF URL">
+          <input id="fileInput" type="file" aria-label="Attach file">
+          <button class="primary-btn compact" type="submit">Send</button>
+        </form>
+      </section>
+
+      <aside class="sidebar">
+        <h2>Online</h2>
+        <div id="onlineList" class="user-list"></div>
+        <h2>Direct Message</h2>
+        <form id="dmForm" class="dm-form">
+          <select id="dmUser"></select>
+          <input id="dmBody" type="text" placeholder="Private message" maxlength="2000">
+          <button class="secondary-btn" type="submit">Send DM</button>
+        </form>
+        <div id="dmList" class="dm-list"></div>
+      </aside>
+    </main>
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="js/chat.js"></script>
+  </body>
+</html>

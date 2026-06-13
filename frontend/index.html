@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fort Reilly Foundation Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="auth-page">
+    <header class="public-site-nav" aria-label="Main navigation">
+      <a class="public-brand" href="index.html">
+        <img src="assets/fort-reilly-logo-cropped.jpeg" alt="Fort Reilly Foundation">
+      </a>
+      <nav>
+        <a class="public-nav-link public-nav-link-dark" href="index.html">AI Chatbot</a>
+        <a class="public-nav-link" href="veteran-resources.html">Veteran Resources</a>
+        <a class="public-nav-link" href="shop.html">Shop</a>
+      </nav>
+    </header>
+
+    <main class="auth-shell ai-shell">
+      <section class="brand-panel ai-brand-panel">
+        <img class="foundation-logo-large" src="assets/general-chatbot.png" alt="Fort Reilly Foundation AI Chatbot">
+        <p class="eyebrow">Fort Reilly Foundation</p>
+        <h1>AI Chatbot</h1>
+        <p>Ask questions about Fort Reilly Foundation resources, veteran support, benefits, events, and next steps.</p>
+      </section>
+
+      <section class="auth-card ai-chat-card" aria-label="AI chatbot">
+        <div id="aiMessages" class="ai-messages" aria-live="polite">
+          <article class="ai-message assistant">
+            <strong>Fort Reilly AI</strong>
+            <p>Hi, I am here. What can I help you find today?</p>
+          </article>
+        </div>
+
+        <form id="aiChatForm" class="ai-chat-form">
+          <label class="hidden" for="aiPrompt">Message</label>
+          <textarea id="aiPrompt" name="message" placeholder="Ask the Fort Reilly AI..." maxlength="2000" required></textarea>
+          <button class="primary-btn" type="submit">Send</button>
+        </form>
+
+        <p id="aiStatus" class="notice" role="status"></p>
+      </section>
+    </main>
+
+    <script src="js/ai-chatbot.js"></script>
+  </body>
+</html>

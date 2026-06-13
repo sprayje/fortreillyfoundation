@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo | Fort Reilly Foundation Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="chat-page">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="trivia-logo trivia-logo-small" aria-label="Mandatory Trivia">
+          <span class="trivia-logo-top">Mandatory</span>
+          <strong>Trivia</strong>
+        </div>
+        <span>Fort Reilly Foundation Demo</span>
+      </div>
+      <nav>
+        <a class="nav-link" href="admin.html">Admin</a>
+        <button class="ghost-btn" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <main class="chat-layout">
+      <aside class="sidebar">
+        <h2>Rooms</h2>
+        <div class="room-list">
+          <button class="room-button" type="button"><strong>General</strong><span>Foundation community discussion</span></button>
+          <button class="room-button" type="button"><strong>Volunteer Ops</strong><span>Private planning room</span></button>
+          <button class="room-button" type="button"><strong>Events</strong><span>Upcoming ceremonies and fundraisers</span></button>
+          <button class="room-button" type="button"><strong>Moderator Desk</strong><span>Locked admin/moderator room</span></button>
+        </div>
+      </aside>
+
+      <section class="conversation">
+        <div class="room-heading">
+          <div>
+            <h1>General</h1>
+            <p>A public room for Fort Reilly Foundation members and supporters.</p>
+          </div>
+          <span class="status-pill">Public</span>
+        </div>
+
+        <div class="messages">
+          <article class="message">
+            <header><strong>Foundation Admin</strong><span>9:14 AM</span></header>
+            <p>Welcome to the new Fort Reilly Foundation chatroom. Rooms, moderation, uploads, and private messages are all ready to connect to the backend.</p>
+          </article>
+          <article class="message">
+            <header><strong>Volunteer Lead</strong><span>9:18 AM</span></header>
+            <p>Event planning notes are moving into the Events room. The private ops room is reserved for approved volunteers.</p>
+            <a class="attachment" href="#">ceremony-schedule.pdf</a>
+          </article>
+          <article class="message">
+            <header><strong>Moderator</strong><span>9:20 AM</span></header>
+            <p>Typing indicators, message history, timestamps, online members, GIF URLs, and uploads are represented here.</p>
+          </article>
+          <article class="message deleted">
+            <header><strong>Member</strong><span>9:22 AM</span></header>
+            <p><em>Message deleted</em></p>
+          </article>
+        </div>
+        <p class="typing">Volunteer Lead is typing...</p>
+
+        <form class="composer">
+          <button class="icon-btn" type="button" title="Add emoji">+</button>
+          <input type="text" placeholder="Write a message..." value="Looks sharp.">
+          <input type="url" placeholder="GIF URL">
+          <input type="file" aria-label="Attach file">
+          <button class="primary-btn compact" type="button">Send</button>
+        </form>
+      </section>
+
+      <aside class="sidebar">
+        <h2>Online</h2>
+        <div class="user-list">
+          <div class="user-row">Foundation Admin (admin)</div>
+          <div class="user-row">Moderator (moderator)</div>
+          <div class="user-row">Volunteer Lead (user)</div>
+        </div>
+        <h2>Direct Message</h2>
+        <form class="dm-form">
+          <select>
+            <option>Volunteer Lead</option>
+            <option>Moderator</option>
+          </select>
+          <input type="text" placeholder="Private message" value="Can you review the room list?">
+          <button class="secondary-btn" type="button">Send DM</button>
+        </form>
+        <div class="dm-list">
+          <div class="dm-message"><strong>Moderator to Foundation Admin</strong><p>Private messages appear here during the session.</p></div>
+        </div>
+      </aside>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin | Fort Reilly Foundation Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="admin-page">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="trivia-logo trivia-logo-small" aria-label="Mandatory Trivia">
+          <span class="trivia-logo-top">Mandatory</span>
+          <strong>Trivia</strong>
+        </div>
+        <span>Admin Panel</span>
+      </div>
+      <nav>
+        <a class="nav-link" href="chat.html">Chat</a>
+        <button id="logoutBtn" class="ghost-btn" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <main class="admin-grid">
+      <section class="admin-section">
+        <h1>Rooms</h1>
+        <form id="roomForm" class="stack-form">
+          <input type="hidden" name="roomId">
+          <label>Name <input name="name" required></label>
+          <label>Slug <input name="slug"></label>
+          <label>Topic <input name="topic" maxlength="180"></label>
+          <label>Description <textarea name="description" maxlength="800"></textarea></label>
+          <label class="check-row"><input name="isPrivate" type="checkbox"> Private room</label>
+          <label class="check-row"><input name="locked" type="checkbox"> Locked room</label>
+          <div class="form-actions">
+            <button class="primary-btn" type="submit">Save room</button>
+            <button id="resetRoomForm" class="ghost-btn" type="button">New</button>
+          </div>
+        </form>
+        <div id="adminRooms" class="admin-list"></div>
+      </section>
+
+      <section class="admin-section">
+        <h1>Users</h1>
+        <div id="adminUsers" class="admin-list"></div>
+      </section>
+
+      <section class="admin-section wide">
+        <h1>Recent Messages</h1>
+        <div id="adminMessages" class="admin-list"></div>
+      </section>
+    </main>
+
+    <script src="js/admin.js"></script>
+  </body>
+</html>
