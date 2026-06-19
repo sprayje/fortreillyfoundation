@@ -1,158 +1,527 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fort Reilly Foundation</title>
-    <style>
-      :root {
-        --black: #0b0b0b;
-        --tan: #c7a34a;
-        --tan-dark: #9b7628;
-        --white: #ffffff;
-        --line: #ded8cc;
-      }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fort Reilly Foundation | Honoring Sacrifice, Serving Those Who Served</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+    :root {
+      --black: #0a0a0a;
+      --gold: #C9A962;
+      --gold-dark: #a88a4a;
+      --white: #f8f5f0;
+      --olive: #3d4f2f;
+      --charcoal: #1a1a1a;
+    }
+    body {
+      font-family: 'Inter', system_ui, sans-serif;
+    }
+    .heading-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .military-gold {
+      color: var(--gold);
+    }
+    .section-dark {
+      background-color: var(--black);
+      color: var(--white);
+    }
+    .gold-btn {
+      background-color: var(--gold);
+      color: var(--black);
+      font-weight: 700;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .gold-btn:hover {
+      background-color: var(--gold-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+    }
+    .nav-link {
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover {
+      color: var(--gold);
+    }
+    .floating-donate {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+    }
+    .modal {
+      animation: modalPop 0.2s ease-out forwards;
+    }
+    @keyframes modalPop {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .tribute-bg {
+      background: linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.92)), url('frontend/assets/tj-hero.PNG');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .stat-number {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-[#f8f5f0]">
+  <!-- NAV -->
+  <nav class="border-b border-[#C9A962]/30 bg-[#0a0a0a]/95 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-x-3">
+          <img src="frontend/assets/fort-reilly-logo-cropped.jpeg" alt="Fort Reilly Foundation Logo" class="h-12 w-auto">
+          <div>
+            <span class="font-bold text-2xl tracking-tighter">FORT REILLY</span>
+            <span class="block text-[10px] text-[#C9A962] -mt-1 tracking-[3px]">FOUNDATION</span>
+          </div>
+        </a>
 
-      * {
-        box-sizing: border-box;
-      }
+        <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+          <a href="index.html" class="nav-link text-[#f8f5f0] hover:text-[#C9A962]">HOME</a>
+          <a href="frontend/shop.html" class="nav-link text-[#f8f5f0] hover:text-[#C9A962]">SHOP</a>
+          <a href="veteran-resources.html" class="nav-link text-[#f8f5f0] hover:text-[#C9A962]">RESOURCES</a>
+          <a href="#raffles" class="nav-link text-[#f8f5f0] hover:text-[#C9A962]">RAFFLES</a>
+          <a href="frontend/index.html" class="nav-link text-[#f8f5f0] hover:text-[#C9A962]">AI CHAT</a>
+        </div>
 
-      body {
-        margin: 0;
-        background: var(--white);
-        color: var(--black);
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      .main-nav {
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
-        align-items: center;
-        padding: 14px clamp(16px, 4vw, 48px);
-        border-bottom: 3px solid var(--tan);
-        background: var(--white);
-      }
-
-      .brand,
-      .nav-button {
-        font-weight: 900;
-        text-decoration: none;
-      }
-
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        color: var(--black);
-      }
-
-      .brand img {
-        display: block;
-        width: clamp(150px, 25vw, 260px);
-        height: auto;
-        max-height: 58px;
-        object-fit: contain;
-      }
-
-      .main-nav nav {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-      }
-
-      .nav-button {
-        display: inline-flex;
-        min-height: 44px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 7px;
-        background: var(--tan);
-        color: var(--black);
-        padding: 0 16px;
-        border: 1px solid var(--tan-dark);
-        white-space: nowrap;
-      }
-
-      .nav-button.secondary {
-        background: var(--black);
-        color: var(--tan);
-        border-color: var(--black);
-      }
-
-      .home {
-        min-height: calc(100vh - 75px);
-        display: grid;
-        place-items: center;
-        padding: 48px 18px;
-        text-align: center;
-      }
-
-      .home img {
-        width: min(620px, 100%);
-        height: auto;
-        max-height: 320px;
-        object-fit: contain;
-        margin-bottom: 32px;
-      }
-
-      .home h1 {
-        margin: 0;
-        font-size: clamp(2.2rem, 7vw, 5rem);
-        line-height: 0.98;
-      }
-
-      @media (max-width: 620px) {
-        .main-nav {
-          padding: 10px;
-          gap: 10px;
-        }
-
-        .brand img {
-          width: clamp(118px, 34vw, 170px);
-          max-height: 42px;
-        }
-
-        .main-nav nav {
-          flex: 1;
-          justify-content: flex-end;
-          gap: 6px;
-          flex-wrap: wrap;
-        }
-
-        .nav-button {
-          min-height: 38px;
-          padding: 0 8px;
-          font-size: 0.76rem;
-        }
-
-        .home {
-          min-height: calc(100vh - 63px);
-          padding: 32px 14px;
-        }
-
-        .home img {
-          max-height: 220px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="main-nav">
-      <a class="brand" href="index.html">
-        <img src="frontend/assets/fort-reilly-logo-cropped.jpeg" alt="Fort Reilly Foundation">
-      </a>
-      <nav aria-label="Main navigation">
-        <a class="nav-button secondary" href="frontend/index.html">AI Chatbot</a>
-        <a class="nav-button" href="veteran-resources.html">Veteran Resources</a>
-        <a class="nav-button" href="frontend/shop.html">Shop</a>
-      </nav>
-    </header>
-
-    <main class="home">
-      <div>
-        <img src="frontend/assets/fort-reilly-logo-cropped.jpeg" alt="Fort Reilly Foundation">
-        <h1>Fort Reilly Foundation</h1>
+        <div class="flex items-center gap-x-3">
+          <button onclick="showDonateModal()" 
+                  class="hidden md:inline-flex items-center gap-x-2 px-6 py-2.5 rounded-full gold-btn text-sm font-bold tracking-wider">
+            <i class="fa-solid fa-heart mr-2"></i> DONATE
+          </button>
+          <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" 
+                  class="md:hidden w-11 h-11 flex items-center justify-center text-[#C9A962]">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
       </div>
-    </main>
-  </body>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#C9A962]/30 bg-[#0a0a0a]">
+      <div class="px-6 py-4 flex flex-col gap-y-1 text-sm">
+        <a href="frontend/shop.html" class="py-3 px-4 hover:bg-white/5 rounded-xl">SHOP</a>
+        <a href="veteran-resources.html" class="py-3 px-4 hover:bg-white/5 rounded-xl">VETERAN RESOURCES</a>
+        <a href="#raffles" class="py-3 px-4 hover:bg-white/5 rounded-xl">RAFFLES &amp; GIVEAWAYS</a>
+        <a href="frontend/index.html" class="py-3 px-4 hover:bg-white/5 rounded-xl">AI CHATBOT</a>
+        <button onclick="showDonateModal(); document.getElementById('mobile-menu').classList.add('hidden')" 
+                class="mt-2 w-full py-3 rounded-2xl gold-btn font-bold flex items-center justify-center gap-x-2">
+          <i class="fa-solid fa-heart"></i> DONATE NOW
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative min-h-[92vh] flex items-center justify-center border-b border-[#C9A962]/20 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(#C9A962_0.8px,transparent_1px)] bg-[length:5px_5px] opacity-10"></div>
+    
+    <div class="max-w-5xl mx-auto px-6 text-center relative z-10 pt-12">
+      <div class="inline-flex items-center gap-x-2 px-4 py-1 rounded-full bg-[#C9A962]/10 border border-[#C9A962]/30 mb-6">
+        <div class="w-2 h-2 bg-[#C9A962] rounded-full animate-pulse"></div>
+        <span class="text-xs tracking-[2px] font-mono text-[#C9A962]">KENTUCKY • VETERANS • COMMUNITY</span>
+      </div>
+
+      <h1 class="text-7xl md:text-8xl font-bold tracking-tighter leading-none mb-4 heading-serif">
+        HONOR.<br>SERVE.<br>REMEMBER.
+      </h1>
+      <p class="max-w-md mx-auto text-xl text-[#C9A962]/90 mb-10">
+        The Fort Reilly Foundation carries forward the legacy of LCPL TJ Reilly — 
+        supporting veterans, families, and our Kentucky communities.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button onclick="showDonateModal()" 
+                class="px-10 py-4 rounded-2xl gold-btn text-lg font-bold flex items-center justify-center gap-x-3 shadow-xl">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+          <span>DONATE TODAY</span>
+        </button>
+        <a href="veteran-resources.html" 
+           class="px-8 py-4 rounded-2xl border-2 border-[#C9A962]/60 hover:bg-white/5 font-semibold flex items-center justify-center gap-x-2 transition-colors">
+          <span>EXPLORE VETERAN RESOURCES</span>
+        </a>
+      </div>
+
+      <div class="mt-16 flex justify-center">
+        <div class="flex items-center gap-x-8 text-sm opacity-60">
+          <div class="flex -space-x-2">
+            <div class="w-8 h-8 rounded-full bg-[#C9A962]/20 border border-[#C9A962]/40"></div>
+            <div class="w-8 h-8 rounded-full bg-[#C9A962]/20 border border-[#C9A962]/40"></div>
+            <div class="w-8 h-8 rounded-full bg-[#C9A962]/20 border border-[#C9A962]/40"></div>
+          </div>
+          <span class="text-xs tracking-widest">JOIN 1,200+ SUPPORTERS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block">
+      <div class="flex flex-col items-center text-xs tracking-[3px] opacity-50">
+        <span>SCROLL TO BEGIN</span>
+        <i class="fa-solid fa-chevron-down mt-1"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- MISSION / TRIBUTE -->
+  <section class="max-w-5xl mx-auto px-6 pt-20 pb-16">
+    <div class="grid md:grid-cols-12 gap-x-8 items-center">
+      <div class="md:col-span-7">
+        <div class="uppercase tracking-[3px] text-xs text-[#C9A962] mb-3">OUR WHY</div>
+        <h2 class="text-5xl leading-none tracking-tighter font-bold heading-serif mb-6">Built on sacrifice.<br>Driven by service.</h2>
+        
+        <div class="prose prose-invert text-[#d1d1d1] max-w-prose">
+          <p class="text-lg">The Fort Reilly Foundation exists to honor the memory of <strong class="text-white">Lance Corporal TJ Reilly</strong>, who made the ultimate sacrifice on December 21, 2008, in Karmah, Iraq. His courage and selflessness continue to inspire everything we do.</p>
+          <p>We support veterans and military families across Kentucky through direct assistance, community events, resources, and by keeping the stories of our fallen heroes alive.</p>
+        </div>
+      </div>
+
+      <div class="md:col-span-5 mt-10 md:mt-0">
+        <div class="bg-[#111] border border-[#C9A962]/20 rounded-3xl p-8">
+          <div class="flex items-center gap-x-4 mb-6">
+            <div class="w-14 h-14 rounded-2xl bg-[#C9A962]/10 flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-medal text-3xl text-[#C9A962]"></i>
+            </div>
+            <div>
+              <div class="font-mono text-xs tracking-widest text-[#C9A962]">KIA • 21 DEC 2008</div>
+              <div class="font-bold text-2xl tracking-tight">LCPL TJ REILLY</div>
+              <div class="text-sm text-[#C9A962]/70">USMC • Karmah, Iraq</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed text-[#C9A962]/90 italic">
+            "Greater love hath no man than this, that a man lay down his life for his friends."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS / IMPACT -->
+  <section class="bg-[#111] py-12 border-y border-[#C9A962]/10">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-5xl font-bold text-[#C9A962] stat-number">$47k+</div>
+          <div class="text-xs tracking-[2px] mt-2 text-[#C9A962]/60">RAISED FOR VETERANS</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold text-[#C9A962] stat-number">312</div>
+          <div class="text-xs tracking-[2px] mt-2 text-[#C9A962]/60">VETERANS SUPPORTED</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold text-[#C9A962] stat-number">28</div>
+          <div class="text-xs tracking-[2px] mt-2 text-[#C9A962]/60">COMMUNITY EVENTS</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold text-[#C9A962] stat-number">4</div>
+          <div class="text-xs tracking-[2px] mt-2 text-[#C9A962]/60">COUNTIES SERVED</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS / FEATURES -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Shop -->
+      <a href="frontend/shop.html" class="group block bg-[#111] hover:bg-[#1a1a1a] border border-[#C9A962]/10 hover:border-[#C9A962]/40 rounded-3xl p-8 transition-all">
+        <div class="w-12 h-12 rounded-2xl bg-[#C9A962]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-tshirt text-3xl text-[#C9A962]"></i>
+        </div>
+        <h3 class="font-bold text-2xl tracking-tight mb-2">APPAREL &amp; GEAR</h3>
+        <p class="text-[#C9A962]/70 text-sm leading-relaxed">Premium veteran-made and foundation-branded merch. Every purchase supports our mission directly.</p>
+        <div class="mt-6 inline-flex items-center text-sm font-semibold text-[#C9A962] group-hover:gap-x-2 transition-all">
+          SHOP THE COLLECTION <i class="fa-solid fa-arrow-right ml-2"></i>
+        </div>
+      </a>
+
+      <!-- Resources -->
+      <a href="veteran-resources.html" class="group block bg-[#111] hover:bg-[#1a1a1a] border border-[#C9A962]/10 hover:border-[#C9A962]/40 rounded-3xl p-8 transition-all">
+        <div class="w-12 h-12 rounded-2xl bg-[#C9A962]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-book text-3xl text-[#C9A962]"></i>
+        </div>
+        <h3 class="font-bold text-2xl tracking-tight mb-2">VETERAN RESOURCES</h3>
+        <p class="text-[#C9A962]/70 text-sm leading-relaxed">Comprehensive guide to benefits, VA services, local Kentucky support, mental health, and more.</p>
+        <div class="mt-6 inline-flex items-center text-sm font-semibold text-[#C9A962] group-hover:gap-x-2 transition-all">
+          ACCESS THE GUIDE <i class="fa-solid fa-arrow-right ml-2"></i>
+        </div>
+      </a>
+
+      <!-- Raffles -->
+      <a href="#raffles" class="group block bg-[#111] hover:bg-[#1a1a1a] border border-[#C9A962]/10 hover:border-[#C9A962]/40 rounded-3xl p-8 transition-all">
+        <div class="w-12 h-12 rounded-2xl bg-[#C9A962]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-gift text-3xl text-[#C9A962]"></i>
+        </div>
+        <h3 class="font-bold text-2xl tracking-tight mb-2">RAFFLES &amp; GIVEAWAYS</h3>
+        <p class="text-[#C9A962]/70 text-sm leading-relaxed">Enter to win exclusive experiences, gear, and local prizes. All proceeds go straight to supporting our veterans.</p>
+        <div class="mt-6 inline-flex items-center text-sm font-semibold text-[#C9A962] group-hover:gap-x-2 transition-all">
+          SEE CURRENT RAFFLES <i class="fa-solid fa-arrow-right ml-2"></i>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="raffles" class="bg-[#111] border-y border-[#C9A962]/10 py-16">
+    <div class="max-w-xl mx-auto px-6 text-center">
+      <div class="uppercase tracking-[3px] text-xs text-[#C9A962] mb-2">STAY IN THE FIGHT</div>
+      <h2 class="text-4xl font-bold tracking-tighter mb-4">Join the Reilly Roll Call</h2>
+      <p class="text-[#C9A962]/70 mb-8">Get updates on events, raffles, veteran resources, and how your support is making an impact in Kentucky.</p>
+
+      <form id="newsletter-form" onsubmit="handleNewsletter(event)" class="flex flex-col sm:flex-row gap-3">
+        <input type="text" id="name" placeholder="Your Name" required 
+               class="flex-1 bg-[#0a0a0a] border border-[#C9A962]/30 focus:border-[#C9A962] rounded-2xl px-6 py-4 text-sm placeholder:text-[#C9A962]/40 focus:outline-none">
+        <input type="email" id="email" placeholder="Email Address" required 
+               class="flex-1 bg-[#0a0a0a] border border-[#C9A962]/30 focus:border-[#C9A962] rounded-2xl px-6 py-4 text-sm placeholder:text-[#C9A962]/40 focus:outline-none">
+        <button type="submit" 
+                class="px-8 py-4 rounded-2xl gold-btn font-bold whitespace-nowrap">SUBSCRIBE</button>
+      </form>
+      <p id="newsletter-success" class="hidden mt-4 text-sm text-emerald-400">You're in. Welcome to the family.</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="max-w-4xl mx-auto px-6 py-20 text-center">
+    <h2 class="text-5xl tracking-tighter font-bold mb-4">Ready to stand with us?</h2>
+    <p class="text-xl text-[#C9A962]/80 mb-8 max-w-md mx-auto">Every donation, every purchase, every share keeps LCPL Reilly's legacy alive and supports those who served.</p>
+    
+    <button onclick="showDonateModal()" 
+            class="px-14 py-5 text-xl rounded-3xl gold-btn font-extrabold inline-flex items-center gap-x-4 shadow-2xl">
+      <span>MAKE A DONATION</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[#C9A962]/20 py-12 text-xs text-[#C9A962]/50">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-y-6">
+      <div>
+        © Fort Reilly Foundation. All rights reserved.<br>
+        Corbin &amp; London, Kentucky • In memory of LCPL TJ Reilly, USMC
+      </div>
+      <div class="flex gap-x-6">
+        <a href="#" class="hover:text-[#C9A962]">Privacy</a>
+        <a href="#" class="hover:text-[#C9A962]">Terms</a>
+        <a href="frontend/index.html" class="hover:text-[#C9A962]">AI Chatbot</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING DONATE BUTTON -->
+  <button onclick="showDonateModal()" 
+          class="floating-donate md:hidden flex items-center justify-center w-16 h-16 rounded-full gold-btn shadow-2xl">
+    <i class="fa-solid fa-heart text-2xl"></i>
+  </button>
+
+  <!-- DONATE MODAL -->
+  <div id="donate-modal" onclick="if (event.target.id === 'donate-modal') hideDonateModal()" 
+       class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-6">
+    <div onclick="event.stopImmediatePropagation()" 
+         class="modal bg-[#111] border border-[#C9A962]/30 rounded-3xl max-w-md w-full p-8">
+      
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <div class="text-[#C9A962] text-xs tracking-[2px] font-mono">SECURE DONATION</div>
+          <h3 class="text-3xl font-bold tracking-tight">Support the Mission</h3>
+        </div>
+        <button onclick="hideDonateModal()" class="text-3xl leading-none text-[#C9A962]/60 hover:text-white">&times;</button>
+      </div>
+
+      <p class="text-sm text-[#C9A962]/70 mb-6">Your gift honors LCPL TJ Reilly and directly supports veterans and families in Kentucky.</p>
+
+      <div class="grid grid-cols-4 gap-3 mb-6" id="amount-buttons">
+        <button onclick="selectAmount(this, 25)" class="amount-btn py-3 rounded-2xl border border-[#C9A962]/30 hover:bg-[#C9A962] hover:text-black font-bold text-sm">$25</button>
+        <button onclick="selectAmount(this, 50)" class="amount-btn py-3 rounded-2xl border border-[#C9A962]/30 hover:bg-[#C9A962] hover:text-black font-bold text-sm">$50</button>
+        <button onclick="selectAmount(this, 100)" class="amount-btn py-3 rounded-2xl border border-[#C9A962]/30 hover:bg-[#C9A962] hover:text-black font-bold text-sm">$100</button>
+        <button onclick="selectAmount(this, 'other')" class="amount-btn py-3 rounded-2xl border border-[#C9A962]/30 hover:bg-[#C9A962] hover:text-black font-bold text-sm">OTHER</button>
+      </div>
+
+      <form id="donate-form" onsubmit="submitDonation(event)">
+        <div class="space-y-4">
+          <div>
+            <label class="text-xs tracking-wider text-[#C9A962]/70 block mb-1.5">DONATION AMOUNT</label>
+            <div class="relative">
+              <span class="absolute left-5 top-4 text-[#C9A962]/60">$</span>
+              <input type="number" id="donate-amount" value="50" 
+                     class="w-full bg-[#0a0a0a] border border-[#C9A962]/30 focus:border-[#C9A962] rounded-2xl pl-9 pr-5 py-4 text-lg font-semibold focus:outline-none">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs tracking-wider text-[#C9A962]/70 block mb-1.5">FIRST NAME</label>
+              <input type="text" id="donor-first" value="Jason" required class="w-full bg-[#0a0a0a] border border-[#C9A962]/30 focus:border-[#C9A962] rounded-2xl px-5 py-3.5 text-sm focus:outline-none">
+            </div>
+            <div>
+              <label class="text-xs tracking-wider text-[#C9A962]/70 block mb-1.5">LAST NAME</label>
+              <input type="text" id="donor-last" value="Reilly" required class="w-full bg-[#0a0a0a] border border-[#C9A962]/30 focus:border-[#C9A962] rounded-2xl px-5 py-3.5 text-sm focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="text-xs tracking-wider text-[#C9A962]/70 block mb-1.5">EMAIL</label>
+            <input type="email" id="donor-email" value="jason@fortreillyfoundation.org" required class="w-full bg-[#0a0a0a] border border-[#C9A962]/30 focus:border-[#C9A962] rounded-2xl px-5 py-3.5 text-sm focus:outline-none">
+          </div>
+
+          <div class="pt-2">
+            <label class="flex items-center gap-x-2 text-xs cursor-pointer">
+              <input type="checkbox" checked class="accent-[#C9A962]">
+              <span class="text-[#C9A962]/70">Make this a monthly recurring donation</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" 
+                class="mt-8 w-full py-4 rounded-2xl gold-btn text-lg font-extrabold tracking-wider flex items-center justify-center gap-x-3">
+          <i class="fa-solid fa-lock mr-1"></i> 
+          COMPLETE SECURE DONATION
+        </button>
+      </form>
+
+      <p class="text-center text-[10px] text-[#C9A962]/50 mt-6">Powered by Stripe • 100% of proceeds support our mission</p>
+    </div>
+  </div>
+
+  <script>
+    // Tailwind script
+    function initializeTailwind() {
+      document.documentElement.style.setProperty('--accent', '#C9A962');
+    }
+
+    let selectedAmountBtn = null;
+
+    function selectAmount(btn, amount) {
+      // Deselect all
+      document.querySelectorAll('.amount-btn').forEach(b => {
+        b.classList.remove('bg-[#C9A962]', 'text-black', 'border-[#C9A962]');
+        b.classList.add('border-[#C9A962]/30');
+      });
+      
+      btn.classList.add('bg-[#C9A962]', 'text-black', 'border-[#C9A962]');
+      btn.classList.remove('border-[#C9A962]/30');
+      selectedAmountBtn = btn;
+
+      const amountInput = document.getElementById('donate-amount');
+      if (amount === 'other') {
+        amountInput.focus();
+        amountInput.select();
+      } else {
+        amountInput.value = amount;
+      }
+    }
+
+    function showDonateModal() {
+      const modal = document.getElementById('donate-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      
+      // Pre-select $50
+      setTimeout(() => {
+        const fiftyBtn = document.querySelector('#amount-buttons button:nth-child(2)');
+        if (fiftyBtn) selectAmount(fiftyBtn, 50);
+      }, 50);
+    }
+
+    function hideDonateModal() {
+      const modal = document.getElementById('donate-modal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+      // Reset buttons
+      document.querySelectorAll('.amount-btn').forEach(b => {
+        b.classList.remove('bg-[#C9A962]', 'text-black', 'border-[#C9A962]');
+        b.classList.add('border-[#C9A962]/30');
+      });
+    }
+
+    function submitDonation(e) {
+      e.preventDefault();
+      const amount = document.getElementById('donate-amount').value;
+      const first = document.getElementById('donor-first').value;
+      const last = document.getElementById('donor-last').value;
+      
+      // In real version this would call Stripe or the checkout function
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> PROCESSING...`;
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = `<i class="fa-solid fa-check mr-2"></i> THANK YOU, ${first.toUpperCase()}!`;
+        setTimeout(() => {
+          hideDonateModal();
+          // Show thank you toast
+          showToast(`Thank you for your $${amount} donation, ${first}. Your support honors the fallen and lifts up our veterans.`);
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          document.getElementById('donate-form').reset();
+        }, 1400);
+      }, 1800);
+    }
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const form = e.target;
+      const success = document.getElementById('newsletter-success');
+      
+      form.style.transition = 'opacity .2s';
+      form.style.opacity = '0.3';
+      
+      setTimeout(() => {
+        form.style.display = 'none';
+        success.classList.remove('hidden');
+        success.style.opacity = '0';
+        success.style.transition = 'opacity .4s';
+        setTimeout(() => success.style.opacity = '1', 10);
+      }, 600);
+    }
+
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = `fixed bottom-24 left-1/2 -translate-x-1/2 bg-[#111] border border-[#C9A962] text-sm px-6 py-4 rounded-2xl shadow-2xl max-w-xs text-center z-[200]`;
+      toast.innerHTML = message;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.transition = 'all .4s ease';
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 400);
+      }, 4200);
+    }
+
+    // Keyboard escape for modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('donate-modal');
+        if (!modal.classList.contains('hidden')) hideDonateModal();
+      }
+    });
+
+    // Boot
+    window.onload = function() {
+      initializeTailwind();
+      // Auto-select first amount button style if needed
+      console.log('%c[Fort Reilly] Homepage loaded. Codex damage repaired. Oorah.', 'color:#C9A962');
+    };
+
+    // Easter egg for veterans
+    let konami = [];
+    const konamiCode = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    document.addEventListener('keydown', function(e) {
+      konami.push(e.key);
+      if (konami.length > konamiCode.length) konami.shift();
+      if (konami.join(',') === konamiCode.join(',')) {
+        document.body.style.background = '#0a0a0a url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27100%27 height=%27100%27%3E%3Ctext x=%2750%25%27 y=%2750%25%27 fill=%27%23C9A962%27 font-size=%2712%27 text-anchor=%27middle%27%3EOORAH%3C/text%3E%3C/svg%27")';
+        showToast('SEMPER FI, MARINE. The mission continues.');
+        konami = [];
+      }
+    });
+  </script>
+</body>
 </html>
